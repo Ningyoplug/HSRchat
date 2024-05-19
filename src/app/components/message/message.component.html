@@ -1,0 +1,9 @@
+<!-- if Friend -->
+<div *ngIf="!msg.isUser">
+    <app-chatbox-friend [friend]="friend">{{ msg.text }}</app-chatbox-friend>
+</div>
+
+<!-- if User -->
+<div *ngIf="msg.isUser">
+    <app-chatbox-user [user]="user">{{ msg.text }}</app-chatbox-user>
+</div>

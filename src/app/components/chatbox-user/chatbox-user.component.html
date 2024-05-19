@@ -1,0 +1,17 @@
+<div class="mb-4 d-flex justify-content-end">
+
+    <!-- MSG -->
+    <div class="d-flex flex-column align-items-end">
+        <div class="username text-grey mb-1">{{ user.name }}</div>
+        <div class="chatbox-user py-2 px-3">
+            <ng-content></ng-content>
+        </div>
+    </div>
+
+    <!-- ICON -->
+    <div class="icon rounded-circle ms-3" [ngClass]="user.icon != 'assets/img/anon-default.png' ? 'bg-icon' : ''">
+        <img *ngIf="user.icon" src="{{ user.icon }}" class="rounded-circle" width="90px" height="90px">
+        <img *ngIf="!user.icon" src="assets/img/anon-default.png" class="rounded-circle" width="90px" height="90px">
+    </div>
+
+</div>

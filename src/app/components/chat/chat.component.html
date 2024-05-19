@@ -1,0 +1,55 @@
+<div id="chat" class="bg-chat">
+
+    <div class="px-4 mb-2 pt-2">
+        <div id="chat-title">{{ friend.name }}</div>
+        <div id="subtitle" *ngIf="friend.sub">{{ friend.sub }}</div>
+    </div>
+
+    <hr class="mb-3">
+
+    <div class="px-4">
+        <app-message *ngFor="let message of messages" [msg]="message" [friend]="friend" [user]="user"></app-message>
+    </div>
+
+    <hr>
+
+    <div id="textbox" class="px-4 py-3">
+        <form [formGroup]="newMsg" (ngSubmit)="onSubmit()">
+            <div class="input-group mb-3">
+
+                <!-- CHAT SELECT CHARACTER -->
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img *ngIf="!switchCheck" src="{{ friend.icon }}" width="30px" height="30px">
+                    <img *ngIf="switchCheck" src="{{ user.icon }}" width="30px" height="30px">
+                </button>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let chara of charas">
+                        <a class="dropdown-item" (click)="selectChara(chara)">{{ chara.name }}</a>
+                    </li>
+                </ul>
+
+
+
+                <!-- CHAT TEXTBOX -->
+                <input type="text" class="form-control" placeholder="Type message here..." aria-label="Textbox"
+                    aria-describedby="basic-addon1" formControlName="textbox">
+
+                <!-- CHAT SUBMIT -->
+                <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>
+
+
+            </div>
+        </form>
+
+        <div>
+            <div class="form-check form-switch d-flex justify-content-center">
+                <input class="form-check-input me-2" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                    (click)="onSwitchChecked()">
+                <label *ngIf="!switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ friend.name
+                    }}</label>
+                <label *ngIf="switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ user.name }}</label>
+            </div>
+        </div>
+    </div>
+
+</div>

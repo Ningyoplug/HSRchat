@@ -1,0 +1,17 @@
+<div class="mb-4 d-flex justify-content-start">
+
+    <!-- ICON -->
+    <div class="icon rounded-circle me-3" [ngClass]="friend.icon != 'assets/img/anon-default.png' ? 'bg-icon' : ''">
+        <img *ngIf="friend.icon" src="{{ friend.icon }}" class="rounded-circle" width="90px" height="90px">
+        <img *ngIf="!friend.icon" src="assets/img/anon-default.png" class="rounded-circle" width="90px" height="90px">
+    </div>
+
+    <!-- MSG -->
+    <div class="d-flex flex-column">
+        <div class="username text-grey mb-1">{{ friend.name }}</div>
+        <div class="chatbox-friend py-2 px-3">
+            <ng-content></ng-content>
+        </div>
+    </div>
+
+</div>

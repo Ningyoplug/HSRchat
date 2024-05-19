@@ -1,0 +1,126 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: DinText;
+    src: url(assets/fonts/zh-cn.ttf) format("opentype");
+}
+
+body {
+    background-color: #302D32;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'DinText', sans-serif;
+    color: #121212;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+hr {
+    color: #666868;
+    border-top-width: 2px;
+    margin: 0;
+}
+
+
+
+/// CLASSES
+
+.bg-chat {
+    background-color: #D3D9DD;
+}
+.bg-icon {
+    background-color: #3C373D;
+}
+
+.chatbox-friend {
+    background-color: #EDEDED;
+    border-radius: 2px 20px 20px 20px;
+    box-shadow: -1px 2px #9EA0A1;
+}
+
+.chatbox-user {
+    background-color: #DDCAA5;
+    border-radius: 2px 20px 20px 20px;
+    box-shadow: 1px 2px #9EA0A1;
+}
+
+.text-grey {
+    color: #666868;
+}
+
+.hard-grey {
+    background-color: #666868;
+}
+
+.soft-grey {
+    background-color: #9EA0A1;
+}
+
+.username {
+    font-size: 21px;
+    font-weight: normal;
+}
+
+.input-group>.form-control {
+    &:focus {
+        box-shadow: 0 0 0 .25rem transparent;
+        border-color: #DDCAA5;
+    }
+
+    &::placeholder {
+        font-style: italic;
+        color: #9EA0A1;
+    }
+}
+
+
+
+
+/// IDs
+
+#chat-title {
+    font-size: 28px;
+}
+
+#chat {
+    width: 718px;
+    border-radius: 0px 40px 0px 0px;
+
+    &::after {
+        content: " ";
+        position: absolute;
+        transform: translate3d(-10px, 10px, 0);
+        height: -webkit-fill-available;
+        width: -webkit-fill-available;
+        border: 2px solid rgba(255, 255, 255, 0.135);
+        box-sizing: border-box;
+        top: 0;
+        border-radius: 0px 40px 0px 0px;
+        z-index: -1;
+    }
+}
+
+#subtitle {
+    font-size: 20px;
+    font-weight: normal;
+    color: #666868
+}
+
+#textbox {
+    background-color: #CBCFD0;
+}
+
+
+
+/// IMAGES
+
+.icon {
+    width: 90px;
+    height: 90px;
+    // background-color: #3C373D;
+    // background-image: url(assets/img/anon-default.png);
+    // background-size: cover;
+}
