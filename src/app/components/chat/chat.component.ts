@@ -11,9 +11,9 @@ export class ChatComponent implements OnInit {
     switchCheck: boolean = false;
 
     friend: any = {
-        name: "Clara",
-        icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a4/Character_Clara_Icon.png",
-        sub: "I want to go to a picnic with everyone (>▽<)"
+        name: "Dan Heng",
+        icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Dan_Heng_Icon.png",
+        sub: "For anything related to the data bank, come find me."
     }
 
     user: any = {
