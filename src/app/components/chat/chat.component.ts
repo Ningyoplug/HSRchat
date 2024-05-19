@@ -342,8 +342,7 @@ export class ChatComponent implements OnInit {
             isUser: isUserRn
         })
 
-        console.log("sent:");
-        console.log(this.messages);
+        this.newMsg.reset()
     }
 
 }
