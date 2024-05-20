@@ -10,6 +10,9 @@ export class ChatComponent implements OnInit {
 
     switchCheck: boolean = false;
     actionCheck: boolean = false;
+    photoCheck: boolean = false;
+
+    placeholder: string = "Type message here..."
 
     friend: any = {
         name: "Dan Heng",
@@ -326,13 +329,31 @@ export class ChatComponent implements OnInit {
     onActionChecked() {
         if (this.actionCheck == false) {
             this.actionCheck = true
-        } else { this.actionCheck = false }
+            this.placeholder = "Type an action here..."
+        } else {
+            this.actionCheck = false
+            this.placeholder = "Type message here..."
+        }
+    }
+
+    onPhotoChecked() {
+        if (this.photoCheck == false && this.actionCheck == false) {
+            this.photoCheck = true
+            this.placeholder = "Paste a photo url here..."
+        } else if (this.photoCheck == false && this.actionCheck == true) {
+            this.actionCheck = true
+            this.placeholder = "Type an action here..."
+        } else {
+            this.photoCheck = false
+            this.placeholder = "Type message here..."
+        }
     }
 
     onSubmit() {
         let chara: any
         let isUserRn: boolean
         let isAction: boolean
+        let isPhoto: boolean
 
         if (!this.switchCheck) {
             chara = this.friend
@@ -346,13 +367,18 @@ export class ChatComponent implements OnInit {
             isAction = false
         } else { isAction = true }
 
+        if (!this.photoCheck) {
+            isPhoto = false
+        } else { isPhoto = true }
+
         this.msg = this.newMsg.value.textbox
 
         this.messages.push({
             sentBy: chara,
             text: this.msg,
             isUser: isUserRn,
-            isAction: isAction
+            isAction: isAction,
+            isPhoto: isPhoto
         })
 
         this.newMsg.reset()

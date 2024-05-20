@@ -2,16 +2,19 @@
 
     <!-- MSG -->
     <div class="d-flex flex-column align-items-end">
-        <div class="username text-grey mb-1">{{ user.name }}</div>
-        <div class="chatbox-user py-2 px-3">
-            <ng-content></ng-content>
+        <div class="username text-grey mb-1">{{ msg.sentBy.name }}</div>
+        <div class="chatbox-user py-2 px-3" *ngIf="!msg.isPhoto">
+            {{ msg.text }}
+        </div>
+        <div class="py-2 px-3" *ngIf="msg.isPhoto">
+            <img class="photo" src="{{ msg.text }}" alt="Photo">
         </div>
     </div>
 
     <!-- ICON -->
-    <div class="icon rounded-circle ms-3" [ngClass]="user.icon != 'assets/img/anon-default.png' ? 'bg-icon' : ''">
-        <img *ngIf="user.icon" src="{{ user.icon }}" class="rounded-circle" width="90px" height="90px">
-        <img *ngIf="!user.icon" src="assets/img/anon-default.png" class="rounded-circle" width="90px" height="90px">
+    <div class="icon rounded-circle ms-3" [ngClass]="msg.sentBy.icon != 'assets/img/anon-default.png' ? 'bg-icon' : ''">
+        <img *ngIf="msg.sentBy.icon" src="{{ msg.sentBy.icon }}" class="rounded-circle" width="90px" height="90px">
+        <img *ngIf="!msg.sentBy.icon" src="assets/img/anon-default.png" class="rounded-circle" width="90px" height="90px">
     </div>
 
 </div>

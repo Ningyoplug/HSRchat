@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ChatboxUserComponent implements OnInit {
 
-    @Input() user: any = {}
+    @Input() msg: any = {}
 
     constructor() { }
 

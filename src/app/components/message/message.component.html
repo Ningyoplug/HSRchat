@@ -1,14 +1,19 @@
 <!-- if Friend -->
 <div *ngIf="!msg.isUser && !msg.isAction">
-    <app-chatbox-friend [friend]="friend">{{ msg.text }}</app-chatbox-friend>
+    <app-chatbox-friend [msg]="msg"></app-chatbox-friend>
 </div>
 
 <!-- if User -->
 <div *ngIf="msg.isUser && !msg.isAction">
-    <app-chatbox-user [user]="user">{{ msg.text }}</app-chatbox-user>
+    <app-chatbox-user [msg]="msg"></app-chatbox-user>
 </div>
 
-<!-- if User -->
+<!-- if Action -->
 <div *ngIf="msg.isAction">
-    <app-action [msg]="msg">{{ msg.text }}</app-action>
+    <app-action [msg]="msg"></app-action>
 </div>
+
+<!-- if Photo -->
+<!-- <div *ngIf="msg.isPhoto && !msg.isAction">
+    <app-photo [photo]="msg">{{ msg.text }}</app-photo>
+</div> -->

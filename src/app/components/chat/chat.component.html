@@ -20,9 +20,10 @@
                 <!-- CHAT SELECT CHARACTER -->
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
-                    <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px" height="30px">
+                    <img *ngIf="!switchCheck && !actionCheck && !photoCheck" src="{{ friend.icon }}" width="30px" height="30px">
+                    <img *ngIf="switchCheck && !actionCheck && !photoCheck" src="{{ user.icon }}" width="30px" height="30px">
                     <img *ngIf="actionCheck" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px" height="30px">
+                    <img *ngIf="photoCheck && !actionCheck" src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" width="30px" height="30px">
                 </button>
                 <ul class="dropdown-menu">
                     <li *ngFor="let chara of charas">
@@ -30,10 +31,8 @@
                     </li>
                 </ul>
 
-
-
                 <!-- CHAT TEXTBOX -->
-                <input type="text" class="form-control" placeholder="Type message here..." aria-label="Textbox"
+                <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
                     aria-describedby="basic-addon1" formControlName="textbox">
 
                 <!-- CHAT SUBMIT -->
@@ -58,6 +57,14 @@
                 <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" (click)="onActionChecked()">
                 <label class="form-check-label" for="flexCheckDefault">
                     Action
+                </label>
+            </div>
+
+            <!-- PHOTO CHECKBOX -->
+            <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" (click)="onPhotoChecked()">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Photo
                 </label>
             </div>
         </div>

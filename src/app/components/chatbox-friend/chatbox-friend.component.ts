@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ChatboxFriendComponent implements OnInit {
 
-    @Input() friend: any = {}
+    @Input() msg: any = {}
 
     constructor() { }
 
