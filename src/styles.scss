@@ -64,6 +64,19 @@ hr {
     font-weight: normal;
 }
 
+.small-text {
+    font-size: 18px;
+    color: #858586;
+}
+
+.symbol {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+/// INPUT GROUP COLORS
 .input-group>.form-control {
     &:focus {
         box-shadow: 0 0 0 .25rem transparent;

@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ChatComponent implements OnInit {
 
     switchCheck: boolean = false;
+    actionCheck: boolean = false;
 
     friend: any = {
         name: "Dan Heng",
@@ -322,9 +323,16 @@ export class ChatComponent implements OnInit {
         } else { this.switchCheck = false }
     }
 
+    onActionChecked() {
+        if (this.actionCheck == false) {
+            this.actionCheck = true
+        } else { this.actionCheck = false }
+    }
+
     onSubmit() {
         let chara: any
         let isUserRn: boolean
+        let isAction: boolean
 
         if (!this.switchCheck) {
             chara = this.friend
@@ -334,12 +342,17 @@ export class ChatComponent implements OnInit {
             isUserRn = true
         }
 
+        if (!this.actionCheck) {
+            isAction = false
+        } else { isAction = true }
+
         this.msg = this.newMsg.value.textbox
 
         this.messages.push({
             sentBy: chara,
             text: this.msg,
-            isUser: isUserRn
+            isUser: isUserRn,
+            isAction: isAction
         })
 
         this.newMsg.reset()

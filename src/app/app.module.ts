@@ -9,6 +9,7 @@ import { ChatboxUserComponent } from './components/chatbox-user/chatbox-user.com
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageComponent } from './components/message/message.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActionComponent } from './components/action/action.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         ChatboxFriendComponent,
         ChatboxUserComponent,
         ChatComponent,
-        MessageComponent
+        MessageComponent,
+        ActionComponent
     ],
     imports: [
         BrowserModule,
