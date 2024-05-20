@@ -86,7 +86,7 @@ export class ChatComponent implements OnInit {
         },
         {
             name: "Clara",
-            icon: "https://honkai-star-rail.fandom.com/wiki/Honkai:_Star_Rail_Wiki?file=Character_Clara_Icon.png",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a4/Character_Clara_Icon.png",
             sub: "I want to go to a picnic with everyone (>▽<)"
         },
         {
