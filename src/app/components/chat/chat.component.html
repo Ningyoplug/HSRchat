@@ -1,8 +1,12 @@
 <div id="chat" class="bg-chat">
 
     <div class="px-4 mb-2 pt-2">
-        <div id="chat-title">{{ friend.name }}</div>
-        <div id="subtitle" *ngIf="friend.sub">{{ friend.sub }}</div>
+        <!-- NAME -->
+        <div id="chat-title" *ngIf="!gc.name">{{ friend.name }}</div>
+        <div id="chat-title" *ngIf="gc.name">{{ gc.name }}</div>
+        <!-- SUBTITLE -->
+        <div id="subtitle" *ngIf="friend.sub && !gc.name">{{ friend.sub }}</div>
+        <div id="subtitle" *ngIf="gc.sub">{{ gc.sub }}</div>
     </div>
 
     <hr class="mb-3">
@@ -20,23 +24,27 @@
                 <!-- CHAT SELECT CHARACTER -->
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
-                    <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px" height="30px">
-                    <img *ngIf="actionCheck" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px"
+                    <img *ngIf="!switchCheck && !actionCheck && !groupChat" src="{{ friend.icon }}" width="30px" height="30px">
+                    <img *ngIf="switchCheck && !actionCheck && !groupChat" src="{{ user.icon }}" width="30px" height="30px">
+                    <img *ngIf="actionCheck && !groupChat" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px"
                         height="30px">
-                    <img *ngIf="photoCheck && !actionCheck"
+                    <img *ngIf="photoCheck && !actionCheck && !groupChat"
                         src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1" width="30px"
                         height="30px">
+                    <img *ngIf="groupChat" src="assets/img/symbols/Icon_Messages.png" width="30px" height="30px">
                 </button>
                 <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" (click)="setGroupChat()">Group chat</a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
                     <li *ngFor="let chara of charas">
                         <a class="dropdown-item" (click)="selectChara(chara)">{{ chara.name }}</a>
                     </li>
                 </ul>
 
                 <!-- CHAT TEXTBOX -->
-                <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
-                    aria-describedby="basic-addon1" formControlName="textbox">
+                <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox" aria-describedby="basic-addon1" formControlName="textbox">
 
                 <!-- CHAT SUBMIT -->
                 <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>

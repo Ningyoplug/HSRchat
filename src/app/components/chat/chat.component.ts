@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit {
     actionCheck: boolean = false;
     photoCheck: boolean = false;
     stickerCheck: boolean = false;
+    groupChat: boolean = false;
 
     placeholder: string = "Type message here..."
 
@@ -24,6 +25,11 @@ export class ChatComponent implements OnInit {
     user: any = {
         name: "Stelle",
         icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png",
+        sub: null
+    }
+
+    gc: any = {
+        name: null,
         sub: null
     }
 
@@ -341,7 +347,9 @@ export class ChatComponent implements OnInit {
     }
 
     onActionChecked() {
-        if (this.actionCheck == false) {
+        if (this.groupChat == true) {
+            this.actionCheck = false
+        } else if (this.actionCheck == false) {
             this.actionCheck = true
             this.placeholder = "Type an action here..."
         } else {
@@ -351,7 +359,9 @@ export class ChatComponent implements OnInit {
     }
 
     onPhotoChecked() {
-        if (this.photoCheck == false && this.actionCheck == false) {
+        if (this.groupChat == true) {
+            this.photoCheck = false
+        } else if (this.photoCheck == false && this.actionCheck == false) {
             this.photoCheck = true
             this.placeholder = "Paste a photo url here..."
         } else if (this.photoCheck == false && this.actionCheck == true) {
@@ -363,11 +373,39 @@ export class ChatComponent implements OnInit {
         }
     }
 
+    setGroupChat() {
+        if (!this.gc.name) {
+            this.groupChat = true
+            this.placeholder = "Type the group chat name here..."
+        }
+    }
+
     onSubmit(e?: string) {
         let chara: any
         let isUserRn: boolean
         let isAction: boolean
         let isPhoto: boolean
+
+        // Naming a group chat
+        // if gc has both name and sub already, return
+        if (this.groupChat && this.gc.name && this.gc.sub) {
+            return;
+            // if gc doesn't have a name yet, name it
+        } else if (this.groupChat && !this.gc.name) {
+            this.groupChat = true
+            this.gc.name = this.newMsg.value.textbox
+            this.placeholder = "Type the group chat subtitle here..."
+            this.newMsg.reset()
+            return;
+        }// if gc doesn't have a subtitle yet, name it
+        if (this.groupChat && this.gc.name && !this.gc.sub) {
+            this.gc.sub = this.newMsg.value.textbox
+            this.placeholder = "Type message here..."
+            this.newMsg.reset()
+            this.groupChat = false
+            console.log(this.groupChat);
+            return;
+        }
 
         if (!this.switchCheck) {
             chara = this.friend
