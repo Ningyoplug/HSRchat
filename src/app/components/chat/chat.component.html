@@ -22,8 +22,11 @@
                     aria-expanded="false">
                     <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
                     <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px" height="30px">
-                    <img *ngIf="actionCheck" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px" height="30px">
-                    <img *ngIf="photoCheck && !actionCheck" src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1" width="30px" height="30px">
+                    <img *ngIf="actionCheck" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px"
+                        height="30px">
+                    <img *ngIf="photoCheck && !actionCheck"
+                        src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1" width="30px"
+                        height="30px">
                 </button>
                 <ul class="dropdown-menu">
                     <li *ngFor="let chara of charas">
@@ -54,19 +57,55 @@
 
             <!-- ACTION CHECKBOX -->
             <div class="form-check d-flex justify-content-center">
-                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" (click)="onActionChecked()">
+                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
+                    (click)="onActionChecked()">
                 <label class="form-check-label" for="flexCheckDefault">
                     Action
                 </label>
             </div>
 
             <!-- PHOTO CHECKBOX -->
-            <div class="form-check d-flex justify-content-center">
-                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" (click)="onPhotoChecked()">
+            <div class="form-check d-flex justify-content-center mb-3">
+                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
+                    (click)="onPhotoChecked()">
                 <label class="form-check-label" for="flexCheckDefault">
                     Photo
                 </label>
             </div>
+
+            <!-- STICKERS -->
+            <div class="form-check d-flex justify-content-center">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                    data-bs-target="#stickersModal" (click)="getStickers()">
+                    <img src="/assets/img/stickers/sticker_224.png" width="30px" height="30px">
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="stickersModal" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="stickersLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="stickersLabel">
+                                    Post a sticker as
+                                    <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
+                                    <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px" height="30px">
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- STICKERS LIST -->
+                                <img *ngFor="let sticker of stickers" src="{{ sticker }}" width="75px" height="75px" (click)="selectSticker(sticker)">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

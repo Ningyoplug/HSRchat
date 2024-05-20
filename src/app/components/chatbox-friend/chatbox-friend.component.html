@@ -9,11 +9,15 @@
     <!-- MSG -->
     <div class="d-flex flex-column">
         <div class="username text-grey mb-1">{{ msg.sentBy.name }}</div>
-        <div class="chatbox-friend py-2 px-3" *ngIf="!msg.isPhoto">
+
+        <div class="chatbox-friend py-2 px-3" *ngIf="!msg.isPhoto && !msg.isSticker">
             {{ msg.text }}
         </div>
-        <div class="py-2 px-3" *ngIf="msg.isPhoto">
+        <div class="py-2 px-3" *ngIf="msg.isPhoto && !msg.isSticker">
             <img class="photo" src="{{ msg.text }}" alt="Photo">
+        </div>
+        <div class="py-2 px-3" *ngIf="msg.isSticker">
+            <img class="sticker" src="{{ msg.text }}" alt="Photo">
         </div>
     </div>
 

@@ -11,6 +11,7 @@ export class ChatComponent implements OnInit {
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
+    stickerCheck: boolean = false;
 
     placeholder: string = "Type message here..."
 
@@ -306,12 +307,25 @@ export class ChatComponent implements OnInit {
 
     messages: any = []
 
+    stickers: any = []
+
     constructor() { }
 
     ngOnInit(): void {
         this.newMsg = new FormGroup({
             textbox: new FormControl(null, Validators.required)
         })
+    }
+
+    getStickers() {
+        for (let i = 0; i < 225; i++) {
+            this.stickers.push("assets/img/stickers/sticker_" + i + ".png")
+        }
+    }
+
+    selectSticker(sticker: string) {
+        this.stickerCheck = true
+        this.onSubmit(sticker)
     }
 
     selectChara(ch: any) {
@@ -349,7 +363,7 @@ export class ChatComponent implements OnInit {
         }
     }
 
-    onSubmit() {
+    onSubmit(e?: string) {
         let chara: any
         let isUserRn: boolean
         let isAction: boolean
@@ -371,15 +385,24 @@ export class ChatComponent implements OnInit {
             isPhoto = false
         } else { isPhoto = true }
 
-        this.msg = this.newMsg.value.textbox
+        if (!this.stickerCheck) {
+            this.msg = this.newMsg.value.textbox
+        } else {
+            this.msg = e
+        }
 
         this.messages.push({
             sentBy: chara,
             text: this.msg,
             isUser: isUserRn,
             isAction: isAction,
-            isPhoto: isPhoto
+            isPhoto: isPhoto,
+            isSticker: this.stickerCheck
         })
+
+        if (this.stickerCheck) {
+            this.stickerCheck = false
+        }
 
         this.newMsg.reset()
     }
