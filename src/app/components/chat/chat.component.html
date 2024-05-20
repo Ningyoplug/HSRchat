@@ -20,10 +20,10 @@
                 <!-- CHAT SELECT CHARACTER -->
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img *ngIf="!switchCheck && !actionCheck && !photoCheck" src="{{ friend.icon }}" width="30px" height="30px">
-                    <img *ngIf="switchCheck && !actionCheck && !photoCheck" src="{{ user.icon }}" width="30px" height="30px">
+                    <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
+                    <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px" height="30px">
                     <img *ngIf="actionCheck" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px" height="30px">
-                    <img *ngIf="photoCheck && !actionCheck" src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" width="30px" height="30px">
+                    <img *ngIf="photoCheck && !actionCheck" src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1" width="30px" height="30px">
                 </button>
                 <ul class="dropdown-menu">
                     <li *ngFor="let chara of charas">
