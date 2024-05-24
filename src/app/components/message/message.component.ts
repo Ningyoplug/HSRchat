@@ -8,8 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MessageComponent implements OnInit {
 
     @Input() msg: any = {}
-    @Input() friend: any = {}
-    @Input() user: any = {}
 
     constructor() { }
 
@@ -17,7 +15,3 @@ export class MessageComponent implements OnInit {
     }
 
 }
-function ContentChild() {
-    throw new Error('Function not implemented.');
-}
-

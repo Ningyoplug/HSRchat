@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit {
     actionCheck: boolean = false;
     photoCheck: boolean = false;
     stickerCheck: boolean = false;
+    stickersLoaded: boolean = false;
     groupChat: boolean = false;
 
     placeholder: string = "Type message here..."
@@ -324,9 +325,12 @@ export class ChatComponent implements OnInit {
     }
 
     getStickers() {
-        for (let i = 0; i < 225; i++) {
-            this.stickers.push("assets/img/stickers/sticker_" + i + ".png")
-        }
+        if (!this.stickersLoaded) {
+            for (let i = 0; i < 225; i++) {
+                this.stickers.push("assets/img/stickers/sticker_" + i + ".png")
+            }
+            this.stickersLoaded = true
+        } else { return }
     }
 
     selectSticker(sticker: string) {
