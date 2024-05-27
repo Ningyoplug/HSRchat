@@ -13,7 +13,7 @@ export class ChatComponent implements OnInit {
     photoCheck: boolean = false;
     stickerCheck: boolean = false;
     stickersLoaded: boolean = false;
-    customChara: boolean = false;
+    customCharaCheck: boolean = false;
     groupChat: boolean = false;
     placeholder: string = "Type message here..."
 
@@ -334,7 +334,7 @@ export class ChatComponent implements OnInit {
 
     newMsg!: FormGroup
 
-    msg: any = "First message"
+    msg: any = ""
 
     messages: any = []
 
@@ -420,9 +420,13 @@ export class ChatComponent implements OnInit {
 
     setCustomChara() {
         if (!this.cc.name) {
-            this.customChara = true
+            this.customCharaCheck = true
             this.placeholder = "Type custom character name here..."
         }
+    }
+
+    deleteMessage(e: any) {
+        this.messages.splice(e,1)
     }
 
     onSubmit(e?: string) {
@@ -450,13 +454,13 @@ export class ChatComponent implements OnInit {
 
         // NAMING A CUSTOM CHARACTER
             // if cc doesn't have a name yet, name it
-        if (this.customChara && !this.cc.name) {
+        if (this.customCharaCheck && !this.cc.name) {
             this.placeholder = "Type character subtitle (or skip)..."
             this.cc.name = this.newMsg.value.textbox
             this.newMsg.reset()
             return;
             // if cc doesn't have a subtitle yet, name it
-        } else if (this.customChara && this.cc.name && !this.cc.sub) {
+        } else if (this.customCharaCheck && this.cc.name && !this.cc.sub) {
             this.placeholder = "Paste character icon URL (or skip)..."
             if (!this.newMsg.value.textbox) {
                 this.cc.sub = "1"
@@ -466,13 +470,13 @@ export class ChatComponent implements OnInit {
             this.newMsg.reset()
             return;
             // if cc doesn't have an icon yet, add it
-        } else if (this.customChara && this.cc.sub && !this.cc.icon) {
+        } else if (this.customCharaCheck && this.cc.sub && !this.cc.icon) {
             if (!this.newMsg.value.textbox) {
                 this.cc.icon = "assets/img/anon-default.png"
             } else { this.cc.icon = this.newMsg.value.textbox }
             this.placeholder = "Type message here..."
             this.newMsg.reset()
-            this.customChara = false
+            this.customCharaCheck = false
 
             this.customCharas.push(this.cc)
             this.selectCustom(this.cc)
@@ -523,6 +527,7 @@ export class ChatComponent implements OnInit {
         if (this.stickerCheck) {
             this.stickerCheck = false
         }
+
 
         this.newMsg.reset()
     }

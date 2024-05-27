@@ -11,8 +11,8 @@
 
     <hr class="mb-3">
 
-    <div class="px-4">
-        <app-message *ngFor="let message of messages" [msg]="message"></app-message>
+    <div>
+        <app-message *ngFor="let message of messages; let i = index" [msg]="message" [msgId]="i" (sendIdBack)="deleteMessage($event)"></app-message>
     </div>
 
     <hr>
@@ -25,13 +25,17 @@
                 <!-- Character icon -->
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img *ngIf="!switchCheck && !actionCheck && !groupChat" src="{{ friend.icon }}" width="30px" height="30px">
-                    <img *ngIf="switchCheck && !actionCheck && !groupChat" src="{{ user.icon }}" width="30px" height="30px">
+                    <img *ngIf="!switchCheck && !actionCheck && !groupChat && !customCharaCheck" src="{{ friend.icon }}" width="30px" height="30px">
+                    <img *ngIf="switchCheck && !actionCheck && !groupChat !customCharaCheck" src="{{ user.icon }}" width="30px" height="30px">
                     <img *ngIf="actionCheck && !groupChat" src="assets/img/symbols/Icon_Dialogue_Warning.png" width="30px" height="30px">
+                    <!-- photo icon -->
                     <img *ngIf="photoCheck && !actionCheck && !groupChat"
                         src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1" width="30px"
                         height="30px">
+                    <!-- chat icon -->
                     <img *ngIf="groupChat" src="assets/img/symbols/Icon_Messages.png" width="30px" height="30px">
+                    <!-- cc icon -->
+                    <img *ngIf="customCharaCheck" src="assets/img/symbols/Icon_Assignment_Additional_Rewar.png" width="30px" height="30px">
                 </button>
                 <!-- DROPDOWN MENU -->
                 <ul class="dropdown-menu">
@@ -129,12 +133,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- CUSTOM CHARACTERS -->
-            <!-- <div *ngIf="customCharas == []" class="text-center mt-3">- Custom characters -</div>
-            <div id="customChar" *ngIf="customCharas != []" class="d-flex justify-content-center mb-3 mt-2">
-                <button *ngFor="let chara of customCharas" type="button" class="btn btn-secondary btn-sm" (click)="selectCustom(chara)">{{ chara.name }}</button>
-            </div> -->
 
         </div>
     </div>

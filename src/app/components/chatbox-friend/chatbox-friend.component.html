@@ -1,9 +1,17 @@
-<div class="mb-4 d-flex justify-content-start">
+<!-- Delete icon -->
+<div class="position-absolute delete">
+    <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1" width="14px"
+        height="14px" (click)="deleteMessage()">
+</div>
+
+<!-- Message -->
+<div class="mb-4 d-flex justify-content-start position-relative">
 
     <!-- ICON -->
     <div class="icon rounded-circle me-3" [ngClass]="msg.sentBy.icon != 'assets/img/anon-default.png' ? 'bg-icon' : ''">
         <img *ngIf="msg.sentBy.icon" src="{{ msg.sentBy.icon }}" class="rounded-circle" width="90px" height="90px">
-        <img *ngIf="!msg.sentBy.icon" src="assets/img/anon-default.png" class="rounded-circle" width="90px" height="90px">
+        <img *ngIf="!msg.sentBy.icon" src="assets/img/anon-default.png" class="rounded-circle" width="90px"
+            height="90px">
     </div>
 
     <!-- MSG -->
@@ -20,5 +28,4 @@
             <img class="sticker" src="{{ msg.text }}" alt="Photo">
         </div>
     </div>
-
 </div>

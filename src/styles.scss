@@ -85,14 +85,15 @@ hr {
     width: 150px;
 }
 
-#customChar>button {
-    margin-right: .5rem;
-
-    &:last-of-type {
-        margin-right: 0;
-    }
+.delete {
+    left: 5px;
+    top: 27px;
+    display: none;
 }
 
+.msg:hover .delete {
+    display: block !important;
+}
 
 /// INPUT GROUP COLORS
 .input-group>.form-control {
@@ -165,6 +166,14 @@ hr {
 
 #textbox {
     background-color: #CBCFD0;
+}
+
+#customChar>button {
+    margin-right: .5rem;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
 }
 
 

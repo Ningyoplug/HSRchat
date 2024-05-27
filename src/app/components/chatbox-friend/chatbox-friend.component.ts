@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'app-chatbox-friend',
@@ -8,10 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ChatboxFriendComponent implements OnInit {
 
     @Input() msg: any = {}
+    @Input() msgId: number = 0
+    @Output() sendIdBack = new EventEmitter<number>()
 
     constructor() { }
 
     ngOnInit(): void {
+    }
+
+    deleteMessage() {
+        this.sendIdBack.emit(this.msgId)
     }
 
 }
