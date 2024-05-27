@@ -42,21 +42,21 @@ export class ChatComponent implements OnInit {
 
     customCharas: any[] = []
     // customCharas: any[] = [
-    //     {
-    //         name: "Mario",
-    //         icon: "https://static.wikia.nocookie.net/mario/images/b/b8/Super_Mario_Run_app.png",
-    //         sub: "It's a me!"
-    //     },
-    //     {
-    //         name: "Luigi",
-    //         icon: "https://pbs.twimg.com/profile_images/1272712172758462464/EBhnlKAS_400x400.jpg",
-    //         sub: "Weegi bored"
-    //     },
-    //     {
-    //         name: "Peach",
-    //         icon: "assets/img/anon-default.png",
-    //         sub: null
-    //     }
+    // {
+    //     name: "Mario",
+    //     icon: "https://static.wikia.nocookie.net/mario/images/b/b8/Super_Mario_Run_app.png",
+    //     sub: "It's a me!"
+    // },
+    // {
+    //     name: "Luigi",
+    //     icon: "https://pbs.twimg.com/profile_images/1272712172758462464/EBhnlKAS_400x400.jpg",
+    //     sub: "Weegi bored"
+    // },
+    // {
+    //     name: "Peach",
+    //     icon: "assets/img/anon-default.png",
+    //     sub: null
+    // }
     // ]
 
     charas: any = [
@@ -346,6 +346,20 @@ export class ChatComponent implements OnInit {
         this.newMsg = new FormGroup({
             textbox: new FormControl(null, Validators.required)
         })
+
+        if (localStorage.getItem("cc")) {
+            let ccList = localStorage.getItem("cc")!
+            let parsed = JSON.parse(ccList)
+
+            this.customCharas = parsed
+        }
+
+
+        // for (let i = 0; i < localStorage.length; i++) {
+        //     localStorage[i].getItem;
+
+        // }
+
     }
 
     getStickers() {
@@ -425,8 +439,13 @@ export class ChatComponent implements OnInit {
         }
     }
 
-    deleteMessage(e: any) {
-        this.messages.splice(e,1)
+    deleteMessage(id: number) {
+        this.messages.splice(id, 1)
+    }
+
+    deleteCc(id: number) {
+        this.customCharas.splice(id,1)
+        localStorage.setItem("cc", JSON.stringify(this.customCharas));
     }
 
     onSubmit(e?: string) {
@@ -436,7 +455,7 @@ export class ChatComponent implements OnInit {
         let isPhoto: boolean
 
         // NAMING A GROUP CHAT
-            // if gc doesn't have a name yet, name it
+        // if gc doesn't have a name yet, name it
         if (this.groupChat && !this.gc.name) {
             this.placeholder = "Type the group chat subtitle here..."
             this.gc.name = this.newMsg.value.textbox
@@ -453,7 +472,7 @@ export class ChatComponent implements OnInit {
 
 
         // NAMING A CUSTOM CHARACTER
-            // if cc doesn't have a name yet, name it
+        // if cc doesn't have a name yet, name it
         if (this.customCharaCheck && !this.cc.name) {
             this.placeholder = "Type character subtitle (or skip)..."
             this.cc.name = this.newMsg.value.textbox
@@ -481,7 +500,18 @@ export class ChatComponent implements OnInit {
             this.customCharas.push(this.cc)
             this.selectCustom(this.cc)
 
-            // localStorage.setItem(this.cc.name, "");
+            // save to localstorage
+            if (localStorage.getItem("cc")) {
+                let stringifiedArray = localStorage.getItem("cc")!
+                let parsedArray = JSON.parse(stringifiedArray)
+
+                parsedArray.push(this.cc)
+                localStorage.setItem("cc", JSON.stringify(parsedArray));
+            } else {
+                let array = []
+                array.push(this.cc)
+                localStorage.setItem("cc", JSON.stringify(array));
+            }
 
             this.cc = {
                 name: null,

@@ -90,8 +90,16 @@ hr {
     top: 27px;
     display: none;
 }
-
 .msg:hover .delete {
+    display: block !important;
+}
+
+.delete-cc {
+    right: 20px;
+    top: 5px;
+    display: none;
+}
+.cc:hover .delete-cc {
     display: block !important;
 }
 
