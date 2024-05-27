@@ -13,8 +13,8 @@ export class ChatComponent implements OnInit {
     photoCheck: boolean = false;
     stickerCheck: boolean = false;
     stickersLoaded: boolean = false;
+    customChara: boolean = false;
     groupChat: boolean = false;
-
     placeholder: string = "Type message here..."
 
     friend: any = {
@@ -34,6 +34,30 @@ export class ChatComponent implements OnInit {
         sub: null
     }
 
+    cc: any = {
+        name: null,
+        icon: null,
+        sub: null
+    }
+
+    customCharas: any[] = []
+    // customCharas: any[] = [
+    //     {
+    //         name: "Mario",
+    //         icon: "https://static.wikia.nocookie.net/mario/images/b/b8/Super_Mario_Run_app.png",
+    //         sub: "It's a me!"
+    //     },
+    //     {
+    //         name: "Luigi",
+    //         icon: "https://pbs.twimg.com/profile_images/1272712172758462464/EBhnlKAS_400x400.jpg",
+    //         sub: "Weegi bored"
+    //     },
+    //     {
+    //         name: "Peach",
+    //         icon: "assets/img/anon-default.png",
+    //         sub: null
+    //     }
+    // ]
 
     charas: any = [
         {
@@ -344,6 +368,16 @@ export class ChatComponent implements OnInit {
         } else { this.user = ch }
     }
 
+    selectCustom(cc: any) {
+        let chara = cc
+        if (chara.sub == "1") {
+            chara.sub = null;
+        }
+        if (this.switchCheck == false) {
+            this.friend = chara;
+        } else { this.user = chara }
+    }
+
     onSwitchChecked() {
         if (this.switchCheck == false) {
             this.switchCheck = true
@@ -384,33 +418,77 @@ export class ChatComponent implements OnInit {
         }
     }
 
+    setCustomChara() {
+        if (!this.cc.name) {
+            this.customChara = true
+            this.placeholder = "Type custom character name here..."
+        }
+    }
+
     onSubmit(e?: string) {
         let chara: any
         let isUserRn: boolean
         let isAction: boolean
         let isPhoto: boolean
 
-        // Naming a group chat
-        // if gc has both name and sub already, return
-        if (this.groupChat && this.gc.name && this.gc.sub) {
-            return;
+        // NAMING A GROUP CHAT
             // if gc doesn't have a name yet, name it
-        } else if (this.groupChat && !this.gc.name) {
-            this.groupChat = true
-            this.gc.name = this.newMsg.value.textbox
+        if (this.groupChat && !this.gc.name) {
             this.placeholder = "Type the group chat subtitle here..."
+            this.gc.name = this.newMsg.value.textbox
             this.newMsg.reset()
             return;
-        }// if gc doesn't have a subtitle yet, name it
-        if (this.groupChat && this.gc.name && !this.gc.sub) {
-            this.gc.sub = this.newMsg.value.textbox
+            // if gc doesn't have a subtitle yet, name it
+        } else if (this.groupChat && this.gc.name && !this.gc.sub) {
             this.placeholder = "Type message here..."
+            this.gc.sub = this.newMsg.value.textbox
             this.newMsg.reset()
             this.groupChat = false
-            console.log(this.groupChat);
             return;
         }
 
+
+        // NAMING A CUSTOM CHARACTER
+            // if cc doesn't have a name yet, name it
+        if (this.customChara && !this.cc.name) {
+            this.placeholder = "Type character subtitle (or skip)..."
+            this.cc.name = this.newMsg.value.textbox
+            this.newMsg.reset()
+            return;
+            // if cc doesn't have a subtitle yet, name it
+        } else if (this.customChara && this.cc.name && !this.cc.sub) {
+            this.placeholder = "Paste character icon URL (or skip)..."
+            if (!this.newMsg.value.textbox) {
+                this.cc.sub = "1"
+            } else {
+                this.cc.sub = this.newMsg.value.textbox
+            }
+            this.newMsg.reset()
+            return;
+            // if cc doesn't have an icon yet, add it
+        } else if (this.customChara && this.cc.sub && !this.cc.icon) {
+            if (!this.newMsg.value.textbox) {
+                this.cc.icon = "assets/img/anon-default.png"
+            } else { this.cc.icon = this.newMsg.value.textbox }
+            this.placeholder = "Type message here..."
+            this.newMsg.reset()
+            this.customChara = false
+
+            this.customCharas.push(this.cc)
+            this.selectCustom(this.cc)
+
+            // localStorage.setItem(this.cc.name, "");
+
+            this.cc = {
+                name: null,
+                icon: null,
+                sub: null
+            }
+            return;
+        }
+
+
+        // Friend or User switch
         if (!this.switchCheck) {
             chara = this.friend
             isUserRn = false

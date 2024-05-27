@@ -31,6 +31,7 @@ hr {
 .bg-chat {
     background-color: #D3D9DD;
 }
+
 .bg-icon {
     background-color: #3C373D;
 }
@@ -84,6 +85,13 @@ hr {
     width: 150px;
 }
 
+#customChar>button {
+    margin-right: .5rem;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
 
 
 /// INPUT GROUP COLORS
@@ -108,6 +116,7 @@ hr {
         border-color: #c6b696;
     }
 }
+
 .form-check-input:focus {
     border-color: #c6b696;
     outline: 0;
@@ -172,7 +181,7 @@ hr {
 /// MEDIA QUERIES
 
 // @media screen and (max-width: 716px) {
-    // #chat {
-    //     width: 100%;
-    // }
+// #chat {
+//     width: 100%;
+// }
 // }
