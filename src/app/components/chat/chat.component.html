@@ -117,7 +117,7 @@
             </div>
 
             <!-- STICKERS -->
-            <div class="form-check d-flex justify-content-center p-0">
+            <div class="form-check d-flex justify-content-center p-0 mb-3">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
                     data-bs-target="#stickersModal" (click)="getStickers()">
@@ -145,7 +145,51 @@
                                     (click)="selectSticker(sticker)">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- CHANGELOG -->
+            <div class="form-check d-flex justify-content-center p-0">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#changelogModal">
+                    Changelog
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="changelogModal" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="changelogLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="changelogLabel">
+                                    Changelog
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div> -->
+                            <div id="changelog" class="modal-body">
+                                <!-- CHANGELOG MODAL CONTENT -->
+                                <p>Hi! Thanks for enjoying this little project.</p>
+
+                                <p>Due to the popularity of the site, I now need to pay monthly for the Pro version of Vercel in order to keep it up and available. For this reason, I've added a "<a href="https://ko-fi.com/ningyo" target="_blank">Support me</a>" button, so if you enjoy the site you can consider helping me with the monthly fee via tips.</p>
+
+                                <p>Thank you and have fun everyone!</p>
+
+                                <hr class="mb-3">
+
+                                <p>28/05/2024</p>
+                                <ul>
+                                    <li><i>You can now create custom characters!</i><br>They will be saved locally, meaning they'll still be on the list after you refresh the page.</li>
+                                    <li><i>You can now delete messages!</i><br>No need to start over every time you make a small typo anymore.</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

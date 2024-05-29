@@ -14,6 +14,9 @@ body {
     padding: 0;
     font-family: 'DinText', sans-serif;
     color: #121212;
+}
+
+html {
     font-weight: normal;
     font-size: 23px;
 }
@@ -103,6 +106,9 @@ hr {
     display: block !important;
 }
 
+
+
+
 /// INPUT GROUP COLORS
 .input-group>.form-control {
     &:focus {
@@ -182,6 +188,10 @@ hr {
     &:last-of-type {
         margin-right: 0;
     }
+}
+
+#changelog {
+    font-size: 18px !important;
 }
 
 
