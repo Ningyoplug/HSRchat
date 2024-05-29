@@ -1,202 +1,216 @@
-<div id="chat" class="bg-chat">
+<div class="bg-chat">
+    <div class="chat-content">
 
-    <div class="px-4 mb-2 pt-2">
-        <!-- CHAT NAME -->
-        <div id="chat-title" *ngIf="!gc.name">{{ friend.name }}</div>
-        <div id="chat-title" *ngIf="gc.name">{{ gc.name }}</div>
-        <!-- CHAT SUBTITLE -->
-        <div id="subtitle" *ngIf="friend.sub && !gc.name">{{ friend.sub }}</div>
-        <div id="subtitle" *ngIf="gc.sub">{{ gc.sub }}</div>
-    </div>
+        <div class="px-4 mb-2 pt-2">
+            <!-- CHAT NAME -->
+            <div id="chat-title" *ngIf="!gc.name">{{ friend.name }}</div>
+            <div id="chat-title" *ngIf="gc.name">{{ gc.name }}</div>
+            <!-- CHAT SUBTITLE -->
+            <div id="subtitle" *ngIf="friend.sub && !gc.name">{{ friend.sub }}</div>
+            <div id="subtitle" *ngIf="gc.sub">{{ gc.sub }}</div>
+        </div>
 
-    <hr class="mb-3">
+        <hr class="mb-3">
 
-    <div>
-        <app-message *ngFor="let message of messages; let i = index" [msg]="message" [msgId]="i"
-            (sendIdBack)="deleteMessage($event)"></app-message>
+        <div>
+            <app-message *ngFor="let message of messages; let i = index" [msg]="message" [msgId]="i"
+                (sendIdBack)="deleteMessage($event)"></app-message>
+        </div>
     </div>
 
     <hr>
 
+
     <div id="textbox" class="px-4 py-3">
-        <form [formGroup]="newMsg" (ngSubmit)="onSubmit()">
-            <div class="input-group mb-3">
+            <div class="chat-content">
+            <form [formGroup]="newMsg" (ngSubmit)="onSubmit()">
+                <div class="input-group mb-3">
 
-                <!-- CHAT SELECT CHARACTER -->
-                <!-- Character icon -->
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <img *ngIf="!switchCheck && !actionCheck && !groupChat && !customCharaCheck" src="{{ friend.icon }}"
-                        width="30px" height="30px">
-                    <img *ngIf="switchCheck && !actionCheck && !groupChat !customCharaCheck" src="{{ user.icon }}"
-                        width="30px" height="30px">
-                    <img *ngIf="actionCheck && !groupChat" src="assets/img/symbols/Icon_Dialogue_Warning.png"
-                        width="30px" height="30px">
-                    <!-- photo icon -->
-                    <img *ngIf="photoCheck && !actionCheck && !groupChat"
-                        src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1" width="30px"
-                        height="30px">
-                    <!-- chat icon -->
-                    <img *ngIf="groupChat" src="assets/img/symbols/Icon_Messages.png" width="30px" height="30px">
-                    <!-- cc icon -->
-                    <img *ngIf="customCharaCheck" src="assets/img/symbols/Icon_Assignment_Additional_Rewar.png"
-                        width="30px" height="30px">
-                </button>
-                <!-- DROPDOWN MENU -->
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" (click)="setGroupChat()">Group chat</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" (click)="setCustomChara()">Custom character</a>
-                    </li>
+                    <!-- CHAT SELECT CHARACTER -->
+                    <!-- Character icon -->
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <img *ngIf="!switchCheck && !actionCheck && !groupChat && !customCharaCheck"
+                            src="{{ friend.icon }}" width="30px" height="30px">
+                        <img *ngIf="switchCheck && !actionCheck && !groupChat !customCharaCheck" src="{{ user.icon }}"
+                            width="30px" height="30px">
+                        <img *ngIf="actionCheck && !groupChat" src="assets/img/symbols/Icon_Dialogue_Warning.png"
+                            width="30px" height="30px">
+                        <!-- photo icon -->
+                        <img *ngIf="photoCheck && !actionCheck && !groupChat"
+                            src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png" class="ms-1"
+                            width="30px" height="30px">
+                        <!-- chat icon -->
+                        <img *ngIf="groupChat" src="assets/img/symbols/Icon_Messages.png" width="30px" height="30px">
+                        <!-- cc icon -->
+                        <img *ngIf="customCharaCheck" src="assets/img/symbols/Icon_Assignment_Additional_Rewar.png"
+                            width="30px" height="30px">
+                    </button>
+                    <!-- DROPDOWN MENU -->
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" (click)="setGroupChat()">Group chat</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" (click)="setCustomChara()">Custom character</a>
+                        </li>
 
-                    <!-- divider -->
-                    <li *ngIf="customCharas.length">
-                        <hr class="dropdown-divider">
-                    </li>
+                        <!-- divider -->
+                        <li *ngIf="customCharas.length">
+                            <hr class="dropdown-divider">
+                        </li>
 
-                    <!-- list of Custom Characters -->
-                    <li *ngFor="let chara of customCharas; let i = index" class="cc position-relative">
-                        <a class="dropdown-item" (click)="selectCustom(chara)">{{ chara.name }}</a>
-                        <!-- Delete icon -->
-                        <div class="position-absolute delete-cc">
-                            <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1" width="14px"
-                                height="14px" (click)="deleteCc(i)">
-                        </div>
-                    </li>
-
-                    <!-- divider -->
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <!-- list of characters -->
-                    <li *ngFor="let chara of charas">
-                        <a class="dropdown-item" (click)="selectChara(chara)">{{ chara.name }}</a>
-                    </li>
-                </ul>
-
-                <!-- CHAT TEXTBOX -->
-                <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
-                    aria-describedby="basic-addon1" formControlName="textbox">
-
-                <!-- CHAT SUBMIT -->
-                <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>
-
-
-            </div>
-        </form>
-
-        <div>
-            <!-- CHARACTER SWITCH -->
-            <div class="form-check form-switch d-flex justify-content-center">
-                <input class="form-check-input me-2" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-                    (click)="onSwitchChecked()">
-                <label *ngIf="!switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ friend.name
-                    }}</label>
-                <label *ngIf="switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ user.name }}</label>
-            </div>
-
-            <!-- ACTION CHECKBOX -->
-            <div class="form-check d-flex justify-content-center">
-                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
-                    (click)="onActionChecked()">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Action
-                </label>
-            </div>
-
-            <!-- PHOTO CHECKBOX -->
-            <div class="form-check d-flex justify-content-center mb-3">
-                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
-                    (click)="onPhotoChecked()">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Photo
-                </label>
-            </div>
-
-            <!-- STICKERS -->
-            <div class="form-check d-flex justify-content-center p-0 mb-3">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                    data-bs-target="#stickersModal" (click)="getStickers()">
-                    <img src="/assets/img/stickers/sticker_224.png" width="30px" height="30px">
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="stickersModal" data-bs-keyboard="false" tabindex="-1"
-                    aria-labelledby="stickersLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="stickersLabel">
-                                    Post a sticker as
-                                    <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px"
-                                        height="30px">
-                                    <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px"
-                                        height="30px">
-                                </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                        <!-- list of Custom Characters -->
+                        <li *ngFor="let chara of customCharas; let i = index" class="cc position-relative">
+                            <a class="dropdown-item" (click)="selectCustom(chara)">{{ chara.name }}</a>
+                            <!-- Delete icon -->
+                            <div class="position-absolute delete-cc">
+                                <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1" width="14px"
+                                    height="14px" (click)="deleteCc(i)">
                             </div>
-                            <div class="modal-body">
-                                <!-- STICKERS LIST -->
-                                <img *ngFor="let sticker of stickers" src="{{ sticker }}" width="75px" height="75px"
-                                    (click)="selectSticker(sticker)">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                        </li>
+
+                        <!-- divider -->
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <!-- list of characters -->
+                        <li *ngFor="let chara of charas">
+                            <a class="dropdown-item" (click)="selectChara(chara)">{{ chara.name }}</a>
+                        </li>
+                    </ul>
+
+                    <!-- CHAT TEXTBOX -->
+                    <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
+                        aria-describedby="basic-addon1" formControlName="textbox">
+
+                    <!-- CHAT SUBMIT -->
+                    <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>
+
+
+                </div>
+            </form>
+
+            <div>
+                <!-- CHARACTER SWITCH -->
+                <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input me-2" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                        (click)="onSwitchChecked()">
+                    <label *ngIf="!switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ friend.name
+                        }}</label>
+                    <label *ngIf="switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ user.name
+                        }}</label>
+                </div>
+
+                <!-- ACTION CHECKBOX -->
+                <div class="form-check d-flex justify-content-center">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
+                        (click)="onActionChecked()">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Action
+                    </label>
+                </div>
+
+                <!-- PHOTO CHECKBOX -->
+                <div class="form-check d-flex justify-content-center mb-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
+                        (click)="onPhotoChecked()">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Photo
+                    </label>
+                </div>
+
+                <!-- STICKERS -->
+                <div class="form-check d-flex justify-content-center p-0 mb-3">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#stickersModal" (click)="getStickers()">
+                        <img src="/assets/img/stickers/sticker_224.png" width="30px" height="30px">
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="stickersModal" data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="stickersLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="stickersLabel">
+                                        Post a sticker as
+                                        <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px"
+                                            height="30px">
+                                        <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px"
+                                            height="30px">
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- STICKERS LIST -->
+                                    <img *ngFor="let sticker of stickers" src="{{ sticker }}" width="75px" height="75px"
+                                        (click)="selectSticker(sticker)">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- CHANGELOG -->
-            <div class="form-check d-flex justify-content-center p-0">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#changelogModal">
-                    Changelog
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="changelogModal" data-bs-keyboard="false" tabindex="-1"
-                    aria-labelledby="changelogLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <!-- <div class="modal-header">
+                <!-- CHANGELOG -->
+                <div class="form-check d-flex justify-content-center p-0">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#changelogModal">
+                        Changelog
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="changelogModal" data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="changelogLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="changelogLabel">
                                     Changelog
                                 </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div> -->
-                            <div id="changelog" class="modal-body">
-                                <!-- CHANGELOG MODAL CONTENT -->
-                                <p>Hi! Thanks for enjoying this little project.</p>
+                                <div id="changelog" class="modal-body">
+                                    <!-- CHANGELOG MODAL CONTENT -->
+                                    <p>Hi! Thanks for enjoying this little project.</p>
 
-                                <p>Due to the popularity of the site, I now need to pay monthly for the Pro version of Vercel in order to keep it up and available. For this reason, I've added a "<a href="https://ko-fi.com/ningyo" target="_blank">Support me</a>" button, so if you enjoy the site you can consider helping me with the monthly fee via tips.</p>
+                                    <p>Due to the popularity of the site, I now need to pay monthly for the Pro version
+                                        of Vercel in order to keep it up and available. For this reason, I've added a
+                                        "<a href="https://ko-fi.com/ningyo" target="_blank">Support me</a>" button, so
+                                        if you enjoy the site you can consider helping me with the monthly fee via tips.
+                                    </p>
 
-                                <p>Thank you and have fun everyone!</p>
+                                    <p>Thank you and have fun everyone!</p>
 
-                                <hr class="mb-3">
+                                    <hr class="mb-3">
 
-                                <p>28/05/2024</p>
-                                <ul>
-                                    <li><i>You can now create custom characters!</i><br>They will be saved locally, meaning they'll still be on the list after you refresh the page.</li>
-                                    <li><i>You can now delete messages!</i><br>No need to start over every time you make a small typo anymore.</li>
-                                </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                    <p>28/05/2024</p>
+                                    <ul>
+                                        <li><i>You can now create custom characters!</i><br>They will be saved locally,
+                                            meaning they'll still be on the list after you refresh the page.</li>
+                                        <li><i>You can now delete messages!</i><br>No need to start over every time you
+                                            make a small typo anymore.</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
+    </div>
 </div>
