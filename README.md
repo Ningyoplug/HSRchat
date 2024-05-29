@@ -10,6 +10,8 @@ You can use stickers, make the characters send photos, use custom actions (such 
 
 Have fun!
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A3024LZ2)
+
 <hr>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.10.
