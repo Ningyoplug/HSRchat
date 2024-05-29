@@ -137,9 +137,9 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="stickersLabel">
                                         Post a sticker as
-                                        <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
+                                        <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px"><span *ngIf="!switchCheck && !actionCheck"> {{ friend.name }}</span>
                                         <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px"
-                                            height="30px">
+                                            height="30px"><span *ngIf="switchCheck && !actionCheck"> {{ user.name }}</span>
                                     </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
