@@ -164,7 +164,6 @@ hr {
 /// IDs
 
 #chat {
-    // width: 718px;
     max-width: 720px;
     border-radius: 0px 40px 0px 0px;
 
@@ -180,6 +179,10 @@ hr {
         border-radius: 0px 40px 0px 0px;
         z-index: -1;
     }
+}
+
+#chat-interior {
+    border-radius: 0px 40px 0px 0px;
 }
 
 #chat-content-1, #chat-content-2 {
