@@ -121,6 +121,7 @@
                     </label>
                 </div>
 
+
                 <!-- STICKERS -->
                 <div class="form-check d-flex justify-content-center p-0 mb-3">
                     <!-- Button trigger modal -->
@@ -136,8 +137,7 @@
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="stickersLabel">
                                         Post a sticker as
-                                        <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px"
-                                            height="30px">
+                                        <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px" height="30px">
                                         <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px"
                                             height="30px">
                                     </h1>
@@ -146,8 +146,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- STICKERS LIST -->
-                                    <img *ngFor="let sticker of stickers" src="{{ sticker }}" width="75px" height="75px"
-                                        (click)="selectSticker(sticker)">
+                                    <img class="sticker-listed" *ngFor="let sticker of stickers" src="{{ sticker }}" (click)="selectSticker(sticker)">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm"

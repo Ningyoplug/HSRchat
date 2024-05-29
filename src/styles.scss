@@ -97,6 +97,10 @@ hr {
 .sticker {
     width: 150px;
 }
+.sticker-listed {
+    width: 75px;
+    height: 75px;
+}
 
 .delete {
     left: 5px;
@@ -246,6 +250,11 @@ hr {
     .bg-chat {
         zoom: 0.8;
     }
+
+    .sticker-listed {
+        width: 100px;
+        height: 100px;
+    }
 }
 @media screen and (max-width: 535px) {
     .bg-chat {
@@ -266,6 +275,11 @@ hr {
 @media screen and (max-width: 420px) {
     .bg-chat {
         zoom: 0.6;
+    }
+
+    .sticker-listed {
+        width: 120px;
+        height: 120px;
     }
 }
 @media screen and (max-width: 400px) {
