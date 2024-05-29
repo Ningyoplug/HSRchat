@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- STICKERS LIST -->
-                                    <img class="sticker-listed" *ngFor="let sticker of stickers" src="{{ sticker }}" (click)="selectSticker(sticker)">
+                                    <img class="sticker-listed" *ngFor="let sticker of stickers" src="{{ sticker }}" (click)="selectSticker(sticker)" data-bs-dismiss="modal">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm"
