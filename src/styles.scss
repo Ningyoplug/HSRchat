@@ -19,16 +19,6 @@ body {
 html {
     font-weight: normal;
     font-size: 23px;
-
-    .icon {
-        width: 90px;
-        height: 90px;
-
-        .icon-img {
-            width: 90px;
-            height: 90px;
-        }
-    }
 }
 
 hr {
@@ -223,12 +213,17 @@ hr {
 
 
 
-/// IMAGES
+// IMAGES
 
-// .icon {
-//     width: 90px;
-//     height: 90px;
-// }
+.icon {
+    width: 90px;
+    height: 90px;
+
+    .icon-img {
+        width: 90px;
+        height: 90px;
+    }
+}
 
 
 
@@ -239,13 +234,11 @@ hr {
         zoom: 0.95;
     }
 }
-
 @media screen and (max-width: 620px) {
     .bg-chat {
         zoom: 0.85;
     }
 }
-
 @media screen and (max-width: 590px) {
     .bg-chat {
         zoom: 0.8;
@@ -256,12 +249,16 @@ hr {
         height: 100px;
     }
 }
+@media screen and (min-width: 576px) {
+    #stickersLabel {
+        font-size: 1rem !important;
+    }
+}
 @media screen and (max-width: 535px) {
     .bg-chat {
         zoom: 0.75;
     }
 }
-
 @media screen and (max-width: 505px) {
     .bg-chat {
         zoom: 0.7;
@@ -287,7 +284,6 @@ hr {
         zoom: 0.5;
     }
 }
-
 @media screen and (min-width: 320px) and (max-width: 357px) {
     .bg-chat {
         zoom: 0.45;

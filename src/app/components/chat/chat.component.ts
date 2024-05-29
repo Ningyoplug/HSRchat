@@ -16,6 +16,7 @@ export class ChatComponent implements OnInit {
     customCharaCheck: boolean = false;
     groupChat: boolean = false;
     placeholder: string = "Type message here..."
+    largeScreen: boolean = false
 
     friend: any = {
         name: "Dan Heng",
@@ -41,23 +42,6 @@ export class ChatComponent implements OnInit {
     }
 
     customCharas: any[] = []
-    // customCharas: any[] = [
-    // {
-    //     name: "Mario",
-    //     icon: "https://static.wikia.nocookie.net/mario/images/b/b8/Super_Mario_Run_app.png",
-    //     sub: "It's a me!"
-    // },
-    // {
-    //     name: "Luigi",
-    //     icon: "https://pbs.twimg.com/profile_images/1272712172758462464/EBhnlKAS_400x400.jpg",
-    //     sub: "Weegi bored"
-    // },
-    // {
-    //     name: "Peach",
-    //     icon: "assets/img/anon-default.png",
-    //     sub: null
-    // }
-    // ]
 
     charas: any = [
         {
@@ -353,13 +337,6 @@ export class ChatComponent implements OnInit {
 
             this.customCharas = parsed
         }
-
-
-        // for (let i = 0; i < localStorage.length; i++) {
-        //     localStorage[i].getItem;
-
-        // }
-
     }
 
     getStickers() {
@@ -444,7 +421,7 @@ export class ChatComponent implements OnInit {
     }
 
     deleteCc(id: number) {
-        this.customCharas.splice(id,1)
+        this.customCharas.splice(id, 1)
         localStorage.setItem("cc", JSON.stringify(this.customCharas));
     }
 
