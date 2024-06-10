@@ -10,6 +10,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { MessageComponent } from './components/message/message.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActionComponent } from './components/action/action.component';
+import { DonateComponent } from './components/donate/donate.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { ActionComponent } from './components/action/action.component';
         ChatboxUserComponent,
         ChatComponent,
         MessageComponent,
-        ActionComponent
+        ActionComponent,
+        DonateComponent
     ],
     imports: [
         BrowserModule,
