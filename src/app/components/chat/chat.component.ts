@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
+    newUpdateDate = "12-06-2024"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -17,6 +18,7 @@ export class ChatComponent implements OnInit {
     groupChat: boolean = false;
     placeholder: string = "Type message here..."
     largeScreen: boolean = false
+    newChangelog: boolean = false
 
     friend: any = {
         name: "Dan Heng",
@@ -336,6 +338,21 @@ export class ChatComponent implements OnInit {
             let parsed = JSON.parse(ccList)
 
             this.customCharas = parsed
+        }
+
+        if (localStorage.getItem("nc") != (this.newUpdateDate+"checked")) {
+            localStorage.setItem("nc", this.newUpdateDate);
+        }
+        if (localStorage.getItem("nc") == this.newUpdateDate) {
+            this.newChangelog = true
+        }
+    }
+
+    // Check if the changelog has been updated
+    isNewUpdate() {
+        if (localStorage.getItem("nc") == this.newUpdateDate) {
+            localStorage.setItem("nc", this.newUpdateDate + "checked")
+            this.newChangelog = false
         }
     }
 

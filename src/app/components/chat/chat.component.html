@@ -54,11 +54,8 @@
                         <li>
                             <a class="dropdown-item" (click)="setCustomChara()">Custom character</a>
                         </li>
-
                         <!-- divider -->
-                        <li *ngIf="customCharas.length">
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li *ngIf="customCharas.length"><hr class="dropdown-divider"></li>
 
                         <!-- list of Custom Characters -->
                         <li *ngFor="let chara of customCharas; let i = index" class="cc position-relative">
@@ -69,11 +66,8 @@
                                     height="14px" (click)="deleteCc(i)">
                             </div>
                         </li>
-
                         <!-- divider -->
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li><hr class="dropdown-divider"></li>
 
                         <!-- list of characters -->
                         <li *ngFor="let chara of charas">
@@ -84,10 +78,8 @@
                     <!-- CHAT TEXTBOX -->
                     <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
                         aria-describedby="basic-addon1" formControlName="textbox">
-
                     <!-- CHAT SUBMIT -->
                     <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>
-
 
                 </div>
             </form>
@@ -120,7 +112,6 @@
                         Photo
                     </label>
                 </div>
-
 
                 <!-- STICKERS -->
                 <div class="form-check d-flex justify-content-center p-0 mb-3">
@@ -161,12 +152,12 @@
                     </div>
                 </div>
 
-
                 <!-- CHANGELOG -->
                 <div class="form-check d-flex justify-content-center p-0">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#changelogModal">
+                        data-bs-target="#changelogModal" (click)="isNewUpdate()">
+                        <img src="https://graphic.neocities.org/blinknew1.gif" *ngIf="newChangelog">
                         Changelog
                     </button>
                     <!-- Modal -->
@@ -174,13 +165,7 @@
                         aria-labelledby="changelogLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <!-- <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="changelogLabel">
-                                    Changelog
-                                </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div> -->
+
                                 <div id="changelog" class="modal-body">
                                     <!-- CHANGELOG MODAL CONTENT -->
                                     <p>Hi! Thanks for enjoying this little project.</p>
@@ -229,7 +214,7 @@
                 </div>
 
                 <div class="text-center mt-3">
-                    <a href="https://x.com/hsrchatvercel" target="_blank">
+                    <a href="https://x.com/hsrchatsite" target="_blank">
                         <i class="bi bi-twitter"></i>
                     </a>
                 </div>
