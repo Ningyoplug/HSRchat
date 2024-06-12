@@ -64,13 +64,11 @@ hr {
 }
 
 .username {
-    // font-size: 21px;
     font-size: 0.91rem;
     font-weight: normal;
 }
 
 .action-text {
-    // font-size: 18px;
     font-size: 0.78rem;
     color: #858586;
 }
@@ -87,6 +85,7 @@ hr {
 .sticker {
     width: 150px;
 }
+
 .sticker-listed {
     width: 75px;
     height: 75px;
@@ -116,6 +115,10 @@ hr {
     &:hover {
         color: #FCBF47;
     }
+}
+
+.padding1rem {
+    padding: 1rem;
 }
 
 
@@ -160,7 +163,6 @@ hr {
 
 
 
-
 /// IDs
 
 #chat {
@@ -185,17 +187,16 @@ hr {
     border-radius: 0px 40px 0px 0px;
 }
 
-#chat-content-1, #chat-content-2 {
+#chat-content-1,
+#chat-content-2 {
     transform: scale(1);
 }
 
 #chat-title {
-    // font-size: 28px;
     font-size: 1.22rem;
 }
 
 #subtitle {
-    // font-size: 20px;
     font-size: 0.87rem;
     color: #666868
 }
@@ -212,17 +213,49 @@ hr {
     }
 }
 
-#changelog {
-    // font-size: 18px;
-    font-size: 0.8rem;
-}
-
 #donationBar {
     width: 100%;
     height: 100px;
-    // height: 130px;
 }
 
+#changelog {
+    font-size: 0.8rem;
+    padding: 0;
+
+    ul {
+        padding-left: 40px;
+    }
+
+    hr {
+        opacity: 1;
+        border-top: 1px solid #dee2e6;
+    }
+}
+
+#changelog-scroll {
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+// CUSTOM SCROLLBAR
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 
 // IMAGES
@@ -246,11 +279,13 @@ hr {
         zoom: 0.95;
     }
 }
+
 @media screen and (max-width: 620px) {
     .bg-chat {
         zoom: 0.85;
     }
 }
+
 @media screen and (max-width: 590px) {
     .bg-chat {
         zoom: 0.8;
@@ -261,26 +296,31 @@ hr {
         height: 100px;
     }
 }
+
 @media screen and (min-width: 576px) {
     #stickersLabel {
         font-size: 1rem !important;
     }
 }
+
 @media screen and (max-width: 535px) {
     .bg-chat {
         zoom: 0.75;
     }
 }
+
 @media screen and (max-width: 505px) {
     .bg-chat {
         zoom: 0.7;
     }
 }
+
 @media screen and (max-width: 476px) {
     .bg-chat {
         zoom: 0.65;
     }
 }
+
 @media screen and (max-width: 420px) {
     .bg-chat {
         zoom: 0.6;
@@ -295,11 +335,13 @@ hr {
         height: 130px;
     }
 }
+
 @media screen and (max-width: 400px) {
     .bg-chat {
         zoom: 0.5;
     }
 }
+
 @media screen and (min-width: 320px) and (max-width: 357px) {
     .bg-chat {
         zoom: 0.45;

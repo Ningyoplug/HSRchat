@@ -55,7 +55,9 @@
                             <a class="dropdown-item" (click)="setCustomChara()">Custom character</a>
                         </li>
                         <!-- divider -->
-                        <li *ngIf="customCharas.length"><hr class="dropdown-divider"></li>
+                        <li *ngIf="customCharas.length">
+                            <hr class="dropdown-divider">
+                        </li>
 
                         <!-- list of Custom Characters -->
                         <li *ngFor="let chara of customCharas; let i = index" class="cc position-relative">
@@ -67,7 +69,9 @@
                             </div>
                         </li>
                         <!-- divider -->
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
 
                         <!-- list of characters -->
                         <li *ngFor="let chara of charas">
@@ -168,41 +172,58 @@
 
                                 <div id="changelog" class="modal-body">
                                     <!-- CHANGELOG MODAL CONTENT -->
-                                    <p>Hi! Thanks for enjoying this little project.</p>
-
-                                    <p>Due to the popularity of the site, I now need to spend <i>a lot of money</i>
-                                        every month in order to keep it up and available. For this reason, I've added a
-                                        "<a href="https://ko-fi.com/ningyo" target="_blank">Support me</a>" button, so
-                                        if you enjoy the site please consider helping me with the monthly fee via tips.
-                                    </p>
-
-                                    <p>Thank you and have fun everyone!</p>
+                                    <div class="padding1rem pb-0">
+                                        <p>Hi! Thanks for enjoying this little project.</p>
+                                        <p>
+                                            Due to the site's popularity I need to spend a lot of money each month in
+                                            order to keep it up and available. For this reason, I've added a "<a
+                                                href="https://ko-fi.com/ningyo" target="_blank">Support me</a>" button,
+                                            so if you enjoy the site please consider helping me with the monthly fee via
+                                            tips.
+                                        </p>
+                                        <p>Thank you and have fun everyone!</p>
+                                    </div>
 
                                     <hr class="mb-3">
 
-                                    <p>12/06/2024</p>
-                                    <ul>
-                                        <li>
-                                            <span class="fs-5">URL change!</span><br>
-                                            I'm migrating the site to Cloudflare Pages instead of Vercel, which (hopefully) should be much cheaper.<br>
-                                            <i>Please don't use the old Vercel url anymore!</i> Bookmark the new one instead, which is:<br>
-                                            <code class="fs-5">hsrchat.pages.dev</code>
-                                        </li>
-                                    </ul>
+                                    <div id="changelog-scroll" class="padding1rem pt-0">
 
-                                    <p>11/06/2024</p>
-                                    <ul>
-                                        <li>We were able to reach the donation goal for June in just one night! That was incredible! I'm so grateful to everyone who donated! I'm now looking into
-                                            hosting alternatives that won't cost as much, but at least I can rest easy for this month.</li>
-                                    </ul>
+                                        <p class="text-grey text-center">12/06/2024</p>
+                                        <ul>
+                                            <li>
+                                                <span class="fs-5">URL change!</span><br>
+                                                I'm migrating the site to Cloudflare Pages instead of Vercel, which
+                                                (hopefully) should be much cheaper.<br>
+                                                <i>Please don't use the old Vercel url anymore!</i> Bookmark the new
+                                                one
+                                                instead, which is:<br>
+                                                <code class="fs-5">hsrchat.pages.dev</code>
+                                            </li>
+                                        </ul>
 
-                                    <p>28/05/2024</p>
-                                    <ul>
-                                        <li><i>You can now create custom characters!</i><br>They will be saved locally,
-                                            meaning they'll still be on the list after you refresh the page.</li>
-                                        <li><i>You can now delete messages!</i><br>No need to start over every time you
-                                            make a small typo anymore.</li>
-                                    </ul>
+                                        <p class="text-grey text-center">11/06/2024</p>
+                                        <ul>
+                                            <li>
+                                                We were able to reach the donation goal for June in just one night!
+                                                That was incredible! I'm so grateful to everyone who donated! I'm
+                                                now looking into hosting alternatives that won't cost as much, but
+                                                at least I can rest easy for this month.
+                                            </li>
+                                        </ul>
+
+                                        <p class="text-grey text-center">28/05/2024</p>
+                                        <ul>
+                                            <li><i>You can now create custom characters!</i><br>They will be saved
+                                                locally,
+                                                meaning they'll still be on the list after you refresh the page.
+                                            </li>
+                                            <li><i>You can now delete messages!</i><br>No need to start over every
+                                                time
+                                                you
+                                                make a small typo anymore.</li>
+                                        </ul>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm"
