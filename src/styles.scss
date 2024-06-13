@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --questColor: #53AABE;
+}
+
 @font-face {
     font-family: DinText;
     src: url(assets/fonts/zh-cn.ttf) format("opentype");
@@ -119,6 +123,18 @@ hr {
 
 .padding1rem {
     padding: 1rem;
+}
+
+.quest-icon {
+    width: 68px;
+    top: -4px;
+    left: 20px;
+}
+
+.arrow-right {
+    width: 11px;
+    bottom: 12px;
+    right: 20px;
 }
 
 
@@ -250,19 +266,55 @@ hr {
     padding-right: 10px;
 }
 
+#quest {
+    background-color: #F6F6F6;
+    width: 85%;
+    border-bottom: 5px solid var(--questColor);
+    border-radius: 0px 20px 0px 0px;
+    box-shadow: 2px 2px 10px #0000002d;
+}
+
+#quest-state {
+    background-color: var(--questColor);
+    color: #F6F6F6;
+    text-shadow: 0px 2px 1px #0000006c;
+    font-size: 0.75rem;
+    border-radius: 0px 20px 0px 0px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    font-weight: normal;
+}
+
+#quest-name {
+    font-size: 0.97rem;
+    border-bottom: 3px solid var(--questColor);
+    margin-bottom: 3px;
+    padding-top: 11px;
+    padding-bottom: 5px;
+}
+
+#quest-state,
+#quest-name {
+    padding-left: 105px;
+}
+
+
 // CUSTOM SCROLLBAR
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
 }
+
 /* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
 }
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;

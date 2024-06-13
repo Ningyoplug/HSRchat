@@ -15,6 +15,27 @@
         <div>
             <app-message *ngFor="let message of messages; let i = index" [msg]="message" [msgId]="i"
                 (sendIdBack)="deleteMessage($event)"></app-message>
+
+            <!-- Quest -->
+            <div id="quest" class="m-auto position-relative mb-3" *ngIf="questCheck">
+                <!-- If Adventure -->
+                <div class="quest-icon position-absolute">
+                    <img class="w-100" src="{{ quest.type }}" alt="Adventure Mission icon" *ngIf="quest.type">
+                    <img class="w-100" src="assets/img/symbols/quest-icon-adventure.png" alt="Adventure Mission icon"
+                        *ngIf="!quest.type">
+                </div>
+                <!-- Arrow Right -->
+                <div class="arrow-right position-absolute">
+                    <img class="w-100" src="assets/img/symbols/arrow-right.png" alt="Adventure Mission icon">
+                </div>
+                <!-- Quest text -->
+                <div>
+                    <div id="quest-state" *ngIf="quest.state">{{ quest.state }}</div>
+                    <div id="quest-state" *ngIf="!quest.state">Quest state</div>
+                    <div id="quest-name" *ngIf="quest.name">{{ quest.name }}</div>
+                    <div id="quest-name" *ngIf="!quest.name">Quest Name</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -103,19 +124,28 @@
 
                 <!-- ACTION CHECKBOX -->
                 <div class="form-check d-flex justify-content-center">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
-                        (click)="onActionChecked()">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckAction"
+                        (click)="onActionChecked()" [disabled]="checked && !actionCheck">
+                    <label class="form-check-label" for="flexCheckAction">
                         Action
                     </label>
                 </div>
 
                 <!-- PHOTO CHECKBOX -->
-                <div class="form-check d-flex justify-content-center mb-3">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
-                        (click)="onPhotoChecked()">
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div class="form-check d-flex justify-content-center">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckPhoto"
+                        (click)="onPhotoChecked()" [disabled]="checked && !photoCheck">
+                    <label class="form-check-label" for="flexCheckPhoto">
                         Photo
+                    </label>
+                </div>
+
+                <!-- QUEST CHECKBOX -->
+                <div class="form-check d-flex justify-content-center mb-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckQuest"
+                        (click)="onQuestChecked()" [disabled]="checked && !questCheck">
+                    <label class="form-check-label" for="flexCheckQuest">
+                        Quest
                     </label>
                 </div>
 
@@ -190,6 +220,14 @@
 
                                     <div id="changelog-scroll" class="padding1rem pt-0">
 
+                                        <p class="text-grey text-center">13/06/2024</p>
+                                        <ul>
+                                            <li>
+                                                Added a <i>Quests</i> feature! You can now add a fake quest at the end of the chat.<br>
+                                                You can choose whether the quest is an <i>Adventure Mission</i> (blue) or a <i>Companion Mission</i> (purple). You can also choose whether the quest has just been <i>accepted</i> or <i>completed</i>.
+                                            </li>
+                                        </ul>
+
                                         <p class="text-grey text-center">12/06/2024</p>
                                         <ul>
                                             <li>
@@ -202,7 +240,9 @@
                                                 <code class="fs-5">hsrchat.pages.dev</code>
                                             </li>
                                             <li>Added a scrollbar to the character list and to the changelog.</li>
-                                            <li>Added a <img src="https://graphic.neocities.org/blinknew1.gif"> icon to the Changelog button that lets you know when there's something new to read.</li>
+                                            <li>Added a <img src="https://graphic.neocities.org/blinknew1.gif"> icon to
+                                                the Changelog button that lets you know when there's something new to
+                                                read.</li>
                                         </ul>
 
                                         <p class="text-grey text-center">11/06/2024</p>

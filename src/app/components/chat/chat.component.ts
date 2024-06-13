@@ -8,10 +8,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "12-06-2024"
+    newUpdateDate = "13-06-2024"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
+    questCheck: boolean = false;
     stickerCheck: boolean = false;
     stickersLoaded: boolean = false;
     customCharaCheck: boolean = false;
@@ -19,6 +20,13 @@ export class ChatComponent implements OnInit {
     placeholder: string = "Type message here..."
     largeScreen: boolean = false
     newChangelog: boolean = false
+    checked: boolean = false
+
+    quest: any = {
+        name: null,
+        type: null,
+        state: null
+    }
 
     friend: any = {
         name: "Dan Heng",
@@ -340,7 +348,7 @@ export class ChatComponent implements OnInit {
             this.customCharas = parsed
         }
 
-        if (localStorage.getItem("nc") != (this.newUpdateDate+"checked")) {
+        if (localStorage.getItem("nc") != (this.newUpdateDate + "checked")) {
             localStorage.setItem("nc", this.newUpdateDate);
         }
         if (localStorage.getItem("nc") == this.newUpdateDate) {
@@ -371,7 +379,7 @@ export class ChatComponent implements OnInit {
     }
 
     selectChara(ch: any) {
-        if (this.switchCheck == false) {
+        if (!this.switchCheck) {
             this.friend = ch;
         } else { this.user = ch }
     }
@@ -381,42 +389,55 @@ export class ChatComponent implements OnInit {
         if (chara.sub == "1") {
             chara.sub = null;
         }
-        if (this.switchCheck == false) {
+        if (!this.switchCheck) {
             this.friend = chara;
         } else { this.user = chara }
     }
 
     onSwitchChecked() {
-        if (this.switchCheck == false) {
+        if (!this.switchCheck) {
             this.switchCheck = true
         } else { this.switchCheck = false }
     }
 
     onActionChecked() {
-        if (this.groupChat == true) {
-            this.actionCheck = false
-        } else if (this.actionCheck == false) {
+        if (!this.actionCheck) {
             this.actionCheck = true
             this.placeholder = "Type an action here..."
         } else {
             this.actionCheck = false
             this.placeholder = "Type message here..."
         }
+        this.checked = !this.checked
+        console.log(this.actionCheck);
     }
 
     onPhotoChecked() {
-        if (this.groupChat == true) {
-            this.photoCheck = false
-        } else if (this.photoCheck == false && this.actionCheck == false) {
+        if (!this.photoCheck) {
             this.photoCheck = true
             this.placeholder = "Paste a photo url here..."
-        } else if (this.photoCheck == false && this.actionCheck == true) {
-            this.actionCheck = true
-            this.placeholder = "Type an action here..."
         } else {
             this.photoCheck = false
             this.placeholder = "Type message here..."
         }
+        this.checked = !this.checked
+    }
+
+    onQuestChecked() {
+        if (!this.questCheck) {
+            this.questCheck = true
+            this.quest = {
+                name: null,
+                type: null,
+                state: null
+            }
+            document.documentElement.style.setProperty('--questColor', '#53AABE');
+            this.placeholder = "Type the quest name here..."
+        } else {
+            this.questCheck = false
+            this.placeholder = "Type message here..."
+        }
+        this.checked = !this.checked
     }
 
     setGroupChat() {
@@ -424,6 +445,7 @@ export class ChatComponent implements OnInit {
             this.groupChat = true
             this.placeholder = "Type the group chat name here..."
         }
+        this.checked = true
     }
 
     setCustomChara() {
@@ -461,9 +483,9 @@ export class ChatComponent implements OnInit {
             this.gc.sub = this.newMsg.value.textbox
             this.newMsg.reset()
             this.groupChat = false
+            this.checked = false
             return;
         }
-
 
         // NAMING A CUSTOM CHARACTER
         // if cc doesn't have a name yet, name it
@@ -515,6 +537,39 @@ export class ChatComponent implements OnInit {
             return;
         }
 
+        // NAMING A QUEST
+        // if quest doesn't have a name yet, set one
+        if (this.questCheck && !this.quest.name) {
+            this.placeholder = "Quest state: 'accepted' or 'completed'"
+            this.quest.name = this.newMsg.value.textbox
+            this.newMsg.reset()
+            return;
+            // if quest doesn't have a state yet, set one
+        } else if (this.questCheck && this.quest.name && !this.quest.state) {
+            this.placeholder = "Quest color: 'blue' or 'purple'"
+            if (this.newMsg.value.textbox == "accepted") {
+                this.quest.state = "Accepted Mission"
+            } else if (this.newMsg.value.textbox == "completed") {
+                this.quest.state = "Mission completed"
+            } else {
+                this.placeholder = "Invalid answer. 'accepted' or 'completed'?"
+            }
+            this.newMsg.reset()
+            return;
+            // if quest doesn't have a type yet, set one
+        } else if (this.questCheck && this.quest.state && !this.quest.type) {
+            this.placeholder = "Type message here..."
+            if (this.newMsg.value.textbox == "blue") {
+                this.quest.type = "assets/img/symbols/quest-icon-adventure.png"
+            } else if (this.newMsg.value.textbox == "purple") {
+                this.quest.type = "assets/img/symbols/quest-icon-companion.png"
+                document.documentElement.style.setProperty('--questColor', '#B886ED');
+            } else {
+                this.placeholder = "Invalid answer. 'blue' or 'purple'?"
+            }
+            this.newMsg.reset()
+            return;
+        }
 
         // Friend or User switch
         if (!this.switchCheck) {
