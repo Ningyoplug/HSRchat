@@ -567,9 +567,9 @@ export class ChatComponent implements OnInit {
             let purple = "purple".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
 
             this.placeholder = "Type message here..."
-            if (blue) {
+            if (blue == 0) {
                 this.quest.type = "assets/img/symbols/quest-icon-adventure.png"
-            } else if (purple) {
+            } else if (purple == 0) {
                 this.quest.type = "assets/img/symbols/quest-icon-companion.png"
                 document.documentElement.style.setProperty('--questColor', '#B886ED');
             } else {
