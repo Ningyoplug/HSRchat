@@ -122,31 +122,33 @@
                         }}</label>
                 </div>
 
-                <!-- ACTION CHECKBOX -->
-                <div class="form-check d-flex justify-content-center">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckAction"
-                        (click)="onActionChecked()" [disabled]="checked && !actionCheck">
-                    <label class="form-check-label" for="flexCheckAction">
-                        Action
-                    </label>
-                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <!-- ACTION CHECKBOX -->
+                    <div class="form-check d-flex justify-content-center pe-4">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckAction"
+                            (click)="onActionChecked()" [disabled]="checked && !actionCheck">
+                        <label class="form-check-label" for="flexCheckAction">
+                            Action
+                        </label>
+                    </div>
 
-                <!-- PHOTO CHECKBOX -->
-                <div class="form-check d-flex justify-content-center">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckPhoto"
-                        (click)="onPhotoChecked()" [disabled]="checked && !photoCheck">
-                    <label class="form-check-label" for="flexCheckPhoto">
-                        Photo
-                    </label>
-                </div>
+                    <!-- PHOTO CHECKBOX -->
+                    <div class="form-check d-flex justify-content-center pe-4">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckPhoto"
+                            (click)="onPhotoChecked()" [disabled]="checked && !photoCheck">
+                        <label class="form-check-label" for="flexCheckPhoto">
+                            Photo
+                        </label>
+                    </div>
 
-                <!-- QUEST CHECKBOX -->
-                <div class="form-check d-flex justify-content-center mb-3">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckQuest"
-                        (click)="onQuestChecked()" [disabled]="checked && !questCheck">
-                    <label class="form-check-label" for="flexCheckQuest">
-                        Quest
-                    </label>
+                    <!-- QUEST CHECKBOX -->
+                    <div class="form-check d-flex justify-content-center mb-3">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckQuest"
+                            (click)="onQuestChecked()" [disabled]="checked && !questCheck">
+                        <label class="form-check-label" for="flexCheckQuest">
+                            Quest
+                        </label>
+                    </div>
                 </div>
 
                 <!-- STICKERS -->
@@ -223,8 +225,11 @@
                                         <p class="text-grey text-center">13/06/2024</p>
                                         <ul>
                                             <li>
-                                                Added a <i>Quests</i> feature! You can now add a fake quest at the end of the chat.<br>
-                                                You can choose whether the quest is an <i>Adventure Mission</i> (blue) or a <i>Companion Mission</i> (purple). You can also choose whether the quest has just been <i>accepted</i> or <i>completed</i>.
+                                                Added a <i>Quests</i> feature! You can now add a fake quest at the end
+                                                of the chat.<br>
+                                                You can choose whether the quest is an <i>Adventure Mission</i> (blue)
+                                                or a <i>Companion Mission</i> (purple). You can also choose whether the
+                                                quest has just been <i>accepted</i> or <i>completed</i>.
                                             </li>
                                         </ul>
 
