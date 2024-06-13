@@ -540,7 +540,7 @@ export class ChatComponent implements OnInit {
         // NAMING A QUEST
         // if quest doesn't have a name yet, set one
         if (this.questCheck && !this.quest.name) {
-            this.placeholder = "Quest state: 'accepted' or 'completed'"
+            this.placeholder = "Quest state: 'accepted' or 'completed'?"
             this.quest.name = this.newMsg.value.textbox
             this.newMsg.reset()
             return;
@@ -550,7 +550,7 @@ export class ChatComponent implements OnInit {
             let accepted = "accepted".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
             let completed = "completed".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
 
-            this.placeholder = "Quest color: 'blue' or 'purple'"
+            this.placeholder = "Quest color: 'blue' or 'purple'?"
             if (accepted == 0) {
                 this.quest.state = "Accepted Mission"
             } else if (completed == 0) {
