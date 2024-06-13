@@ -546,10 +546,13 @@ export class ChatComponent implements OnInit {
             return;
             // if quest doesn't have a state yet, set one
         } else if (this.questCheck && this.quest.name && !this.quest.state) {
+            let accepted = "accepted".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
+            let completed = "completed".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
+
             this.placeholder = "Quest color: 'blue' or 'purple'"
-            if (this.newMsg.value.textbox == "accepted") {
+            if (accepted == 0) {
                 this.quest.state = "Accepted Mission"
-            } else if (this.newMsg.value.textbox == "completed") {
+            } else if (completed == 0) {
                 this.quest.state = "Mission completed"
             } else {
                 this.placeholder = "Invalid answer. 'accepted' or 'completed'?"
@@ -558,10 +561,13 @@ export class ChatComponent implements OnInit {
             return;
             // if quest doesn't have a type yet, set one
         } else if (this.questCheck && this.quest.state && !this.quest.type) {
+            let blue = "blue".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
+            let purple = "purple".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
+
             this.placeholder = "Type message here..."
-            if (this.newMsg.value.textbox == "blue") {
+            if (blue) {
                 this.quest.type = "assets/img/symbols/quest-icon-adventure.png"
-            } else if (this.newMsg.value.textbox == "purple") {
+            } else if (purple) {
                 this.quest.type = "assets/img/symbols/quest-icon-companion.png"
                 document.documentElement.style.setProperty('--questColor', '#B886ED');
             } else {
