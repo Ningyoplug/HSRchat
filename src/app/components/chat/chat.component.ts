@@ -546,6 +546,7 @@ export class ChatComponent implements OnInit {
             return;
             // if quest doesn't have a state yet, set one
         } else if (this.questCheck && this.quest.name && !this.quest.state) {
+            // so that the answer isn't case sensitive
             let accepted = "accepted".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
             let completed = "completed".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
 
@@ -561,6 +562,7 @@ export class ChatComponent implements OnInit {
             return;
             // if quest doesn't have a type yet, set one
         } else if (this.questCheck && this.quest.state && !this.quest.type) {
+            // so that the answer isn't case sensitive
             let blue = "blue".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
             let purple = "purple".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
 
