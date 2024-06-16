@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ChatboxUserComponent } from './components/chatbox-user/chatbox-user.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageComponent } from './components/message/message.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActionComponent } from './components/action/action.component';
 import { DonateComponent } from './components/donate/donate.component';
 
@@ -26,7 +26,8 @@ import { DonateComponent } from './components/donate/donate.component';
         BrowserModule,
         AppRoutingModule,
         RouterModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

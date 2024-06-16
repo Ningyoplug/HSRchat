@@ -334,11 +334,8 @@ export class ChatComponent implements OnInit {
     ]
 
     newMsg!: FormGroup
-
     msg: any = ""
-
     messages: any = []
-
     stickers: any = []
 
     constructor() { }
@@ -492,18 +489,19 @@ export class ChatComponent implements OnInit {
         let isUserRn: boolean
         let isAction: boolean
         let isPhoto: boolean
+        let textInput = this.newMsg.value.textbox
 
         // NAMING A GROUP CHAT
         // if gc doesn't have a name yet, name it
         if (this.groupChat && !this.gc.name) {
             this.placeholder = "Type the group chat subtitle here..."
-            this.gc.name = this.newMsg.value.textbox
+            this.gc.name = textInput
             this.newMsg.reset()
             return;
             // if gc doesn't have a subtitle yet, name it
         } else if (this.groupChat && this.gc.name && !this.gc.sub) {
             this.placeholder = "Type message here..."
-            this.gc.sub = this.newMsg.value.textbox
+            this.gc.sub = textInput
             this.newMsg.reset()
             this.groupChat = false
             this.checked = false
@@ -514,24 +512,24 @@ export class ChatComponent implements OnInit {
         // if cc doesn't have a name yet, name it
         if (this.customCharaCheck && !this.cc.name) {
             this.placeholder = "Type character subtitle (or skip)..."
-            this.cc.name = this.newMsg.value.textbox
+            this.cc.name = textInput
             this.newMsg.reset()
             return;
             // if cc doesn't have a subtitle yet, name it
         } else if (this.customCharaCheck && this.cc.name && !this.cc.sub) {
             this.placeholder = "Paste character icon URL (or skip)..."
-            if (!this.newMsg.value.textbox) {
+            if (!textInput) {
                 this.cc.sub = "1"
             } else {
-                this.cc.sub = this.newMsg.value.textbox
+                this.cc.sub = textInput
             }
             this.newMsg.reset()
             return;
             // if cc doesn't have an icon yet, add it
         } else if (this.customCharaCheck && this.cc.sub && !this.cc.icon) {
-            if (!this.newMsg.value.textbox) {
+            if (!textInput) {
                 this.cc.icon = "assets/img/anon-default.png"
-            } else { this.cc.icon = this.newMsg.value.textbox }
+            } else { this.cc.icon = textInput }
             this.placeholder = "Type message here..."
             this.newMsg.reset()
             this.customCharaCheck = false
@@ -564,14 +562,14 @@ export class ChatComponent implements OnInit {
         // if quest doesn't have a name yet, set one
         if (this.questCheck && !this.quest.name) {
             this.placeholder = "Quest state: 'accepted' or 'completed'?"
-            this.quest.name = this.newMsg.value.textbox
+            this.quest.name = textInput
             this.newMsg.reset()
             return;
             // if quest doesn't have a state yet, set one
         } else if (this.questCheck && this.quest.name && !this.quest.state) {
             // so that the answer isn't case sensitive
-            let accepted = "accepted".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
-            let completed = "completed".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
+            let accepted = "accepted".localeCompare(textInput, undefined, { sensitivity: 'accent' });
+            let completed = "completed".localeCompare(textInput, undefined, { sensitivity: 'accent' });
 
             this.placeholder = "Quest color: 'blue' or 'purple'?"
             if (accepted == 0) {
@@ -586,8 +584,8 @@ export class ChatComponent implements OnInit {
             // if quest doesn't have a type yet, set one
         } else if (this.questCheck && this.quest.state && !this.quest.type) {
             // so that the answer isn't case sensitive
-            let blue = "blue".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
-            let purple = "purple".localeCompare(this.newMsg.value.textbox, undefined, { sensitivity: 'accent' });
+            let blue = "blue".localeCompare(textInput, undefined, { sensitivity: 'accent' });
+            let purple = "purple".localeCompare(textInput, undefined, { sensitivity: 'accent' });
 
             this.placeholder = "Type message here..."
             if (blue == 0) {
@@ -606,8 +604,8 @@ export class ChatComponent implements OnInit {
         // if dialogue doesn't have a first option yet, set one
         if (this.dialogueCheck && !this.options.option1) {
             this.placeholder = "Second dialogue option (optional)..."
-            if (this.newMsg.value.textbox) {
-                this.options.option1 = this.newMsg.value.textbox
+            if (textInput) {
+                this.options.option1 = textInput
             } else {
                 this.placeholder = "Answer can't be empty!"
             }
@@ -617,8 +615,8 @@ export class ChatComponent implements OnInit {
             // if dialogue doesn't have a second option yet, set one
         } else if (this.dialogueCheck && this.options.option1 && (this.options.option2 == null)) {
             this.placeholder = "Third dialogue option (optional)..."
-            if (this.newMsg.value.textbox) {
-                this.options.option2 = this.newMsg.value.textbox
+            if (textInput) {
+                this.options.option2 = textInput
             } else {
                 this.options.option2 = ""
             }
@@ -628,8 +626,8 @@ export class ChatComponent implements OnInit {
             // if dialogue doesn't have a third option yet, set one
         } else if (this.dialogueCheck && (this.options.option2 != null) && (this.options.option3 == null)) {
             this.placeholder = "Type message here..."
-            if (this.newMsg.value.textbox) {
-                this.options.option3 = this.newMsg.value.textbox
+            if (textInput) {
+                this.options.option3 = textInput
             } else {
                 this.options.option3 = ""
             }
@@ -656,7 +654,7 @@ export class ChatComponent implements OnInit {
         } else { isPhoto = true }
 
         if (!this.stickerCheck) {
-            this.msg = this.newMsg.value.textbox
+            this.msg = textInput
         } else {
             this.msg = e
         }
