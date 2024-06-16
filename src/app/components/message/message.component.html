@@ -9,6 +9,6 @@
 </div>
 
 <!-- if Action -->
-<div *ngIf="msg.isAction" class="position-relative">
-    <app-action [msg]="msg"></app-action>
+<div *ngIf="msg.isAction" class="action position-relative">
+    <app-action [msg]="msg" [msgId]="msgId" (sendIdBack)="receiveIdBack($event)"></app-action>
 </div>

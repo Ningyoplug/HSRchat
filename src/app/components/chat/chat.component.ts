@@ -8,11 +8,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "13-06-2024"
+    newUpdateDate = "16/06/2024"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
     questCheck: boolean = false;
+    dialogueCheck: boolean = false;
     stickerCheck: boolean = false;
     stickersLoaded: boolean = false;
     customCharaCheck: boolean = false;
@@ -26,6 +27,12 @@ export class ChatComponent implements OnInit {
         name: null,
         type: null,
         state: null
+    }
+
+    options: any = {
+        option1: null,
+        option2: null,
+        option3: null
     }
 
     friend: any = {
@@ -440,6 +447,22 @@ export class ChatComponent implements OnInit {
         this.checked = !this.checked
     }
 
+    onDialogueChecked() {
+        if (!this.dialogueCheck) {
+            this.dialogueCheck = true
+            this.options = {
+                option1: null,
+                option2: null,
+                option3: null
+            }
+            this.placeholder = "First dialogue option..."
+        } else {
+            this.dialogueCheck = false
+            this.placeholder = "Type message here..."
+        }
+        this.checked = !this.checked
+    }
+
     setGroupChat() {
         if (!this.gc.name) {
             this.groupChat = true
@@ -576,6 +599,42 @@ export class ChatComponent implements OnInit {
                 this.placeholder = "Invalid answer. 'blue' or 'purple'?"
             }
             this.newMsg.reset()
+            return;
+        }
+
+        // NAMING DIALOGUE OPTIONS
+        // if dialogue doesn't have a first option yet, set one
+        if (this.dialogueCheck && !this.options.option1) {
+            this.placeholder = "Second dialogue option (optional)..."
+            if (this.newMsg.value.textbox) {
+                this.options.option1 = this.newMsg.value.textbox
+            } else {
+                this.placeholder = "Answer can't be empty!"
+            }
+            this.newMsg.reset()
+            console.log(this.options);
+            return;
+            // if dialogue doesn't have a second option yet, set one
+        } else if (this.dialogueCheck && this.options.option1 && (this.options.option2 == null)) {
+            this.placeholder = "Third dialogue option (optional)..."
+            if (this.newMsg.value.textbox) {
+                this.options.option2 = this.newMsg.value.textbox
+            } else {
+                this.options.option2 = ""
+            }
+            this.newMsg.reset()
+            console.log(this.options);
+            return;
+            // if dialogue doesn't have a third option yet, set one
+        } else if (this.dialogueCheck && (this.options.option2 != null) && (this.options.option3 == null)) {
+            this.placeholder = "Type message here..."
+            if (this.newMsg.value.textbox) {
+                this.options.option3 = this.newMsg.value.textbox
+            } else {
+                this.options.option3 = ""
+            }
+            this.newMsg.reset()
+            console.log(this.options);
             return;
         }
 
