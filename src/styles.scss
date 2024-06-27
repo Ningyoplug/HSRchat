@@ -151,6 +151,14 @@ hr {
     right: 20px;
 }
 
+.save {
+    font-size: 0.8rem;
+}
+
+.delete-save {
+    // right: -25px;
+    width: 40px;
+}
 
 
 
@@ -313,6 +321,10 @@ hr {
 
 #quest-state, #quest-name {
     padding-left: 105px;
+}
+
+#buttons-box {
+    margin-left: 53px;
 }
 
 

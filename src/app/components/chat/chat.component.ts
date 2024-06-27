@@ -8,20 +8,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "16/06/2024"
+    newUpdateDate = "27/06/2024"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
     questCheck: boolean = false;
     dialogueCheck: boolean = false;
     stickerCheck: boolean = false;
+    saveCheck: boolean = false;
     stickersLoaded: boolean = false;
+    savesLoaded: boolean = false;
     customCharaCheck: boolean = false;
     groupChat: boolean = false;
     placeholder: string = "Type message here..."
     largeScreen: boolean = false
     newChangelog: boolean = false
     checked: boolean = false
+    allSaves: any[] = []
 
     quest: any = {
         name: null,
@@ -377,6 +380,23 @@ export class ChatComponent implements OnInit {
         } else { return }
     }
 
+    getSaves() {
+        if (!this.savesLoaded && localStorage.getItem("saves")) {
+        let parsed = JSON.parse(localStorage.getItem("saves")!)
+        this.allSaves = parsed
+        } else { return }
+    }
+
+    addSave() {
+        this.allSaves.push(this.messages)
+        localStorage.setItem("saves", JSON.stringify(this.allSaves))
+    }
+
+    selectSave(save: string) {
+        this.saveCheck = true
+        this.onSubmit(save)
+    }
+
     selectSticker(sticker: string) {
         this.stickerCheck = true
         this.onSubmit(sticker)
@@ -413,7 +433,6 @@ export class ChatComponent implements OnInit {
             this.placeholder = "Type message here..."
         }
         this.checked = !this.checked
-        console.log(this.actionCheck);
     }
 
     onPhotoChecked() {
@@ -477,6 +496,11 @@ export class ChatComponent implements OnInit {
 
     deleteMessage(id: number) {
         this.messages.splice(id, 1)
+    }
+
+    deleteSave(id: number) {
+        this.allSaves.splice(id, 1)
+        localStorage.setItem("saves", JSON.stringify(this.allSaves))
     }
 
     deleteCc(id: number) {
@@ -610,7 +634,6 @@ export class ChatComponent implements OnInit {
                 this.placeholder = "Answer can't be empty!"
             }
             this.newMsg.reset()
-            console.log(this.options);
             return;
             // if dialogue doesn't have a second option yet, set one
         } else if (this.dialogueCheck && this.options.option1 && (this.options.option2 == null)) {
@@ -621,7 +644,6 @@ export class ChatComponent implements OnInit {
                 this.options.option2 = ""
             }
             this.newMsg.reset()
-            console.log(this.options);
             return;
             // if dialogue doesn't have a third option yet, set one
         } else if (this.dialogueCheck && (this.options.option2 != null) && (this.options.option3 == null)) {
@@ -632,7 +654,6 @@ export class ChatComponent implements OnInit {
                 this.options.option3 = ""
             }
             this.newMsg.reset()
-            console.log(this.options);
             return;
         }
 
@@ -645,6 +666,7 @@ export class ChatComponent implements OnInit {
             isUserRn = true
         }
 
+        // (To optimize later)
         if (!this.actionCheck) {
             isAction = false
         } else { isAction = true }
@@ -657,6 +679,20 @@ export class ChatComponent implements OnInit {
             this.msg = textInput
         } else {
             this.msg = e
+            this.stickerCheck = false
+        }
+
+        if (this.saveCheck) {
+            this.messages = ""
+            this.messages = e
+            this.saveCheck = false
+
+            console.log("LOADED SAVE:");
+            console.log(e);
+        }
+
+        if (!textInput) {
+            return
         }
 
         this.messages.push({
@@ -667,11 +703,6 @@ export class ChatComponent implements OnInit {
             isPhoto: isPhoto,
             isSticker: this.stickerCheck
         })
-
-        if (this.stickerCheck) {
-            this.stickerCheck = false
-        }
-
 
         this.newMsg.reset()
     }

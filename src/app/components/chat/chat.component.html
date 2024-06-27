@@ -120,7 +120,8 @@
                     </ul>
 
                     <!-- CHAT TEXTBOX -->
-                    <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox" aria-describedby="basic-addon1" formControlName="textbox">
+                    <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
+                        aria-describedby="basic-addon1" formControlName="textbox">
                     <!-- CHAT SUBMIT -->
                     <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>
 
@@ -138,48 +139,102 @@
                         }}</label>
                 </div>
 
-                <div class="d-flex justify-content-center mt-2">
-                    <!-- ACTION CHECKBOX -->
-                    <div class="form-check d-flex justify-content-center pe-4">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckAction"
-                            (click)="onActionChecked()" [disabled]="checked && !actionCheck">
-                        <label class="form-check-label" for="flexCheckAction">
-                            Action
-                        </label>
+
+
+                <div class="mt-3 mb-4">
+                    <div class="d-flex justify-content-center">
+                        <!-- ACTION CHECKBOX -->
+                        <div class="form-check d-flex justify-content-center pe-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckAction"
+                                (click)="onActionChecked()" [disabled]="checked && !actionCheck">
+                            <label class="form-check-label" for="flexCheckAction">
+                                Action
+                            </label>
+                        </div>
+
+                        <!-- PHOTO CHECKBOX -->
+                        <div class="form-check d-flex justify-content-center pe-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckPhoto"
+                                (click)="onPhotoChecked()" [disabled]="checked && !photoCheck">
+                            <label class="form-check-label" for="flexCheckPhoto">
+                                Photo
+                            </label>
+                        </div>
+
+                        <!-- QUEST CHECKBOX -->
+                        <div class="form-check d-flex justify-content-center">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckQuest"
+                                (click)="onQuestChecked()" [disabled]="checked && !questCheck">
+                            <label class="form-check-label" for="flexCheckQuest">
+                                Quest
+                            </label>
+                        </div>
                     </div>
 
-                    <!-- PHOTO CHECKBOX -->
-                    <div class="form-check d-flex justify-content-center pe-4">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckPhoto"
-                            (click)="onPhotoChecked()" [disabled]="checked && !photoCheck">
-                        <label class="form-check-label" for="flexCheckPhoto">
-                            Photo
-                        </label>
-                    </div>
-
-                    <!-- QUEST CHECKBOX -->
-                    <div class="form-check d-flex justify-content-center">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckQuest"
-                            (click)="onQuestChecked()" [disabled]="checked && !questCheck">
-                        <label class="form-check-label" for="flexCheckQuest">
-                            Quest
-                        </label>
+                    <div class="d-flex justify-content-center">
+                        <!-- DIALOGUE OPTIONS CHECKBOX -->
+                        <div class="form-check d-flex justify-content-center">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDialogue"
+                                (click)="onDialogueChecked()" [disabled]="checked && !dialogueCheck">
+                            <label class="form-check-label" for="flexCheckDialogue">
+                                Dialogue options
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-center">
-                    <!-- DIALOGUE OPTIONS CHECKBOX -->
-                    <div class="form-check d-flex justify-content-center mb-3">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDialogue"
-                            (click)="onDialogueChecked()" [disabled]="checked && !dialogueCheck">
-                        <label class="form-check-label" for="flexCheckDialogue">
-                            Dialogue options
-                        </label>
-                    </div>
-                </div>
 
-                <!-- STICKERS -->
-                <div class="form-check d-flex justify-content-center p-0 mb-3">
+
+
+                <div id="buttons-box" class="d-flex justify-content-evenly">
+
+                    <!-- SAVES -->
+                    <div class="form-check d-flex justify-content-center p-0">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#savesModal" (click)="getSaves()">
+                            Save
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="savesModal" data-bs-keyboard="false" tabindex="-1"
+                            aria-labelledby="savesLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header me-0">
+                                        <button class="btn btn-outline-secondary btn-sm" (click)="addSave()">Save
+                                            current chat</button>
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- SAVES LIST -->
+                                        <ul class="list-group list-group-horizontal mb-1"
+                                            *ngFor="let save of allSaves; let i = index">
+                                            <li class="list-group-item list-group-item-action save"
+                                                (click)="selectSave(save)">
+                                                <span class="text-grey">{{ save[0].sentBy.name }}</span>: {{
+                                                save[0].text }}
+                                            </li>
+                                            <li class="list-group-item list-group-item-action delete-save p-1"
+                                                (click)="deleteSave(i)">
+                                                <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1"
+                                                    width="14px" height="14px">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- STICKERS -->
+                    <!-- <div class="form-check d-flex justify-content-center p-0 mb-3"> -->
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
                         data-bs-target="#stickersModal" (click)="getStickers()">
@@ -215,110 +270,141 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <!-- </div> -->
 
-                <!-- CHANGELOG -->
-                <div class="form-check d-flex justify-content-center p-0">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#changelogModal" (click)="isNewUpdate()">
-                        <img src="https://graphic.neocities.org/blinknew1.gif" *ngIf="newChangelog">
-                        Changelog
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="changelogModal" data-bs-keyboard="false" tabindex="-1"
-                        aria-labelledby="changelogLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
 
-                                <div id="changelog" class="modal-body">
-                                    <!-- CHANGELOG MODAL CONTENT -->
-                                    <div class="padding1rem pb-0">
-                                        <p>Hi! Thanks for enjoying this little project.</p>
-                                        <p>
-                                            Due to the site's popularity I need to spend a lot of money each month in
-                                            order to keep it up and available. For this reason, I've added a "<a
-                                                href="https://ko-fi.com/ningyo" target="_blank">Support me</a>" button,
-                                            so if you enjoy the site please consider helping me with the monthly fee via
-                                            tips.
-                                        </p>
-                                        <p>Thank you and have fun everyone!</p>
+
+                    <!-- CHANGELOG -->
+                    <div class="form-check d-flex justify-content-center p-0">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#changelogModal" (click)="isNewUpdate()">
+                            <img src="https://graphic.neocities.org/blinknew1.gif" *ngIf="newChangelog">
+                            Changelog
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="changelogModal" data-bs-keyboard="false" tabindex="-1"
+                            aria-labelledby="changelogLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header me-0">
+                                        Changelog
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
 
-                                    <hr class="mb-3">
+                                    <div id="changelog" class="modal-body">
+                                        <!-- CHANGELOG MODAL CONTENT -->
+                                        <!-- <div class="padding1rem pb-0">
+                                            <p>Hi! Thanks for enjoying this little project.</p>
+                                            <p>
+                                                Due to the site's popularity I need to spend a lot of money each month
+                                                in
+                                                order to keep it up and available. For this reason, I've added a "<a
+                                                    href="https://ko-fi.com/ningyo" target="_blank">Support me</a>"
+                                                button,
+                                                so if you enjoy the site please consider helping me with the monthly fee
+                                                via
+                                                tips.
+                                            </p>
+                                            <p>Thank you and have fun everyone!</p>
+                                        </div> -->
 
-                                    <div id="changelog-scroll" class="padding1rem pt-0">
+                                        <hr class="mb-3">
 
-                                        <p class="text-grey text-center">16/06/2024</p>
-                                        <ul>
-                                            <li>
-                                                Added a <i>Dialogue options</i> feature! You can now add fake dialogue options like the ones in the game.<br>
-                                                <i>Please make each option fit in one line.</i> Longer options are currently not supported.
-                                            </li>
-                                            <li>
-                                                You can now delete actions!
-                                            </li>
-                                        </ul>
+                                        <div id="changelog-scroll" class="padding1rem pt-0">
 
-                                        <p class="text-grey text-center">13/06/2024</p>
-                                        <ul>
-                                            <li>
-                                                Added a <i>Quests</i> feature! You can now add a fake quest at the end
-                                                of the chat.<br>
-                                                You can choose whether the quest is an <i>Adventure Mission</i> (blue)
-                                                or a <i>Companion Mission</i> (purple). You can also choose whether the
-                                                quest has just been <i>accepted</i> or <i>completed</i>.
-                                            </li>
-                                        </ul>
+                                            <p class="text-grey text-center">27/06/2024</p>
+                                            <ul>
+                                                <li>
+                                                    Added a <i>Saves</i> feature! You can now save your chats locally on
+                                                    your browser.
+                                                </li>
+                                                <li>
+                                                    You can now delete actions!
+                                                </li>
+                                            </ul>
 
-                                        <p class="text-grey text-center">12/06/2024</p>
-                                        <ul>
-                                            <li>
-                                                <span class="fs-5">URL change!</span><br>
-                                                I'm migrating the site to Cloudflare Pages instead of Vercel, which
-                                                (hopefully) should be much cheaper.<br>
-                                                <i>Please don't use the old Vercel url anymore!</i> Bookmark the new
-                                                one
-                                                instead, which is:<br>
-                                                <code class="fs-5">hsrchat.pages.dev</code>
-                                            </li>
-                                            <li>Added a scrollbar to the character list and to the changelog.</li>
-                                            <li>Added a <img src="https://graphic.neocities.org/blinknew1.gif"> icon to
-                                                the Changelog button that lets you know when there's something new to
-                                                read.</li>
-                                        </ul>
+                                            <p class="text-grey text-center">16/06/2024</p>
+                                            <ul>
+                                                <li>
+                                                    Added a <i>Dialogue options</i> feature! You can now add fake
+                                                    dialogue options like the ones in the game.<br>
+                                                    <i>Please make each option fit in one line.</i> Longer options are
+                                                    currently not supported.
+                                                </li>
+                                                <li>
+                                                    You can now delete actions!
+                                                </li>
+                                            </ul>
 
-                                        <p class="text-grey text-center">11/06/2024</p>
-                                        <ul>
-                                            <li>
-                                                We were able to reach the donation goal for June in just one night!
-                                                That was incredible! I'm so grateful to everyone who donated! I'm
-                                                now looking into hosting alternatives that won't cost as much, but
-                                                at least I can rest easy for this month.
-                                            </li>
-                                        </ul>
+                                            <p class="text-grey text-center">13/06/2024</p>
+                                            <ul>
+                                                <li>
+                                                    Added a <i>Quests</i> feature! You can now add a fake quest at the
+                                                    end
+                                                    of the chat.<br>
+                                                    You can choose whether the quest is an <i>Adventure Mission</i>
+                                                    (blue)
+                                                    or a <i>Companion Mission</i> (purple). You can also choose whether
+                                                    the
+                                                    quest has just been <i>accepted</i> or <i>completed</i>.
+                                                </li>
+                                            </ul>
 
-                                        <p class="text-grey text-center">28/05/2024</p>
-                                        <ul>
-                                            <li><i>You can now create custom characters!</i><br>They will be saved
-                                                locally,
-                                                meaning they'll still be on the list after you refresh the page.
-                                            </li>
-                                            <li><i>You can now delete messages!</i><br>No need to start over every
-                                                time
-                                                you
-                                                make a small typo anymore.</li>
-                                        </ul>
+                                            <p class="text-grey text-center">12/06/2024</p>
+                                            <ul>
+                                                <li>
+                                                    <span class="fs-5">URL change!</span><br>
+                                                    I'm migrating the site to Cloudflare Pages instead of Vercel, which
+                                                    (hopefully) should be much cheaper.<br>
+                                                    <i>Please don't use the old Vercel url anymore!</i> Bookmark the new
+                                                    one
+                                                    instead, which is:<br>
+                                                    <code class="fs-5">hsrchat.pages.dev</code>
+                                                </li>
+                                                <li>Added a scrollbar to the character list and to the changelog.</li>
+                                                <li>Added a <img src="https://graphic.neocities.org/blinknew1.gif"> icon
+                                                    to
+                                                    the Changelog button that lets you know when there's something new
+                                                    to
+                                                    read.</li>
+                                            </ul>
+
+                                            <p class="text-grey text-center">11/06/2024</p>
+                                            <ul>
+                                                <li>
+                                                    We were able to reach the donation goal for June in just one night!
+                                                    That was incredible! I'm so grateful to everyone who donated! I'm
+                                                    now looking into hosting alternatives that won't cost as much, but
+                                                    at least I can rest easy for this month.
+                                                </li>
+                                            </ul>
+
+                                            <p class="text-grey text-center">28/05/2024</p>
+                                            <ul>
+                                                <li><i>You can now create custom characters!</i><br>They will be saved
+                                                    locally,
+                                                    meaning they'll still be on the list after you refresh the page.
+                                                </li>
+                                                <li><i>You can now delete messages!</i><br>No need to start over every
+                                                    time
+                                                    you
+                                                    make a small typo anymore.</li>
+                                            </ul>
+                                        </div>
+
                                     </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm"
-                                        data-bs-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="text-center mt-3">
@@ -326,6 +412,8 @@
                         <i class="bi bi-twitter"></i>
                     </a>
                 </div>
+
+
 
             </div>
         </div>
