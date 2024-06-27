@@ -67,7 +67,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Acheron",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/24/Character_Acheron_Icon.png",
-            sub: null
+            sub: "Time for Departure"
         },
         {
             name: "Anonymous",
@@ -147,7 +147,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Firefly",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/9e/Character_Firefly_Icon.png",
-            sub: null
+            sub: "I will find my dreams..."
         },
         {
             name: "Fu Xuan",
@@ -197,7 +197,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Jade",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/f/fd/Character_Jade_Icon.png",
-            sub: null
+            sub: "You are always welcome to Bonajade Exchange."
         },
         {
             name: "Jing Yuan",
