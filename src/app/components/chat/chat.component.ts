@@ -679,7 +679,6 @@ export class ChatComponent implements OnInit {
             this.msg = textInput
         } else {
             this.msg = e
-            this.stickerCheck = false
         }
 
         if (this.saveCheck) {
@@ -691,9 +690,9 @@ export class ChatComponent implements OnInit {
             console.log(e);
         }
 
-        if (!textInput) {
-            return
-        }
+        // if (!textInput) {
+        //     return
+        // }
 
         this.messages.push({
             sentBy: chara,
@@ -703,6 +702,12 @@ export class ChatComponent implements OnInit {
             isPhoto: isPhoto,
             isSticker: this.stickerCheck
         })
+
+        this.stickerCheck = false
+
+        console.log("messages:");
+        console.log(this.messages);
+
 
         this.newMsg.reset()
     }
