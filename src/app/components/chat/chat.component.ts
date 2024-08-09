@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "27/06/2024"
+    newUpdateDate = "09/08/2024"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -36,6 +36,11 @@ export class ChatComponent implements OnInit {
         option1: null,
         option2: null,
         option3: null
+    }
+
+    settings: any = {
+        txtSize: false,
+        imgSize: false
     }
 
     friend: any = {
@@ -336,6 +341,9 @@ export class ChatComponent implements OnInit {
         }
     ]
 
+    settingTxtSize!: FormGroup
+    settingImgSize!: FormGroup
+
     newMsg!: FormGroup
     msg: any = ""
     messages: any = []
@@ -344,6 +352,24 @@ export class ChatComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
+        this.settingTxtSize = new FormGroup({
+            sizeNumber: new FormControl(null, Validators.required),
+            sizeUnit: new FormControl("px", Validators.required)
+        })
+
+        this.settingImgSize = new FormGroup({
+            sizeNumber: new FormControl(null, Validators.required),
+            sizeUnit: new FormControl("px", Validators.required)
+        })
+
+        if (localStorage.getItem("txtSize")) {
+            this.settings.txtSize = true
+
+        }
+        if (localStorage.getItem("imgSize")) {
+            this.settings.imgSize = true
+        }
+
         this.newMsg = new FormGroup({
             textbox: new FormControl(null, Validators.required)
         })
@@ -382,14 +408,29 @@ export class ChatComponent implements OnInit {
 
     getSaves() {
         if (!this.savesLoaded && localStorage.getItem("saves")) {
-        let parsed = JSON.parse(localStorage.getItem("saves")!)
-        this.allSaves = parsed
+            let parsed = JSON.parse(localStorage.getItem("saves")!)
+            this.allSaves = parsed
         } else { return }
     }
 
     addSave() {
         this.allSaves.push(this.messages)
         localStorage.setItem("saves", JSON.stringify(this.allSaves))
+    }
+
+    saveSettingTxtSize() {
+        let size = this.settingTxtSize.value.sizeNumber + this.settingTxtSize.value.sizeUnit
+        localStorage.setItem("txtSize", size)
+        console.log(localStorage.getItem("txtSize"));
+    }
+
+    saveSettingImgSize() {
+        let size = this.settingImgSize.value.sizeNumber + this.settingImgSize.value.sizeUnit
+        localStorage.setItem("imgSize", size)
+    }
+
+    resetSetting(e: any) {
+        localStorage.removeItem(e)
     }
 
     selectSave(save: string) {
@@ -685,9 +726,6 @@ export class ChatComponent implements OnInit {
             this.messages = ""
             this.messages = e
             this.saveCheck = false
-
-            console.log("LOADED SAVE:");
-            console.log(e);
         }
 
         // if (!textInput) {
@@ -704,11 +742,6 @@ export class ChatComponent implements OnInit {
         })
 
         this.stickerCheck = false
-
-        console.log("messages:");
-        console.log(this.messages);
-
-
         this.newMsg.reset()
     }
 

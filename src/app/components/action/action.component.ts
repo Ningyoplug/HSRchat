@@ -9,6 +9,7 @@ export class ActionComponent implements OnInit {
 
     @Input() msg: any = {}
     @Input() msgId: number = 0
+    @Input() settings: any
     @Output() sendIdBack = new EventEmitter<number>()
 
     constructor() { }
