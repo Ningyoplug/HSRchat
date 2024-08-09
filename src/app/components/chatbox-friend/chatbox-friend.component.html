@@ -1,7 +1,10 @@
 <!-- Delete icon -->
 <div class="position-absolute delete">
-    <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1" width="14px"
-        height="14px" (click)="deleteMessage()">
+    <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1" width="14px" height="14px" (click)="deleteMessage()">
+</div>
+<!-- Edit icon -->
+<div class="position-absolute edit">
+    <i class="bi bi-pencil-square text-secondary" (click)="editMessage()"></i>
 </div>
 
 <!-- Message -->
@@ -17,14 +20,37 @@
     <div class="d-flex flex-column">
         <div class="username text-grey mb-1">{{ msg.sentBy.name }}</div>
 
-        <div class="chatbox-friend py-2 px-3" *ngIf="!msg.isPhoto && !msg.isSticker" [ngStyle]="{'font-size' : settings.txtSize ? txtSize : 'none'}">
+        <div class="chatbox-friend py-2 px-3" *ngIf="!isEditing && !msg.isPhoto && !msg.isSticker"
+            [ngStyle]="{'font-size' : settings.txtSize ? txtSize : 'none'}">
             {{ msg.text }}
         </div>
         <div class="py-2 px-3" *ngIf="msg.isPhoto && !msg.isSticker">
-            <img class="photo" src="{{ msg.text }}" alt="Photo" [ngStyle]="{'width' : settings.imgSize ? imgSize : 'none'}">
+            <img class="photo" src="{{ msg.text }}" alt="Photo"
+                [ngStyle]="{'width' : settings.imgSize ? imgSize : 'none'}">
         </div>
         <div class="py-2 px-3" *ngIf="msg.isSticker">
             <img class="sticker" src="{{ msg.text }}" alt="Photo">
         </div>
+
+        <!-- EDIT MSG -->
+        <div class="chatbox-friend py-2 px-3" *ngIf="isEditing && !msg.isPhoto && !msg.isSticker"
+            [ngStyle]="{'font-size' : settings.txtSize ? txtSize : 'none'}">
+            <div>
+                <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="editedMsg"></textarea>
+
+                    <button type="submit" class="btn btn-secondary mt-1"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary mt-1 ms-2"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        (click)="isEditing = false">
+                        Cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>

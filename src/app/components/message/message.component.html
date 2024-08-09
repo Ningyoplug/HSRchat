@@ -1,14 +1,14 @@
 <!-- if Friend -->
 <div *ngIf="!msg.isUser && !msg.isAction" class="position-relative msg px-4">
-    <app-chatbox-friend [msg]="msg" [msgId]="msgId" [settings]="settings" (sendIdBack)="receiveIdBack($event)"></app-chatbox-friend>
+    <app-chatbox-friend [msg]="msg" [msgId]="msgId" [settings]="settings" (sendIdBack)="receiveIdBack($event)" (sendEditBack)="receiveEditedMsgBack($event)"></app-chatbox-friend>
 </div>
 
 <!-- if User -->
 <div *ngIf="msg.isUser && !msg.isAction" class="position-relative msg px-4">
-    <app-chatbox-user [msg]="msg" [msgId]="msgId" [settings]="settings" (sendIdBack)="receiveIdBack($event)"></app-chatbox-user>
+    <app-chatbox-user [msg]="msg" [msgId]="msgId" [settings]="settings" (sendIdBack)="receiveIdBack($event)" (sendEditBack)="receiveEditedMsgBack($event)"></app-chatbox-user>
 </div>
 
 <!-- if Action -->
 <div *ngIf="msg.isAction" class="action position-relative">
-    <app-action [msg]="msg" [msgId]="msgId" [settings]="settings" (sendIdBack)="receiveIdBack($event)"></app-action>
+    <app-action [msg]="msg" [msgId]="msgId" [settings]="settings" (sendIdBack)="receiveIdBack($event)" (sendEditBack)="receiveEditedMsgBack($event)"></app-action>
 </div>

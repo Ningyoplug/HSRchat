@@ -11,6 +11,7 @@ export class MessageComponent implements OnInit {
     @Input() msgId: number = 0
     @Input() settings: any
     @Output() sendIdBack = new EventEmitter<number>()
+    @Output() sendEditBack = new EventEmitter<object>()
 
     constructor() { }
 
@@ -19,6 +20,10 @@ export class MessageComponent implements OnInit {
 
     receiveIdBack(e: number) {
         this.sendIdBack.emit(e)
+    }
+
+    receiveEditedMsgBack(e: any) {
+        this.sendEditBack.emit(e)
     }
 
 }

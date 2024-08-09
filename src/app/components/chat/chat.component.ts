@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "09/08/2024"
+    newUpdateDate = "09/08/2024_a"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -537,6 +537,13 @@ export class ChatComponent implements OnInit {
 
     deleteMessage(id: number) {
         this.messages.splice(id, 1)
+    }
+
+    editMessage(msg: any) {
+        let newMessage = msg[0]
+        let id = msg[1]
+
+        this.messages.splice(id, 1, newMessage)
     }
 
     deleteSave(id: number) {

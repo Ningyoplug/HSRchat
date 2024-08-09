@@ -15,7 +15,7 @@
         <div>
             <!-- Standard message -->
             <app-message *ngFor="let message of messages; let i = index" [msg]="message" [msgId]="i"
-                [settings]="settings" (sendIdBack)="deleteMessage($event)"></app-message>
+                [settings]="settings" (sendIdBack)="deleteMessage($event)" (sendEditBack)="editMessage($event)"></app-message>
 
             <!-- Quest -->
             <div id="quest" class="m-auto position-relative mb-3" *ngIf="questCheck">
@@ -384,6 +384,9 @@
 
                                             <p class="text-grey text-center">09/08/2024</p>
                                             <ul>
+                                                <li>
+                                                    Added an <i>Edit</i> feature! You can finally edit messages without having to delete them.
+                                                </li>
                                                 <li>
                                                     Added some custom <i>Settings</i> that you can use to customize things like text size and photo size. This should be helpful to people whose device doesn't show the site as intended!<br>
                                                     If you would like me to add more settings, feel free to send me suggestions via <a href="https://x.com/hsrchatsite" target="_blank">Twitter</a>.
