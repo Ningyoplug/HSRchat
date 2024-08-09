@@ -150,6 +150,11 @@ export class ChatComponent implements OnInit {
             sub: "\"There's no rush.\""
         },
         {
+            name: "Feixiao",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/75/Character_Feixiao_Icon.png",
+            sub: null
+        },
+        {
             name: "Firefly",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/9e/Character_Firefly_Icon.png",
             sub: "I will find my dreams..."
@@ -205,6 +210,11 @@ export class ChatComponent implements OnInit {
             sub: "You are always welcome to Bonajade Exchange."
         },
         {
+            name: "Jiaoqiu",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/48/Character_Jiaoqiu_Icon.png/revision/latest?cb=20240606092532&format=original",
+            sub: null
+        },
+        {
             name: "Jing Yuan",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/88/Character_Jing_Yuan_Icon.png",
             sub: "I'm not at the Seat of Divine Foresight"
@@ -217,6 +227,11 @@ export class ChatComponent implements OnInit {
         {
             name: "Kafka",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/8c/Character_Kafka_Icon.png",
+            sub: null
+        },
+        {
+            name: "Lingsha",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/ab/Character_Lingsha_Icon.png",
             sub: null
         },
         {
@@ -338,6 +353,11 @@ export class ChatComponent implements OnInit {
             name: "Yukong",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/3/32/Character_Yukong_Icon.png",
             sub: "I wish to take to the skies once more..."
+        },
+        {
+            name: "Yunli",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/43/Character_Yunli_Icon.png",
+            sub: "(´・ω・`) Fight?"
         }
     ]
 
