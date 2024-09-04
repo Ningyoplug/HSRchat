@@ -119,6 +119,36 @@
                         </div>
                     </ul>
 
+
+                    <!-- SELECT VERSION -->
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" *ngIf="!switchCheck && findName(friend.name) && !actionCheck && !groupChat && !customCharaCheck">
+                    </button>
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" *ngIf="switchCheck && findName(user.name) && !actionCheck && !groupChat && !customCharaCheck">
+                    </button>
+                    <!-- DROPDOWN MENU -->
+                    <ul class="dropdown-menu">
+                        <div id="version-list-scroll" *ngIf="!switchCheck">
+                            <!-- list of versions -->
+                            <li *ngFor="let version of findElement(friend.name).versions; let i = index">
+                                <a class="d-flex dropdown-item" (click)="saveCharaVersion(findElement(friend.name).name, findElement(friend.name).icons[i])">
+                                    <img src="{{ findElement(friend.name).icons[i] }}" class="me-2" width="30px" height="30px">
+                                    {{ version }}
+                                </a>
+                            </li>
+                        </div>
+                        <div id="version-list-scroll" *ngIf="switchCheck">
+                            <!-- list of versions -->
+                            <li *ngFor="let version of findElement(user.name).versions; let i = index">
+                                <a class="d-flex dropdown-item" (click)="saveCharaVersion(findElement(user.name).name, findElement(user.name).icons[i])">
+                                    <img src="{{ findElement(user.name).icons[i] }}" class="me-2" width="30px" height="30px">
+                                    {{ version }}
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+
                     <!-- CHAT TEXTBOX -->
                     <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
                         aria-describedby="basic-addon1" formControlName="textbox">
@@ -363,24 +393,16 @@
 
                                     <div id="changelog" class="modal-body">
                                         <!-- CHANGELOG MODAL CONTENT -->
-                                        <!-- <div class="padding1rem pb-0">
-                                            <p>Hi! Thanks for enjoying this little project.</p>
-                                            <p>
-                                                Due to the site's popularity I need to spend a lot of money each month
-                                                in
-                                                order to keep it up and available. For this reason, I've added a "<a
-                                                    href="https://ko-fi.com/ningyo" target="_blank">Support me</a>"
-                                                button,
-                                                so if you enjoy the site please consider helping me with the monthly fee
-                                                via
-                                                tips.
-                                            </p>
-                                            <p>Thank you and have fun everyone!</p>
-                                        </div> -->
-
                                         <hr class="mb-3">
 
                                         <div id="changelog-scroll" class="padding1rem pt-0">
+
+                                            <p class="text-grey text-center">04/09/2024</p>
+                                            <ul>
+                                                <li>
+                                                    Added a way to switch between versions of characters like Stelle, Caelus, Dan Heng and March. For this reason, I removed "Dan Heng • Imbibitor Lunae" from the character list; he's now instead an alternate version of Dan Heng.
+                                                </li>
+                                            </ul>
 
                                             <p class="text-grey text-center">09/08/2024</p>
                                             <ul>

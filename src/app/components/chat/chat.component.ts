@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "09/08/2024_a"
+    newUpdateDate = "04/09/2024"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -25,6 +25,7 @@ export class ChatComponent implements OnInit {
     newChangelog: boolean = false
     checked: boolean = false
     allSaves: any[] = []
+    charaName: any
 
     quest: any = {
         name: null,
@@ -65,6 +66,58 @@ export class ChatComponent implements OnInit {
         icon: null,
         sub: null
     }
+
+    charaVersions: any = [
+        {
+            name: "Stelle",
+            versions: [
+                "Destruction",
+                "Preservation",
+                "Harmony"
+            ],
+            icons: [
+                "assets/img/icons/Stelle_Destruction.png",
+                "assets/img/icons/Stelle_Preservation.png",
+                "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png"
+            ]
+        },
+        {
+            name: "Caelus",
+            versions: [
+                "Destruction",
+                "Preservation",
+                "Harmony"
+            ],
+            icons: [
+                "assets/img/icons/Caelus_Destruction.png",
+                "assets/img/icons/Caelus_Preservation.png",
+                "https://static.wikia.nocookie.net/houkai-star-rail/images/2/27/Character_Caelus_%28Harmony%29_Icon.png"
+            ]
+        },
+        {
+            name: "Dan Heng",
+            versions: [
+                "Default",
+                "Imbibitor Lunae"
+            ],
+            icons: [
+                "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Dan_Heng_Icon.png/",
+                "https://static.wikia.nocookie.net/houkai-star-rail/images/2/2a/Character_Dan_Heng_%E2%80%A2_Imbibitor_Lunae_Icon.png"
+            ]
+        },
+        {
+            name: "March 7th",
+            versions: [
+                "Default",
+                "Hunt"
+            ],
+            icons: [
+                "https://static.wikia.nocookie.net/houkai-star-rail/images/d/d3/Character_March_7th_Icon.png",
+                "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_March_7th_%28The_Hunt%29_Icon.png"
+            ]
+        }
+    ]
+
 
     customCharas: any[] = []
 
@@ -137,11 +190,6 @@ export class ChatComponent implements OnInit {
         {
             name: "Dan Heng",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Dan_Heng_Icon.png",
-            sub: "For anything related to the data bank, come find me."
-        },
-        {
-            name: "Dan Heng • Imbibitor Lunae",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/2a/Character_Dan_Heng_%E2%80%A2_Imbibitor_Lunae_Icon.png",
             sub: "For anything related to the data bank, come find me."
         },
         {
@@ -407,6 +455,81 @@ export class ChatComponent implements OnInit {
         if (localStorage.getItem("nc") == this.newUpdateDate) {
             this.newChangelog = true
         }
+
+        if (localStorage.getItem("Stelle")) {
+            let chosenIcon = localStorage.getItem("Stelle")
+            for (let i = 0; i < this.charas.length; i++) {
+                let nameWithoutSpaces = this.charas[i].name.replace(/\s+/g, '');
+                if (nameWithoutSpaces == "Stelle") {
+                    this.charas[i].icon = chosenIcon
+                }
+            }
+            if (this.friend.name == "Stelle") {
+                this.friend.icon = chosenIcon
+            } else if (this.user.name == "Stelle") {
+                this.user.icon = chosenIcon
+            }
+        }
+        if (localStorage.getItem("Caelus")) {
+            let chosenIcon = localStorage.getItem("Caelus")
+            for (let i = 0; i < this.charas.length; i++) {
+                let nameWithoutSpaces = this.charas[i].name.replace(/\s+/g, '');
+                if (nameWithoutSpaces == "Caelus") {
+                    this.charas[i].icon = chosenIcon
+                }
+            }
+            if (this.friend.name == "Caelus") {
+                this.friend.icon = chosenIcon
+            } else if (this.user.name == "Caelus") {
+                this.user.icon = chosenIcon
+            }
+        }
+
+        if (localStorage.getItem("DanHeng")) {
+            let chosenIcon = localStorage.getItem("DanHeng")
+            for (let i = 0; i < this.charas.length; i++) {
+                let nameWithoutSpaces = this.charas[i].name.replace(/\s+/g, '');
+                if (nameWithoutSpaces == "DanHeng") {
+                    this.charas[i].icon = chosenIcon
+                }
+            }
+            if (this.friend.name == "Dan Heng") {
+                this.friend.icon = chosenIcon
+            } else if (this.user.name == "Dan Heng") {
+                this.user.icon = chosenIcon
+            }
+        }
+
+        if (localStorage.getItem("March7th") ) {
+            let chosenIcon = localStorage.getItem("March7th")
+            for (let i = 0; i < this.charas.length; i++) {
+                let nameWithoutSpaces = this.charas[i].name.replace(/\s+/g, '');
+                if (nameWithoutSpaces == "March7th") {
+                    this.charas[i].icon = chosenIcon
+                }
+            }
+            if (this.friend.name == "March 7th") {
+                this.friend.icon = chosenIcon
+            } else if (this.user.name == "March 7th") {
+                this.user.icon = chosenIcon
+            }
+        }
+    }
+
+    findName(name: string) {
+        if (this.charaVersions.some((e: { name: string; }) => e.name === name)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    findElement(e: any) {
+        for (let i = 0; i < this.charaVersions.length; i++) {
+            if (this.charaVersions[i].name == e) {
+                return this.charaVersions[i]
+            }
+        }
     }
 
     // Check if the changelog has been updated
@@ -447,6 +570,17 @@ export class ChatComponent implements OnInit {
     saveSettingImgSize() {
         let size = this.settingImgSize.value.sizeNumber + this.settingImgSize.value.sizeUnit
         localStorage.setItem("imgSize", size)
+    }
+
+    saveCharaVersion(name: any, icon: any) {
+        let nameWithoutSpaces = name.replace(/\s+/g, '');
+        localStorage.setItem(nameWithoutSpaces, icon)
+
+        if (this.friend.name == name) {
+            this.friend.icon = icon
+        } else if (this.user.name == name) {
+            this.user.icon = icon
+        }
     }
 
     resetSetting(e: any) {
