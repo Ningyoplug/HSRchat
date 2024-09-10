@@ -200,7 +200,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Feixiao",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/75/Character_Feixiao_Icon.png",
-            sub: null
+            sub: "Itching for a fight"
         },
         {
             name: "Firefly",
@@ -260,7 +260,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Jiaoqiu",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/48/Character_Jiaoqiu_Icon.png",
-            sub: null
+            sub: "There's no problem that a hot pot can't fix."
         },
         {
             name: "Jing Yuan",
@@ -280,7 +280,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Lingsha",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/ab/Character_Lingsha_Icon.png",
-            sub: null
+            sub: "Don't get angry, don't get mad, you don't have the time to feel so bad"
         },
         {
             name: "Luka",
