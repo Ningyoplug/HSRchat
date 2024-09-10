@@ -259,7 +259,7 @@ export class ChatComponent implements OnInit {
         },
         {
             name: "Jiaoqiu",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/48/Character_Jiaoqiu_Icon.png/revision/latest?cb=20240606092532&format=original",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/48/Character_Jiaoqiu_Icon.png",
             sub: null
         },
         {
@@ -379,7 +379,7 @@ export class ChatComponent implements OnInit {
         },
         {
             name: "Topaz",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/d/d8/Character_Topaz_and_Numby_Icon.png",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/89/Character_Topaz_%26_Numby_Icon.png",
             sub: "Off-site~ Call if important, otherwise text"
         },
         {
