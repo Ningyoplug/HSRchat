@@ -308,6 +308,11 @@ export class ChatComponent implements OnInit {
             sub: "Keep it up! The new world is just ahead!"
         },
         {
+            name: "Moze",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/25/Character_Moze_Icon.png",
+            sub: "No signature."
+        },
+        {
             name: "Natasha",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/6/61/Character_Natasha_Icon.png",
             sub: "Doing outpatient runs at the Robot Settlement. Check my availability before you visit"
