@@ -208,6 +208,11 @@ export class ChatComponent implements OnInit {
             sub: "I will find my dreams..."
         },
         {
+            name: "Fugue",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/c/c0/Character_Fugue_Icon.png",
+            sub: ""
+        },
+        {
             name: "Fu Xuan",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Fu_Xuan_Icon.png",
             sub: "I do not divine personal fortunes!"
@@ -333,6 +338,11 @@ export class ChatComponent implements OnInit {
             sub: "Go ahead and work, just don't interrupt my game"
         },
         {
+            name: "Rappa",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/84/Character_Rappa_Icon.png",
+            sub: "Heart unmoved, evil pursued"
+        },
+        {
             name: "Robin",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/72/Character_Robin_Icon.png",
             sub: "Let's share our wings with one another."
@@ -371,6 +381,11 @@ export class ChatComponent implements OnInit {
             name: "Stelle",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png",
             sub: null
+        },
+        {
+            name: "Sunday",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/3/38/Character_Sunday_Icon.png",
+            sub: ""
         },
         {
             name: "Sushang",
