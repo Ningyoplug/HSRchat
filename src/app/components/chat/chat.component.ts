@@ -20,12 +20,13 @@ export class ChatComponent implements OnInit {
     savesLoaded: boolean = false;
     customCharaCheck: boolean = false;
     groupChat: boolean = false;
-    placeholder: string = "Type message here..."
-    largeScreen: boolean = false
-    newChangelog: boolean = false
-    checked: boolean = false
-    allSaves: any[] = []
-    charaName: any
+    placeholder: string = "Type message here...";
+    largeScreen: boolean = false;
+    newChangelog: boolean = false;
+    checked: boolean = false;
+    allSaves: any[] = [];
+    charaName: any;
+    stickersNumber: number = 305;
 
     quest: any = {
         name: null,
@@ -591,7 +592,7 @@ export class ChatComponent implements OnInit {
 
     getStickers() {
         if (!this.stickersLoaded) {
-            for (let i = 0; i < 225; i++) {
+            for (let i = 0; i < this.stickersNumber; i++) {
                 this.stickers.push("assets/img/stickers/sticker_" + i + ".png")
             }
             this.stickersLoaded = true
