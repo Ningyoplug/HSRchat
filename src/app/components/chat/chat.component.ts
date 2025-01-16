@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "04/09/2024"
+    newUpdateDate = "16/01/2025"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -73,12 +73,14 @@ export class ChatComponent implements OnInit {
             versions: [
                 "Destruction",
                 "Preservation",
-                "Harmony"
+                "Harmony",
+                "Remembrance"
             ],
             icons: [
                 "assets/img/icons/Stelle_Destruction.png",
                 "assets/img/icons/Stelle_Preservation.png",
-                "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png"
+                "assets/img/icons/Stelle_Harmony.png",
+                "assets/img/icons/Stelle_Remembrance.png"
             ]
         },
         {
@@ -86,12 +88,14 @@ export class ChatComponent implements OnInit {
             versions: [
                 "Destruction",
                 "Preservation",
-                "Harmony"
+                "Harmony",
+                "Remembrance"
             ],
             icons: [
                 "assets/img/icons/Caelus_Destruction.png",
                 "assets/img/icons/Caelus_Preservation.png",
-                "https://static.wikia.nocookie.net/houkai-star-rail/images/2/27/Character_Caelus_%28Harmony%29_Icon.png"
+                "assets/img/icons/Caelus_Harmony.png",
+                "assets/img/icons/Caelus_Remembrance.png"
             ]
         },
         {
@@ -126,6 +130,11 @@ export class ChatComponent implements OnInit {
             name: "Acheron",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/24/Character_Acheron_Icon.png",
             sub: "Time for Departure"
+        },
+        {
+            name: "Aglaea",
+            icon: "https://sr.yatta.moe/hsr/assets/UI/avatar/round/1402.png",
+            sub: "See you at the baths"
         },
         {
             name: "Anonymous",
@@ -180,6 +189,11 @@ export class ChatComponent implements OnInit {
         {
             name: "Caelus",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/27/Character_Caelus_%28Harmony%29_Icon.png",
+            sub: null
+        },
+        {
+            name: "Castorice",
+            icon: "https://sr.yatta.moe/hsr/assets/UI/avatar/round/1407.png",
             sub: null
         },
         {
@@ -318,6 +332,11 @@ export class ChatComponent implements OnInit {
             sub: "No signature."
         },
         {
+            name: "Mydei",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/89/Character_Mydei_Icon.png",
+            sub: null
+        },
+        {
             name: "Natasha",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/6/61/Character_Natasha_Icon.png",
             sub: "Doing outpatient runs at the Robot Settlement. Check my availability before you visit"
@@ -393,6 +412,11 @@ export class ChatComponent implements OnInit {
             sub: "What illness makes you sleepy as soon as you read a book?"
         },
         {
+            name: "The Herta",
+            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/3/39/Character_The_Herta_Icon.png",
+            sub: "It's me"
+        },
+        {
             name: "Tingyun",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/4f/Character_Tingyun_Icon.png",
             sub: "Let's talk it out and not fight~"
@@ -401,6 +425,11 @@ export class ChatComponent implements OnInit {
             name: "Topaz",
             icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/89/Character_Topaz_%26_Numby_Icon.png",
             sub: "Off-site~ Call if important, otherwise text"
+        },
+        {
+            name: "Tribbie",
+            icon: "https://sr.yatta.moe/hsr/assets/UI/avatar/round/1403.png",
+            sub: "Tribbie is always available~"
         },
         {
             name: "Welt",
