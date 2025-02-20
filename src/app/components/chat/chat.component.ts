@@ -760,6 +760,10 @@ export class ChatComponent implements OnInit {
         localStorage.setItem("cc", JSON.stringify(this.customCharas));
     }
 
+    showPhotoHelp() {
+
+    }
+
     onSubmit(e?: string) {
         let chara: any
         let isUserRn: boolean

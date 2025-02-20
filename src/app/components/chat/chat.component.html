@@ -152,6 +152,43 @@
                     <!-- CHAT TEXTBOX -->
                     <input type="text" class="form-control" placeholder="{{ placeholder }}" aria-label="Textbox"
                         aria-describedby="basic-addon1" formControlName="textbox">
+                    <!-- photo help icon -->
+                    <i class="bi bi-question-circle" id="photo-help" *ngIf="photoCheck && !actionCheck && !groupChat" (click)="showPhotoHelp()" data-bs-toggle="modal" data-bs-target="#helpModal"></i>
+                        <!-- Modal -->
+                        <div class="modal fade" id="helpModal" data-bs-keyboard="false" tabindex="-1"
+                            aria-labelledby="helpLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content help-modal">
+                                    <div class="modal-header me-0">
+                                        How to get an image's URL
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>In order to make a character send an image, that image needs to exist on the internet.</p>
+
+                                        <p>You can't use an image from your phone/device directly: you need to upload it somewhere first, by either</p>
+                                            <ul>
+                                                <li>posting it on social media (eg. Twitter)</li>
+                                                <li>or by using a site like <a href="https://imgbb.com/" target="_blank">ImgBB</a>.</li>
+                                            </ul>
+
+                                        <p>Once your image has been posted online, right click it and select "Copy image URL".<br>
+                                        You can now paste the URL that links to your image into the chat box!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
                     <!-- CHAT SUBMIT -->
                     <button class="btn btn-outline-secondary" type="submit" id="send">Send</button>
 
@@ -396,6 +433,13 @@
                                         <hr class="mb-3">
 
                                         <div id="changelog-scroll" class="padding1rem pt-0">
+
+                                            <p class="text-grey text-center">20/02/2025</p>
+                                            <ul>
+                                                <li>
+                                                    Added a little help icon <i class="bi bi-question-circle"></i> you can click on when Photo is selected to see an explanation on how to get an image URL.
+                                                </li>
+                                            </ul>
 
                                             <p class="text-grey text-center">16/01/2025</p>
                                             <ul>
