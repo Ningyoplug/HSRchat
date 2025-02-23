@@ -295,7 +295,7 @@
                                             <div class="input-group input-group-sm mb-3 setting">
                                                 <span class="input-group-text">Chat text size:</span>
                                                 <input type="text" class="form-control" aria-label="amount"
-                                                    formControlName="sizeNumber">
+                                                    formControlName="sizeNumber" value="{{currentTxtSize}}">
                                                 <select class="form-select" id="txtSizeUnit" formControlName="sizeUnit">
                                                     <option value="px" selected>px</option>
                                                     <option value="rem">rem</option>
@@ -314,12 +314,13 @@
                                             <div class="input-group input-group-sm mb-3 setting">
                                                 <span class="input-group-text">Photo size:</span>
                                                 <input type="text" class="form-control" aria-label="amount"
-                                                    formControlName="sizeNumber">
+                                                    formControlName="sizeNumber" value="{{currentImgSize}}">
                                                 <select class="form-select" id="imgSizeUnit" formControlName="sizeUnit">
                                                     <option selected value="px">px</option>
                                                     <option value="rem">rem</option>
                                                     <option value="em">em</option>
                                                 </select>
+                                                <!-- Save -->
                                                 <button class="btn btn-outline-secondary" type="submit">Save</button>
                                                 <div class="pt-1 dlt">
                                                     <i class="bi bi-x-circle ms-2 text-danger delete-setting"></i>
@@ -459,6 +460,9 @@
                                                 </li>
                                                 <li>
                                                     Updated the Photo help icon <i class="bi bi-question-circle"></i> explanation accordingly.
+                                                </li>
+                                                <li>
+                                                    Fixed an issue with the custom settings not working correctly. Custom text size and image size should work again now!
                                                 </li>
                                             </ul>
 

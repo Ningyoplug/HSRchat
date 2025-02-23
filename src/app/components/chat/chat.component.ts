@@ -463,6 +463,8 @@ export class ChatComponent implements OnInit {
 
     settingTxtSize!: FormGroup
     settingImgSize!: FormGroup
+    currentTxtSize: string = "";
+    currentImgSize: string = "";
 
     newMsg!: FormGroup
     msg: any = ""
@@ -472,23 +474,34 @@ export class ChatComponent implements OnInit {
     constructor(private sanitizer:DomSanitizer) { }
 
     ngOnInit(): void {
+        if (localStorage.getItem("txtSize")) {
+            this.settings.txtSize = true
+            let size = localStorage.getItem("txtSize")!
+            if (size.includes("rem")) {
+                this.currentTxtSize = size.slice(0, size.length-3)
+            } else {
+                this.currentTxtSize = size.slice(0, size.length-2)
+            }
+        }
+        if (localStorage.getItem("imgSize")) {
+            this.settings.imgSize = true
+            let size = localStorage.getItem("imgSize")!
+            if (size.includes("rem")) {
+                this.currentImgSize = size.slice(0, size.length-3)
+            } else {
+                this.currentImgSize = size.slice(0, size.length-2)
+            }
+        }
+
         this.settingTxtSize = new FormGroup({
-            sizeNumber: new FormControl(null, Validators.required),
+            sizeNumber: new FormControl(this.currentTxtSize, Validators.required),
             sizeUnit: new FormControl("px", Validators.required)
         })
 
         this.settingImgSize = new FormGroup({
-            sizeNumber: new FormControl(null, Validators.required),
+            sizeNumber: new FormControl(this.currentImgSize, Validators.required),
             sizeUnit: new FormControl("px", Validators.required)
         })
-
-        if (localStorage.getItem("txtSize")) {
-            this.settings.txtSize = true
-
-        }
-        if (localStorage.getItem("imgSize")) {
-            this.settings.imgSize = true
-        }
 
         this.newMsg = new FormGroup({
             textbox: new FormControl(null, Validators.required)
@@ -645,6 +658,11 @@ export class ChatComponent implements OnInit {
 
     resetSetting(e: any) {
         localStorage.removeItem(e)
+        if (e == "txtSize") {
+            this.settingTxtSize.reset()
+        } else {
+            this.settingImgSize.reset()
+        }
     }
 
     selectSave(save: string) {

@@ -21,12 +21,12 @@
         <div class="username text-grey mb-1">{{ msg.sentBy.name }}</div>
 
         <div class="chatbox-friend py-2 px-3" *ngIf="!isEditing && !msg.isPhoto && !msg.isSticker"
-            [ngStyle]="{'font-size' : settings.txtSize ? txtSize : 'none'}">
+            [ngStyle]="{'font-size' : settings.txtSize != '' ? txtSize : 'none'}">
             {{ msg.text }}
         </div>
         <div class="py-2 px-3" *ngIf="msg.isPhoto && !msg.isSticker">
             <img class="photo" [src]="sanitizedURL" alt="Photo"
-                [ngStyle]="{'width' : settings.imgSize ? imgSize : 'none'}">
+                [ngStyle]="{'width' : settings.imgSize != '' ? imgSize : 'none'}">
         </div>
         <div class="py-2 px-3" *ngIf="msg.isSticker">
             <img class="sticker" src="{{ msg.text }}" alt="Photo">
@@ -34,7 +34,7 @@
 
         <!-- EDIT MSG -->
         <div class="chatbox-friend py-2 px-3" *ngIf="isEditing && !msg.isPhoto && !msg.isSticker"
-            [ngStyle]="{'font-size' : settings.txtSize ? txtSize : 'none'}">
+            [ngStyle]="{'font-size' : settings.txtSize != '' ? txtSize : 'none'}">
             <div>
                 <form [formGroup]="editForm" (ngSubmit)="saveEdit()">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="editedMsg"></textarea>
