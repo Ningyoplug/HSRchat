@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-chatbox-user',
@@ -19,8 +20,9 @@ export class ChatboxUserComponent implements OnInit {
     txtSize: string = ""
     imgSize: string = ""
     isEditing: boolean = false
+    sanitizedURL: any;
 
-    constructor() { }
+    constructor(private sanitizer:DomSanitizer) { }
 
     ngOnInit(): void {
         if(this.settings.txtSize) {
@@ -33,6 +35,8 @@ export class ChatboxUserComponent implements OnInit {
         this.editForm = new FormGroup({
             editedMsg: new FormControl(this.msg.text, Validators.required)
         })
+
+        this.sanitizedURL = this.sanitizer.bypassSecurityTrustUrl(this.msg.text);
     }
 
     deleteMessage() {

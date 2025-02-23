@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-chat',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "20/02/2025"
+    newUpdateDate = "23/02/2025"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -27,6 +28,7 @@ export class ChatComponent implements OnInit {
     allSaves: any[] = [];
     charaName: any;
     stickersNumber: number = 305;
+    uploadedImg: string = ""
 
     quest: any = {
         name: null,
@@ -467,7 +469,7 @@ export class ChatComponent implements OnInit {
     messages: any = []
     stickers: any = []
 
-    constructor() { }
+    constructor(private sanitizer:DomSanitizer) { }
 
     ngOnInit(): void {
         this.settingTxtSize = new FormGroup({
@@ -588,6 +590,14 @@ export class ChatComponent implements OnInit {
             localStorage.setItem("nc", this.newUpdateDate + "checked")
             this.newChangelog = false
         }
+    }
+
+    getUploadedImg() {
+        let uploadedPicViewer: any = document.getElementById("uploadedPic");
+        let uploadedImage: any = document.getElementById("uploadImage");
+
+        this.uploadedImg = URL.createObjectURL(uploadedImage.files[0]);
+        uploadedPicViewer.src = this.uploadedImg;
     }
 
     getStickers() {
@@ -760,8 +770,8 @@ export class ChatComponent implements OnInit {
         localStorage.setItem("cc", JSON.stringify(this.customCharas));
     }
 
-    showPhotoHelp() {
-
+    sanitize(url:string){
+        return this.sanitizer.bypassSecurityTrustUrl(url);
     }
 
     onSubmit(e?: string) {
@@ -937,15 +947,15 @@ export class ChatComponent implements OnInit {
             this.msg = e
         }
 
+        if (isPhoto && !textInput) {
+            this.msg = this.uploadedImg;
+        }
+
         if (this.saveCheck) {
             this.messages = ""
             this.messages = e
             this.saveCheck = false
         }
-
-        // if (!textInput) {
-        //     return
-        // }
 
         this.messages.push({
             sentBy: chara,
@@ -958,6 +968,12 @@ export class ChatComponent implements OnInit {
 
         this.stickerCheck = false
         this.newMsg.reset()
+
+        // Reset photo upload
+        let uploadedPicViewer: any = document.getElementById("uploadedPic")
+        uploadedPicViewer.src = ""
+        let fileUpload = <HTMLInputElement>document.getElementById("uploadImage")
+        fileUpload.value = ""
     }
 
 }

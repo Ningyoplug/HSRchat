@@ -25,7 +25,7 @@
             {{ msg.text }}
         </div>
         <div class="py-2 px-3" *ngIf="msg.isPhoto && !msg.isSticker">
-            <img class="photo" src="{{ msg.text }}" alt="Photo"
+            <img class="photo" [src]="sanitizedURL" alt="Photo"
                 [ngStyle]="{'width' : settings.imgSize ? imgSize : 'none'}">
         </div>
         <div class="py-2 px-3" *ngIf="msg.isSticker">
