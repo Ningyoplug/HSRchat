@@ -495,12 +495,12 @@ export class ChatComponent implements OnInit {
 
         this.settingTxtSize = new FormGroup({
             sizeNumber: new FormControl(this.currentTxtSize, Validators.required),
-            sizeUnit: new FormControl("px", Validators.required)
+            sizeUnit: new FormControl("px", {nonNullable: true, validators: [Validators.required]})
         })
 
         this.settingImgSize = new FormGroup({
             sizeNumber: new FormControl(this.currentImgSize, Validators.required),
-            sizeUnit: new FormControl("px", Validators.required)
+            sizeUnit: new FormControl("px", {nonNullable: true, validators: [Validators.required]})
         })
 
         this.newMsg = new FormGroup({
