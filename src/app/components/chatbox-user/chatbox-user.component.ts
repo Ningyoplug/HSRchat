@@ -5,7 +5,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 @Component({
     selector: 'app-chatbox-user',
     templateUrl: './chatbox-user.component.html',
-    styleUrls: ['./chatbox-user.component.scss']
+    styleUrls: ['./chatbox-user.component.scss'],
+    standalone: false
 })
 export class ChatboxUserComponent implements OnInit {
 

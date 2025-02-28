@@ -3,7 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
     selector: 'app-action',
     templateUrl: './action.component.html',
-    styleUrls: ['./action.component.scss']
+    styleUrls: ['./action.component.scss'],
+    standalone: false
 })
 export class ActionComponent implements OnInit {
 

@@ -5,7 +5,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.scss']
+    styleUrls: ['./chat.component.scss'],
+    standalone: false
 })
 export class ChatComponent implements OnInit {
 
