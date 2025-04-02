@@ -414,7 +414,8 @@
                                     <img class="sticker-listed" *ngFor="let sticker of stickers" src="{{ sticker }}"
                                         (click)="selectSticker(sticker)" data-bs-dismiss="modal">
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer justify-content-between">
+                                    <p>{{ stickersNumber }} stickers</p>
                                     <button type="button" class="btn btn-secondary btn-sm"
                                         data-bs-dismiss="modal">Close</button>
                                 </div>
