@@ -10,7 +10,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "23/02/2025"
+    newUpdateDate = "02/04/2025"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -50,13 +50,13 @@ export class ChatComponent implements OnInit {
 
     friend: any = {
         name: "Dan Heng",
-        icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Dan_Heng_Icon.png",
+        icon: "assets/img/icons/Dan_Heng.png",
         sub: "For anything related to the data bank, come find me."
     }
 
     user: any = {
         name: "Stelle",
-        icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png",
+        icon: "assets/img/icons/Stelle_Harmony.png",
         sub: null
     }
 
@@ -109,8 +109,8 @@ export class ChatComponent implements OnInit {
                 "Imbibitor Lunae"
             ],
             icons: [
-                "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Dan_Heng_Icon.png/",
-                "https://static.wikia.nocookie.net/houkai-star-rail/images/2/2a/Character_Dan_Heng_%E2%80%A2_Imbibitor_Lunae_Icon.png"
+                "assets/img/icons/Dan_Heng.png",
+                "assets/img/icons/Dan_Heng_Imbibitor_Lunae.png"
             ]
         },
         {
@@ -120,8 +120,8 @@ export class ChatComponent implements OnInit {
                 "Hunt"
             ],
             icons: [
-                "https://static.wikia.nocookie.net/houkai-star-rail/images/d/d3/Character_March_7th_Icon.png",
-                "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_March_7th_%28The_Hunt%29_Icon.png"
+                "assets/img/icons/March_7th.png",
+                "assets/img/icons/March_7th_Hunt.png"
             ]
         }
     ]
@@ -132,13 +132,18 @@ export class ChatComponent implements OnInit {
     charas: any = [
         {
             name: "Acheron",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/24/Character_Acheron_Icon.png",
+            icon: "assets/img/icons/Acheron.png",
             sub: "Time for Departure"
         },
         {
             name: "Aglaea",
-            icon: "https://sr.yatta.moe/hsr/assets/UI/avatar/round/1402.png",
+            icon: "assets/img/icons/Aglaea.png",
             sub: "See you at the baths"
+        },
+        {
+            name: "Anaxa",
+            icon: "assets/img/icons/Anaxa.png",
+            sub: null
         },
         {
             name: "Anonymous",
@@ -147,317 +152,327 @@ export class ChatComponent implements OnInit {
         },
         {
             name: "Argenti",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/c/c0/Character_Argenti_Icon.png",
+            icon: "assets/img/icons/Argenti.png",
             sub: "I swear to a rose"
         },
         {
             name: "Arlan",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a9/Character_Arlan_Icon.png",
+            icon: "assets/img/icons/Arlan.png",
             sub: "Peppy's emergency contact"
         },
         {
             name: "Asta",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/9f/Character_Asta_Icon.png",
+            icon: "assets/img/icons/Asta.png",
             sub: "I shouldn't buy any more stuff..."
         },
         {
             name: "Aventurine",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/d/da/Character_Aventurine_Icon.png",
+            icon: "assets/img/icons/Aventurine.png",
             sub: "Always open to pull for your game account"
         },
         {
             name: "Bailu",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/47/Character_Bailu_Icon.png",
+            icon: "assets/img/icons/Bailu.png",
             sub: "Drink more warm water and get fewer tempers!"
         },
         {
             name: "Black Swan",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/90/Character_Black_Swan_Icon.png",
+            icon: "assets/img/icons/Black_Swan.png",
             sub: "Memories are soft amber"
         },
         {
             name: "Blade",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/90/Character_Blade_Icon.png",
+            icon: "assets/img/icons/Blade.png",
             sub: null
         },
         {
             name: "Boothill",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/78/Character_Boothill_Icon.png",
+            icon: "assets/img/icons/Boothill.png",
             sub: "Pier Point Standard Heist (LFG 3/4)"
         },
         {
             name: "Bronya",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/0/0f/Character_Bronya_Icon.png",
+            icon: "assets/img/icons/Bronya.png",
             sub: "In a meeting"
         },
         {
             name: "Caelus",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/27/Character_Caelus_%28Harmony%29_Icon.png",
+            icon: "assets/img/icons/Caelus_Harmony.png",
             sub: null
         },
         {
             name: "Castorice",
-            icon: "https://sr.yatta.moe/hsr/assets/UI/avatar/round/1407.png",
+            icon: "assets/img/icons/Castorice.png",
             sub: null
         },
         {
             name: "Clara",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a4/Character_Clara_Icon.png",
+            icon: "assets/img/icons/Clara.png",
             sub: "I want to go to a picnic with everyone (>▽<)"
         },
         {
             name: "Dan Heng",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Dan_Heng_Icon.png",
+            icon: "assets/img/icons/Dan_Heng.png",
             sub: "For anything related to the data bank, come find me."
         },
         {
             name: "Dr. Ratio",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/47/Character_Dr._Ratio_Icon.png",
+            icon: "assets/img/icons/Dr_Ratio.png",
             sub: "\"There's no rush.\""
         },
         {
             name: "Feixiao",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/75/Character_Feixiao_Icon.png",
+            icon: "assets/img/icons/Feixiao.png",
             sub: "Itching for a fight"
         },
         {
             name: "Firefly",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/9e/Character_Firefly_Icon.png",
+            icon: "assets/img/icons/Firefly.png",
             sub: "I will find my dreams..."
         },
         {
             name: "Fugue",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/c/c0/Character_Fugue_Icon.png",
-            sub: ""
+            icon: "assets/img/icons/Fugue.png",
+            sub: null
         },
         {
             name: "Fu Xuan",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1a/Character_Fu_Xuan_Icon.png",
+            icon: "assets/img/icons/Fu_Xuan.png",
             sub: "I do not divine personal fortunes!"
         },
         {
             name: "Gallagher",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/12/Character_Gallagher_Icon.png",
+            icon: "assets/img/icons/Gallagher.png",
             sub: "Penaconian Dog"
         },
         {
             name: "Gepard",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/75/Character_Gepard_Icon.png",
+            icon: "assets/img/icons/Gepard.png",
             sub: "Working, apologies for the slow response"
         },
         {
             name: "Guinaifen",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/98/Character_Guinaifen_Icon.png",
+            icon: "assets/img/icons/Guinaifen.png",
             sub: "Not causing trouble, not fearing trouble, and no crazy challenges"
         },
         {
             name: "Hanya",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/99/Character_Hanya_Icon.png",
+            icon: "assets/img/icons/Hanya.png",
             sub: "Engaging in oneiromancy, do not disturb."
         },
         {
             name: "Herta",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/b/bf/Character_Herta_Icon.png",
+            icon: "assets/img/icons/Herta.png",
             sub: "This account is disabled | Business Contact: Asta"
         },
         {
             name: "Himeko",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/0/00/Character_Himeko_Icon.png",
+            icon: "assets/img/icons/Himeko.png",
             sub: "I can survive without water, but coffee is my lifeblood"
         },
         {
             name: "Hook",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/d/d5/Character_Hook_Icon.png",
+            icon: "assets/img/icons/Hook.png",
             sub: "Moles! Assemble at the Fight Club!"
         },
         {
             name: "Huohuo",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/6/68/Character_Huohuo_Icon.png",
+            icon: "assets/img/icons/Huohuo.png",
             sub: "Mr. Tail's \"Tail\""
         },
         {
+            name: "Hyacine",
+            icon: "assets/img/icons/Hyacine.png",
+            sub: null
+        },
+        {
             name: "Jade",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/f/fd/Character_Jade_Icon.png",
+            icon: "assets/img/icons/Jade.png",
             sub: "You are always welcome to Bonajade Exchange."
         },
         {
             name: "Jiaoqiu",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/48/Character_Jiaoqiu_Icon.png",
+            icon: "assets/img/icons/Jiaoqiu.png",
             sub: "There's no problem that a hot pot can't fix."
         },
         {
             name: "Jing Yuan",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/88/Character_Jing_Yuan_Icon.png",
+            icon: "assets/img/icons/Jing_Yuan.png",
             sub: "I'm not at the Seat of Divine Foresight"
         },
         {
             name: "Jingliu",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f9/Character_Jingliu_Icon.png",
+            icon: "assets/img/icons/Jingliu.png",
             sub: null
         },
         {
             name: "Kafka",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/8c/Character_Kafka_Icon.png",
+            icon: "assets/img/icons/Kafka.png",
             sub: null
         },
         {
             name: "Lingsha",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/ab/Character_Lingsha_Icon.png",
+            icon: "assets/img/icons/Lingsha.png",
             sub: "Don't get angry, don't get mad, you don't have the time to feel so bad"
         },
         {
             name: "Luka",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/c/c7/Character_Luka_Icon.png",
+            icon: "assets/img/icons/Luka.png",
             sub: "No timely reply means I'm in training."
         },
         {
             name: "Luocha",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/20/Character_Luocha_Icon.png",
+            icon: "assets/img/icons/Luocha.png",
             sub: "A simple traveling merchant"
         },
         {
             name: "Lynx",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/6/6c/Character_Lynx_Icon.png",
+            icon: "assets/img/icons/Lynx.png",
             sub: "The user you have messaged is currently unavailable"
         },
         {
             name: "March 7th",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/d/d3/Character_March_7th_Icon.png",
+            icon: "assets/img/icons/March_7th.png",
             sub: "Today is also March 7th~"
         },
         {
             name: "Misha",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/4d/Character_Misha_Icon.png",
+            icon: "assets/img/icons/Misha.png",
             sub: "Keep it up! The new world is just ahead!"
         },
         {
             name: "Moze",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/25/Character_Moze_Icon.png",
+            icon: "assets/img/icons/Moze.png",
             sub: "No signature."
         },
         {
             name: "Mydei",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/89/Character_Mydei_Icon.png",
+            icon: "assets/img/icons/Mydei.png",
             sub: null
         },
         {
             name: "Natasha",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/6/61/Character_Natasha_Icon.png",
+            icon: "assets/img/icons/Natasha.png",
             sub: "Doing outpatient runs at the Robot Settlement. Check my availability before you visit"
         },
         {
             name: "Pela",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/c/c2/Character_Pela_Icon.png",
+            icon: "assets/img/icons/Pela.png",
             sub: "Please include your name when providing information"
         },
         {
+            name: "Phainon",
+            icon: "assets/img/icons/Phainon.png",
+            sub: "Praise the sun!"
+        },
+        {
             name: "Pom-Pom",
-            icon: "https://i2.wp.com/genshinbuilds.aipurrjects.com/hsr/avatar/round/UI_Message_Contacts_Pam.png",
+            icon: "assets/img/icons/Pom_Pom.png",
             sub: "Come to Pom-Pom for Trailblazing rewards!"
         },
         {
             name: "Qingque",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/2e/Character_Qingque_Icon.png",
+            icon: "assets/img/icons/Qingque.png",
             sub: "Go ahead and work, just don't interrupt my game"
         },
         {
             name: "Rappa",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/84/Character_Rappa_Icon.png",
+            icon: "assets/img/icons/Rappa.png",
             sub: "Heart unmoved, evil pursued"
         },
         {
             name: "Robin",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/72/Character_Robin_Icon.png",
+            icon: "assets/img/icons/Robin.png",
             sub: "Let's share our wings with one another."
         },
         {
             name: "Ruan Mei",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/16/Character_Ruan_Mei_Icon.png",
+            icon: "assets/img/icons/Ruan_Mei.png",
             sub: "Those are new cakes... Where did you get them?"
         },
         {
             name: "Sampo",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/5/53/Character_Sampo_Icon.png",
+            icon: "assets/img/icons/Sampo.png",
             sub: "Certified ancient relic agent"
         },
         {
             name: "Seele",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/9a/Character_Seele_Icon.png",
+            icon: "assets/img/icons/Seele.png",
             sub: "If you have anything to say, spill it!"
         },
         {
             name: "Serval",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7c/Character_Serval_Icon.png",
+            icon: "assets/img/icons/Serval.png",
             sub: "Lacking sleep and inspiration"
         },
         {
             name: "Silver Wolf",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a3/Character_Silver_Wolf_Icon.png",
+            icon: "assets/img/icons/Silver_Wolf.png",
             sub: "Don't make a game if you don't know how to"
         },
         {
             name: "Sparkle",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/6/6b/Character_Sparkle_Icon.png",
+            icon: "assets/img/icons/Sparkle.png",
             sub: null
         },
         {
             name: "Stelle",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/7/7b/Character_Stelle_%28Harmony%29_Icon.png",
+            icon: "assets/img/icons/Stelle_Harmony.png",
             sub: null
         },
         {
             name: "Sunday",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/3/38/Character_Sunday_Icon.png",
-            sub: ""
+            icon: "assets/img/icons/Sunday.png",
+            sub: "♪ Listening to \"Had I Not Seen the Sun\""
         },
         {
             name: "Sushang",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/9/97/Character_Sushang_Icon.png",
+            icon: "assets/img/icons/Sushang.png",
             sub: "What illness makes you sleepy as soon as you read a book?"
         },
         {
             name: "The Herta",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/3/39/Character_The_Herta_Icon.png",
+            icon: "assets/img/icons/The_Herta.png",
             sub: "It's me"
         },
         {
             name: "Tingyun",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/4f/Character_Tingyun_Icon.png",
+            icon: "assets/img/icons/Tingyun.png",
             sub: "Let's talk it out and not fight~"
         },
         {
             name: "Topaz",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/89/Character_Topaz_%26_Numby_Icon.png",
+            icon: "assets/img/icons/Topaz.png",
             sub: "Off-site~ Call if important, otherwise text"
         },
         {
             name: "Tribbie",
-            icon: "https://sr.yatta.moe/hsr/assets/UI/avatar/round/1403.png",
+            icon: "assets/img/icons/Tribbie.png",
             sub: "Tribbie is always available~"
         },
         {
             name: "Welt",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/1/11/Character_Welt_Icon.png",
+            icon: "assets/img/icons/Welt.png",
             sub: "Everyone on the Express, please constantly keep in touch"
         },
         {
             name: "Xueyi",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/2/23/Character_Xueyi_Icon.png",
+            icon: "assets/img/icons/Xueyi.png",
             sub: "In seclusion. Do not disturb."
         },
         {
             name: "Yanqing",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/5/57/Character_Yanqing_Icon.png",
+            icon: "assets/img/icons/Yanqing.png",
             sub: "Did the Artisanship Commission have new products today? No"
         },
         {
             name: "Yukong",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/3/32/Character_Yukong_Icon.png",
+            icon: "assets/img/icons/Yukong.png",
             sub: "I wish to take to the skies once more..."
         },
         {
             name: "Yunli",
-            icon: "https://static.wikia.nocookie.net/houkai-star-rail/images/4/43/Character_Yunli_Icon.png",
+            icon: "assets/img/icons/Yunli.png",
             sub: "(´・ω・`) Fight?"
         }
     ]
