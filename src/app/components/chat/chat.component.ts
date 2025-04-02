@@ -206,6 +206,11 @@ export class ChatComponent implements OnInit {
             sub: null
         },
         {
+            name: "Cipher",
+            icon: "assets/img/icons/Cipher.png",
+            sub: null
+        },
+        {
             name: "Clara",
             icon: "assets/img/icons/Clara.png",
             sub: "I want to go to a picnic with everyone (>▽<)"
