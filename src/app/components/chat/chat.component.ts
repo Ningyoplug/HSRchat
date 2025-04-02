@@ -28,7 +28,7 @@ export class ChatComponent implements OnInit {
     checked: boolean = false;
     allSaves: any[] = [];
     charaName: any;
-    stickersNumber: number = 305;
+    stickersNumber: number = 337;
     uploadedImg: string = ""
 
     quest: any = {
