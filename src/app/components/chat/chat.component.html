@@ -113,7 +113,7 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                            <!-- list of characters -->
+                            <!-- LIST OF CHARACTERS -->
                             <li *ngFor="let chara of charas">
                                 <a class="dropdown-item" (click)="selectChara(chara)">{{ chara.name }}</a>
                             </li>
@@ -132,7 +132,7 @@
                     </button>
                     <!-- DROPDOWN MENU -->
                     <ul class="dropdown-menu">
-                        <div id="version-list-scroll" *ngIf="!switchCheck">
+                        <div id="version-list-scroll" *ngIf="!switchCheck && findElement(friend.name)">
                             <!-- list of versions -->
                             <li *ngFor="let version of findElement(friend.name).versions; let i = index">
                                 <a class="d-flex dropdown-item"
@@ -143,7 +143,7 @@
                                 </a>
                             </li>
                         </div>
-                        <div id="version-list-scroll" *ngIf="switchCheck">
+                        <div id="version-list-scroll" *ngIf="switchCheck && findElement(user.name)">
                             <!-- list of versions -->
                             <li *ngFor="let version of findElement(user.name).versions; let i = index">
                                 <a class="d-flex dropdown-item"
@@ -171,19 +171,25 @@
                                     How to use images
                                 </div>
                                 <div class="modal-body">
-                                    <p>There are two ways to make a character send an image: by using an <i>image URL</i>, meaning that image needs to already exist on the internet, or by <i>uploading an image</i> from your device.</p>
+                                    <p>There are two ways to make a character send an image: by using an <i>image
+                                            URL</i>, meaning that image needs to already exist on the internet, or by
+                                        <i>uploading an image</i> from your device.
+                                    </p>
 
                                     The image URL method is the more reliable one.<br><br>
 
                                     <p>
-                                        If you use a URL, there should be no issues when you decide to save your conversation via the save feature.<br>
-                                        However, if you upload an image from your device, even if you save the the conversation, <i>the image will disappear once you refresh the page</i>.
+                                        If you use a URL, there should be no issues when you decide to save your
+                                        conversation via the save feature.<br>
+                                        However, if you upload an image from your device, even if you save the the
+                                        conversation, <i>the image will disappear once you refresh the page</i>.
                                     </p>
 
                                     <h5>How to get an image URL:</h5>
 
-                                    <p>Upload the image somewhere on the internet first. You can post it on social media (eg. Twitter) or use a site like <a href="https://imgbb.com/"
-                                                target="_blank">ImgBB</a>.
+                                    <p>Upload the image somewhere on the internet first. You can post it on social media
+                                        (eg. Twitter) or use a site like <a href="https://imgbb.com/"
+                                            target="_blank">ImgBB</a>.
 
                                     <p>Once your image has been posted online, right click it and select "Copy image
                                         URL".<br>
@@ -208,7 +214,8 @@
                 <div class="d-flex flex-column align-items-center mb-3"
                     *ngIf="photoCheck && !actionCheck && !groupChat">
                     <div class="mb-2 text-center">
-                        <label for="formFileSm" class="form-label medium-text fst-italic">...or upload an image and press "Send"!</label>
+                        <label for="formFileSm" class="form-label medium-text fst-italic">...or upload an image and
+                            press "Send"!</label>
                         <input class="form-control form-control-sm" type="file" id="uploadImage" accept="image/*"
                             (change)="getUploadedImg()">
                     </div>
@@ -219,10 +226,12 @@
                 <div class="form-check form-switch d-flex justify-content-center">
                     <input class="form-check-input me-2" type="checkbox" role="switch" id="flexSwitchCheckDefault"
                         (click)="onSwitchChecked()">
-                    <label *ngIf="!switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ friend.name
-                        }}</label>
-                    <label *ngIf="switchCheck" class="form-check-label" for="flexSwitchCheckDefault">{{ user.name
-                        }}</label>
+                    <label *ngIf="!switchCheck" class="form-check-label" for="flexSwitchCheckDefault">
+                        {{ friend.name }}
+                    </label>
+                    <label *ngIf="switchCheck" class="form-check-label" for="flexSwitchCheckDefault">
+                        {{ user.name }}
+                    </label>
                 </div>
 
                 <div class="mt-3 mb-4">
@@ -458,7 +467,8 @@
                                                     Added <i>new characters</i>: Anaxa, Hyacine, Phainon, Cipher.
                                                 </li>
                                                 <li>
-                                                    Added more <i>stickers</i>! The list should now be up to date with the latest set, Pom-Pom Gallery No. 21.
+                                                    Added more <i>stickers</i>! The list should now be up to date with
+                                                    the latest set, Pom-Pom Gallery No. 21.
                                                 </li>
                                                 <li>
                                                     Added Sunday's subtitle!
@@ -468,15 +478,23 @@
                                             <p class="text-grey text-center">23/02/2025</p>
                                             <ul>
                                                 <li>
-                                                    Characters can now send each other <i>photos that are saved on your device!</i><br>
-                                                    However, be aware that such photos cannot be saved and will disappear once you refresh the page, even if you try to save the conversation. If you want your saved conversations to not have broken photos, please continue to use image URLs instead.<br>
-                                                    <s>This is the compromise to be able to have this feature at the moment. Hopefully at some point I'll learn how to save those images locally too.</s>
+                                                    Characters can now send each other <i>photos that are saved on your
+                                                        device!</i><br>
+                                                    However, be aware that such photos cannot be saved and will
+                                                    disappear once you refresh the page, even if you try to save the
+                                                    conversation. If you want your saved conversations to not have
+                                                    broken photos, please continue to use image URLs instead.<br>
+                                                    <s>This is the compromise to be able to have this feature at the
+                                                        moment. Hopefully at some point I'll learn how to save those
+                                                        images locally too.</s>
                                                 </li>
                                                 <li>
-                                                    Updated the Photo help icon <i class="bi bi-question-circle"></i> explanation accordingly.
+                                                    Updated the Photo help icon <i class="bi bi-question-circle"></i>
+                                                    explanation accordingly.
                                                 </li>
                                                 <li>
-                                                    Fixed an issue with the custom settings not working correctly. Custom text size and image size should work again now!
+                                                    Fixed an issue with the custom settings not working correctly.
+                                                    Custom text size and image size should work again now!
                                                 </li>
                                             </ul>
 

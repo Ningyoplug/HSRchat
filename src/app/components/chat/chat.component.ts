@@ -602,6 +602,10 @@ export class ChatComponent implements OnInit {
         }
     }
 
+    logThis(e: any) {
+        console.log(e)
+    }
+
     findName(name: string) {
         if (this.charaVersions.some((e: { name: string; }) => e.name === name)) {
             return true
