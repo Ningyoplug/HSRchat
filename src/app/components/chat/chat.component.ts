@@ -10,7 +10,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "02/04/2025"
+    newUpdateDate = "02/06/2025"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -143,12 +143,17 @@ export class ChatComponent implements OnInit {
         {
             name: "Anaxa",
             icon: "assets/img/icons/Anaxa.png",
-            sub: null
+            sub: "Then let me ask you"
         },
         {
             name: "Anonymous",
             icon: "assets/img/anon-default.png",
             sub: null
+        },
+        {
+            name: "Archer",
+            icon: "assets/img/icons/Archer.png",
+            sub: ""
         },
         {
             name: "Argenti",
@@ -203,12 +208,12 @@ export class ChatComponent implements OnInit {
         {
             name: "Castorice",
             icon: "assets/img/icons/Castorice.png",
-            sub: null
+            sub: "Writing as we speak"
         },
         {
             name: "Cipher",
             icon: "assets/img/icons/Cipher.png",
-            sub: null
+            sub: "Show me the money!"
         },
         {
             name: "Clara",
@@ -288,7 +293,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Hyacine",
             icon: "assets/img/icons/Hyacine.png",
-            sub: null
+            sub: "The Twilight Courtyard, always by your side~"
         },
         {
             name: "Jade",
@@ -353,7 +358,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Mydei",
             icon: "assets/img/icons/Mydei.png",
-            sub: null
+            sub: "30% Training, 70% Diet"
         },
         {
             name: "Natasha",
@@ -396,9 +401,19 @@ export class ChatComponent implements OnInit {
             sub: "Those are new cakes... Where did you get them?"
         },
         {
+            name: "Saber",
+            icon: "assets/img/icons/Saber.png",
+            sub: ""
+        },
+        {
             name: "Sampo",
             icon: "assets/img/icons/Sampo.png",
             sub: "Certified ancient relic agent"
+        },
+        {
+            name: "Screwllum",
+            icon: "assets/img/icons/Screwllum.png",
+            sub: "Looking forward to meeting every little insect again"
         },
         {
             name: "Seele",
