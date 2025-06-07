@@ -20,8 +20,8 @@
                 (sendEditBack)="editMessage($event)"></app-message>
 
             <!-- Quest -->
-            <div class="pb-3 d-flex justify-content-center">
-            <div id="quest" class="m-auto position-relative" *ngIf="questCheck">
+            <div class="pb-3 d-flex justify-content-center" *ngIf="questCheck">
+            <div id="quest" class="m-auto position-relative">
                 <!-- If Adventure -->
                 <div class="quest-icon position-absolute">
                     <img class="w-100" src="{{ quest.type }}" alt="Adventure Mission icon" *ngIf="quest.type">
