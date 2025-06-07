@@ -1,5 +1,6 @@
 <div id="chat-interior" class="bg-chat">
-    <div class="chat-content">
+
+    <div id="chat-canvas" class="chat-content">
 
         <div class="px-4 mb-2 pt-2">
             <!-- CHAT NAME -->
@@ -58,7 +59,6 @@
     </div>
 
     <hr>
-
 
     <div id="textbox" class="px-4 py-3">
         <div class="chat-content">
@@ -278,168 +278,195 @@
 
 
 
+                <div class="row">
+                    <div id="buttons-box" class="d-flex justify-content-center">
+                        <!-- SETTINGS -->
+                        <div class="form-check d-flex justify-content-center">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#settingsModal" (click)="getSaves()">
+                                <i class="bi bi-gear-fill text-reset"></i>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="settingsModal" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="settingsLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header me-0">
+                                            Custom settings
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
 
-                <div id="buttons-box" class="d-flex justify-content-evenly">
-                    <!-- SETTINGS -->
-                    <div class="form-check d-flex justify-content-center p-0">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#settingsModal" (click)="getSaves()">
-                            <i class="bi bi-gear-fill text-secondary"></i>
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="settingsModal" data-bs-keyboard="false" tabindex="-1"
-                            aria-labelledby="settingsLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header me-0">
-                                        Custom settings
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <!-- SETTINGS LIST -->
-                                        <form [formGroup]="settingTxtSize" (ngSubmit)="saveSettingTxtSize()">
-                                            <div class="input-group input-group-sm mb-3 setting">
-                                                <span class="input-group-text">Chat text size:</span>
-                                                <input type="text" class="form-control" aria-label="amount"
-                                                    formControlName="sizeNumber" value="{{currentTxtSize}}">
-                                                <select class="form-select" id="txtSizeUnit" formControlName="sizeUnit">
-                                                    <option value="px" selected>px</option>
-                                                    <option value="rem">rem</option>
-                                                    <option value="em">em</option>
-                                                </select>
-                                                <button class="btn btn-outline-secondary" type="submit">Save</button>
-                                                <div class="pt-1 dlt">
-                                                    <i class="bi bi-x-circle ms-2 text-danger delete-setting"></i>
-                                                    <i class="bi bi-x-circle-fill ms-2 text-danger delete-setting-hover"
-                                                        (click)="resetSetting('txtSize')"></i>
+                                            <!-- SETTINGS LIST -->
+                                            <form [formGroup]="settingTxtSize" (ngSubmit)="saveSettingTxtSize()">
+                                                <div class="input-group input-group-sm mb-3 setting">
+                                                    <span class="input-group-text">Chat text size:</span>
+                                                    <input type="text" class="form-control" aria-label="amount"
+                                                        formControlName="sizeNumber" value="{{currentTxtSize}}">
+                                                    <select class="form-select" id="txtSizeUnit"
+                                                        formControlName="sizeUnit">
+                                                        <option value="px" selected>px</option>
+                                                        <option value="rem">rem</option>
+                                                        <option value="em">em</option>
+                                                    </select>
+                                                    <button class="btn btn-outline-secondary"
+                                                        type="submit">Save</button>
+                                                    <div class="pt-1 dlt">
+                                                        <i class="bi bi-x-circle ms-2 text-danger delete-setting"></i>
+                                                        <i class="bi bi-x-circle-fill ms-2 text-danger delete-setting-hover"
+                                                            (click)="resetSetting('txtSize')"></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
 
-                                        <form [formGroup]="settingImgSize" (ngSubmit)="saveSettingImgSize()">
-                                            <div class="input-group input-group-sm mb-3 setting">
-                                                <span class="input-group-text">Photo size:</span>
-                                                <input type="text" class="form-control" aria-label="amount"
-                                                    formControlName="sizeNumber" value="{{currentImgSize}}">
-                                                <select class="form-select" id="imgSizeUnit" formControlName="sizeUnit">
-                                                    <option selected value="px">px</option>
-                                                    <option value="rem">rem</option>
-                                                    <option value="em">em</option>
-                                                </select>
-                                                <!-- Save -->
-                                                <button class="btn btn-outline-secondary" type="submit">Save</button>
-                                                <div class="pt-1 dlt">
-                                                    <i class="bi bi-x-circle ms-2 text-danger delete-setting"></i>
-                                                    <i class="bi bi-x-circle-fill ms-2 text-danger delete-setting-hover"
-                                                        (click)="resetSetting('imgSize')"></i>
+                                            <form [formGroup]="settingImgSize" (ngSubmit)="saveSettingImgSize()">
+                                                <div class="input-group input-group-sm mb-3 setting">
+                                                    <span class="input-group-text">Photo size:</span>
+                                                    <input type="text" class="form-control" aria-label="amount"
+                                                        formControlName="sizeNumber" value="{{currentImgSize}}">
+                                                    <select class="form-select" id="imgSizeUnit"
+                                                        formControlName="sizeUnit">
+                                                        <option selected value="px">px</option>
+                                                        <option value="rem">rem</option>
+                                                        <option value="em">em</option>
+                                                    </select>
+                                                    <!-- Save -->
+                                                    <button class="btn btn-outline-secondary"
+                                                        type="submit">Save</button>
+                                                    <div class="pt-1 dlt">
+                                                        <i class="bi bi-x-circle ms-2 text-danger delete-setting"></i>
+                                                        <i class="bi bi-x-circle-fill ms-2 text-danger delete-setting-hover"
+                                                            (click)="resetSetting('imgSize')"></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
 
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary btn-sm"
-                                            data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SAVE CHAT -->
+                        <div class="form-check d-flex justify-content-center ps-2">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#savesModal" (click)="getSaves()">
+                                <!-- Save chat -->
+                                <i class="bi bi-floppy2-fill text-reset"></i>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="savesModal" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="savesLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header me-0">
+                                            <button class="btn btn-outline-secondary btn-sm" (click)="addSave()">Save
+                                                current chat</button>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- SAVES LIST -->
+                                            <ul class="list-group list-group-horizontal mb-1"
+                                                *ngFor="let save of allSaves; let i = index">
+                                                <li class="list-group-item list-group-item-action save"
+                                                    (click)="selectSave(save)">
+                                                    <span class="text-grey">{{ save[0].sentBy.name }}</span>: {{
+                                                    save[0].text }}
+                                                </li>
+                                                <li class="list-group-item list-group-item-action delete-save p-1"
+                                                    (click)="deleteSave(i)">
+                                                    <img src="assets/img/symbols/webview_nav_close_default.png"
+                                                        class="ms-1" width="14px" height="14px">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SAVE IMAGE -->
+                        <div class="form-check d-flex justify-content-center ps-2">
+                            <button type="button" class="btn btn-outline-secondary" (click)="saveImage()">
+                                <i class="bi bi-download text-reset"></i>
+                            </button>
+                        </div>
+
+                        <!-- STICKERS -->
+                        <div class="form-check d-flex justify-content-center ps-2">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                data-bs-target="#stickersModal" (click)="getStickers()">
+                                <img src="/assets/img/stickers/sticker_224.png" width="30px" height="30px">
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="stickersModal" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="stickersLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="stickersLabel">
+                                                Post a sticker as
+                                                <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}"
+                                                    width="30px" height="30px"><span
+                                                    *ngIf="!switchCheck && !actionCheck">
+                                                    {{ friend.name
+                                                    }}</span>
+                                                <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}"
+                                                    width="30px" height="30px"><span
+                                                    *ngIf="switchCheck && !actionCheck"> {{ user.name
+                                                    }}</span>
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- STICKERS LIST -->
+                                            <img class="sticker-listed" *ngFor="let sticker of stickers"
+                                                src="{{ sticker }}" (click)="selectSticker(sticker)"
+                                                data-bs-dismiss="modal">
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <p>{{ stickersNumber }} stickers</p>
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- SAVES -->
-                    <div class="form-check d-flex justify-content-center p-0">
+                <div class="row">
+                    <div class="d-flex justify-content-center mt-2">
+
+                        <a href="https://x.com/hsrchatsite" target="_blank"
+                            class="twitter btn btn-outline-secondary rounded-circle btn-sm ms-2">
+                            <i class="bi bi-twitter text-reset"></i>
+                        </a>
+
+                        <!-- CHANGELOG -->
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#savesModal" (click)="getSaves()">
-                            Save
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="savesModal" data-bs-keyboard="false" tabindex="-1"
-                            aria-labelledby="savesLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header me-0">
-                                        <button class="btn btn-outline-secondary btn-sm" (click)="addSave()">Save
-                                            current chat</button>
-
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- SAVES LIST -->
-                                        <ul class="list-group list-group-horizontal mb-1"
-                                            *ngFor="let save of allSaves; let i = index">
-                                            <li class="list-group-item list-group-item-action save"
-                                                (click)="selectSave(save)">
-                                                <span class="text-grey">{{ save[0].sentBy.name }}</span>: {{
-                                                save[0].text }}
-                                            </li>
-                                            <li class="list-group-item list-group-item-action delete-save p-1"
-                                                (click)="deleteSave(i)">
-                                                <img src="assets/img/symbols/webview_nav_close_default.png" class="ms-1"
-                                                    width="14px" height="14px">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary btn-sm"
-                                            data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- STICKERS -->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                        data-bs-target="#stickersModal" (click)="getStickers()">
-                        <img src="/assets/img/stickers/sticker_224.png" width="30px" height="30px">
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="stickersModal" data-bs-keyboard="false" tabindex="-1"
-                        aria-labelledby="stickersLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="stickersLabel">
-                                        Post a sticker as
-                                        <img *ngIf="!switchCheck && !actionCheck" src="{{ friend.icon }}" width="30px"
-                                            height="30px"><span *ngIf="!switchCheck && !actionCheck"> {{ friend.name
-                                            }}</span>
-                                        <img *ngIf="switchCheck && !actionCheck" src="{{ user.icon }}" width="30px"
-                                            height="30px"><span *ngIf="switchCheck && !actionCheck"> {{ user.name
-                                            }}</span>
-                                    </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- STICKERS LIST -->
-                                    <img class="sticker-listed" *ngFor="let sticker of stickers" src="{{ sticker }}"
-                                        (click)="selectSticker(sticker)" data-bs-dismiss="modal">
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                    <p>{{ stickersNumber }} stickers</p>
-                                    <button type="button" class="btn btn-secondary btn-sm"
-                                        data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- </div> -->
-
-
-
-                    <!-- CHANGELOG -->
-                    <div class="form-check d-flex justify-content-center p-0">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#changelogModal" (click)="isNewUpdate()">
+                        <button type="button"
+                            class="btn btn-outline-secondary btn-sm rounded-2 ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#changelogModal"
+                            style="font-size: 18px;"
+                            (click)="isNewUpdate()">
                             <img src="https://graphic.neocities.org/blinknew1.gif" *ngIf="newChangelog">
                             Changelog
                         </button>
@@ -459,7 +486,14 @@
                                         <!-- CHANGELOG MODAL CONTENT -->
                                         <hr class="mb-3">
 
-                                        <div id="changelog-scroll" class="padding1rem pt-0">
+                                        <div id="changelog-scroll" class="pt-0">
+
+                                            <p class="text-grey text-center">07/06/2025</p>
+                                            <ul>
+                                                <li>
+                                                    Added a Save Image <i class="bi bi-download text-reset"></i> button! You can use it to save an image of the entire conversation.
+                                                </li>
+                                            </ul>
 
                                             <p class="text-grey text-center">02/04/2025</p>
                                             <ul>
@@ -473,7 +507,8 @@
                                                     Updated some characters' subtitle.
                                                 </li>
                                                 <li>
-                                                    Added more stickers! The list should now be up to date with the latest set, Pom-Pom Gallery No. 22.
+                                                    Added more stickers! The list should now be up to date with the
+                                                    latest set, Pom-Pom Gallery No. 22.
                                                 </li>
                                             </ul>
 
@@ -655,16 +690,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="text-center mt-3">
-                    <a href="https://x.com/hsrchatsite" target="_blank">
-                        <i class="bi bi-twitter"></i>
-                    </a>
-                </div>
-
-
 
             </div>
         </div>

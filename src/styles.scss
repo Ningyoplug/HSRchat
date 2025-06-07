@@ -110,6 +110,7 @@ hr {
     top: 10px;
     display: none;
 }
+
 .edit {
     left: 5px;
     top: 50px;
@@ -117,7 +118,8 @@ hr {
 }
 
 .msg:hover .delete,
-.action:hover .delete, .msg:hover .edit {
+.action:hover .delete,
+.msg:hover .edit {
     display: block !important;
 }
 
@@ -143,10 +145,11 @@ hr {
     display: none;
 }
 
-.setting > .dlt:hover {
+.setting>.dlt:hover {
     .delete-setting {
         display: none;
     }
+
     .delete-setting-hover {
         display: block !important;
     }
@@ -155,16 +158,6 @@ hr {
 .edit i {
     font-size: 0.75rem;
     margin-left: 4px;
-}
-
-.bi-twitter {
-    &:hover {
-        color: #FCBF47;
-    }
-}
-
-.padding1rem {
-    padding: 1rem;
 }
 
 .quest-icon {
@@ -189,7 +182,7 @@ hr {
 
 .tiny-text {
     font-size: 0.5rem;
-    color:#888;
+    color: #888;
 }
 
 .input-group-lg>.form-select,
@@ -364,10 +357,6 @@ hr {
 #quest-state,
 #quest-name {
     padding-left: 105px;
-}
-
-#buttons-box {
-    margin-left: 53px;
 }
 
 

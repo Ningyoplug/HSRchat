@@ -16,3 +16,20 @@
         font-size: 0.8rem;
     }
 }
+
+.btn:not(.btn-sm) {
+    line-height: 20px;
+}
+
+.twitter {
+    color: #1D9BF0;
+    text-decoration: none;
+
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0.17rem 0.35rem;
+
+    &:hover {
+        color: #FCBF47;
+    }
+}

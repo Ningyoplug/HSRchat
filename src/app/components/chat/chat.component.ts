@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import html2canvas from 'html2canvas';
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 @Component({
     selector: 'app-chat',
@@ -10,7 +13,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "02/06/2025"
+    newUpdateDate = "07/06/2025"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -507,36 +510,36 @@ export class ChatComponent implements OnInit {
     messages: any = []
     stickers: any = []
 
-    constructor(private sanitizer:DomSanitizer) { }
+    constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {
         if (localStorage.getItem("txtSize")) {
             this.settings.txtSize = true
             let size = localStorage.getItem("txtSize")!
             if (size.includes("rem")) {
-                this.currentTxtSize = size.slice(0, size.length-3)
+                this.currentTxtSize = size.slice(0, size.length - 3)
             } else {
-                this.currentTxtSize = size.slice(0, size.length-2)
+                this.currentTxtSize = size.slice(0, size.length - 2)
             }
         }
         if (localStorage.getItem("imgSize")) {
             this.settings.imgSize = true
             let size = localStorage.getItem("imgSize")!
             if (size.includes("rem")) {
-                this.currentImgSize = size.slice(0, size.length-3)
+                this.currentImgSize = size.slice(0, size.length - 3)
             } else {
-                this.currentImgSize = size.slice(0, size.length-2)
+                this.currentImgSize = size.slice(0, size.length - 2)
             }
         }
 
         this.settingTxtSize = new FormGroup({
             sizeNumber: new FormControl(this.currentTxtSize, Validators.required),
-            sizeUnit: new FormControl("px", {nonNullable: true, validators: [Validators.required]})
+            sizeUnit: new FormControl("px", { nonNullable: true, validators: [Validators.required] })
         })
 
         this.settingImgSize = new FormGroup({
             sizeNumber: new FormControl(this.currentImgSize, Validators.required),
-            sizeUnit: new FormControl("px", {nonNullable: true, validators: [Validators.required]})
+            sizeUnit: new FormControl("px", { nonNullable: true, validators: [Validators.required] })
         })
 
         this.newMsg = new FormGroup({
@@ -601,7 +604,7 @@ export class ChatComponent implements OnInit {
             }
         }
 
-        if (localStorage.getItem("March7th") ) {
+        if (localStorage.getItem("March7th")) {
             let chosenIcon = localStorage.getItem("March7th")
             for (let i = 0; i < this.charas.length; i++) {
                 let nameWithoutSpaces = this.charas[i].name.replace(/\s+/g, '');
@@ -828,8 +831,26 @@ export class ChatComponent implements OnInit {
         localStorage.setItem("cc", JSON.stringify(this.customCharas));
     }
 
-    sanitize(url:string){
+    sanitize(url: string) {
         return this.sanitizer.bypassSecurityTrustUrl(url);
+    }
+
+    saveImage() {
+        const node = document.getElementById("chat-canvas")!;
+
+        htmlToImage
+            .toPng(node, { backgroundColor: "#D3D9DD" })
+            .then((dataUrl) => {
+                let link = document.createElement('a');
+                link.href = dataUrl;
+                link.download = 'hsrchat.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch((err) => {
+                console.error('oops, something went wrong!', err);
+            });
     }
 
     onSubmit(e?: string) {
