@@ -12,6 +12,7 @@ import * as htmlToImage from 'html-to-image';
 export class ChatComponent implements OnInit {
 
     newUpdateDate = "21/09/2025"
+    stickersNumber: number = 372;
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -29,7 +30,6 @@ export class ChatComponent implements OnInit {
     checked: boolean = false;
     allSaves: any[] = [];
     charaName: any;
-    stickersNumber: number = 353;
     uploadedImg: string = ""
 
     quest: any = {
@@ -684,7 +684,7 @@ export class ChatComponent implements OnInit {
             for (let i = 0; i < this.stickersNumber; i++) {
                 console.log();
 
-                this.stickers.push("assets/img/stickers/sticker_" + i + ".png")
+                this.stickers.push("assets/img/stickers/sticker_" + (i+1) + ".png")
             }
             this.stickersLoaded = true
         } else { return }
