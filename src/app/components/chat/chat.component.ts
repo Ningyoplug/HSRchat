@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import html2canvas from 'html2canvas';
 import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 @Component({
     selector: 'app-chat',
@@ -13,7 +11,7 @@ import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "07/06/2025"
+    newUpdateDate = "21/09/2025"
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -109,11 +107,13 @@ export class ChatComponent implements OnInit {
             name: "Dan Heng",
             versions: [
                 "Default",
-                "Imbibitor Lunae"
+                "Imbibitor Lunae",
+                "Permansor Terrae"
             ],
             icons: [
                 "assets/img/icons/Dan_Heng.png",
-                "assets/img/icons/Dan_Heng_Imbibitor_Lunae.png"
+                "assets/img/icons/Dan_Heng_Imbibitor_Lunae.png",
+                "assets/img/icons/Dan_Heng_Permansor_Terrae.png"
             ]
         },
         {
@@ -214,6 +214,11 @@ export class ChatComponent implements OnInit {
             sub: "Writing as we speak"
         },
         {
+            name: "Cerydra",
+            icon: "assets/img/icons/Cerydra.png",
+            sub: "For governance @Carminum @Helkolithist. Personal affairs @Gladiorum"
+        },
+        {
             name: "Cipher",
             icon: "assets/img/icons/Cipher.png",
             sub: "Show me the money!"
@@ -224,6 +229,11 @@ export class ChatComponent implements OnInit {
             sub: "I want to go to a picnic with everyone (>▽<)"
         },
         {
+            name: "Cyrene",
+            icon: "assets/img/icons/Cyrene.png",
+            sub: null
+        },
+        {
             name: "Dan Heng",
             icon: "assets/img/icons/Dan_Heng.png",
             sub: "For anything related to the data bank, come find me."
@@ -232,6 +242,11 @@ export class ChatComponent implements OnInit {
             name: "Dr. Ratio",
             icon: "assets/img/icons/Dr_Ratio.png",
             sub: "\"There's no rush.\""
+        },
+        {
+            name: "Evernight",
+            icon: "assets/img/icons/Evernight.png",
+            sub: null
         },
         {
             name: "Feixiao",
@@ -297,6 +312,11 @@ export class ChatComponent implements OnInit {
             name: "Hyacine",
             icon: "assets/img/icons/Hyacine.png",
             sub: "The Twilight Courtyard, always by your side~"
+        },
+        {
+            name: "Hysilens",
+            icon: "assets/img/icons/Hysilens.png",
+            sub: "Greetings. Can you give me honey brew?"
         },
         {
             name: "Jade",
@@ -618,6 +638,9 @@ export class ChatComponent implements OnInit {
                 this.user.icon = chosenIcon
             }
         }
+
+
+        // stickersNumber
     }
 
     logThis(e: any) {
@@ -659,6 +682,8 @@ export class ChatComponent implements OnInit {
     getStickers() {
         if (!this.stickersLoaded) {
             for (let i = 0; i < this.stickersNumber; i++) {
+                console.log();
+
                 this.stickers.push("assets/img/stickers/sticker_" + i + ".png")
             }
             this.stickersLoaded = true
