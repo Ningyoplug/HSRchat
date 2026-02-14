@@ -11,8 +11,8 @@ import * as htmlToImage from 'html-to-image';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "21/09/2025"
-    stickersNumber: number = 372;
+    newUpdateDate = "14/02/2026"
+    stickersNumber: number = 428;
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -167,6 +167,11 @@ export class ChatComponent implements OnInit {
             name: "Arlan",
             icon: "assets/img/icons/Arlan.png",
             sub: "Peppy's emergency contact"
+        },
+        {
+            name: "Ashveil",
+            icon: "assets/img/icons/Ashveil.png",
+            sub: null
         },
         {
             name: "Asta",
@@ -459,6 +464,11 @@ export class ChatComponent implements OnInit {
             sub: null
         },
         {
+            name: "Sparxie",
+            icon: "assets/img/icons/Sparxie.png",
+            sub: "If the chat gets interrupted, Sparxie will disappear!"
+        },
+        {
             name: "Stelle",
             icon: "assets/img/icons/Stelle_Harmony.png",
             sub: null
@@ -472,6 +482,11 @@ export class ChatComponent implements OnInit {
             name: "Sushang",
             icon: "assets/img/icons/Sushang.png",
             sub: "What illness makes you sleepy as soon as you read a book?"
+        },
+        {
+            name: "The Dahlia",
+            icon: "assets/img/icons/The_Dahlia.png",
+            sub: "Why aren't you talking?"
         },
         {
             name: "The Herta",
@@ -507,6 +522,11 @@ export class ChatComponent implements OnInit {
             name: "Yanqing",
             icon: "assets/img/icons/Yanqing.png",
             sub: "Did the Artisanship Commission have new products today? No"
+        },
+        {
+            name: "Yao Guang",
+            icon: "assets/img/icons/Yao_Guang.png",
+            sub: "Victory"
         },
         {
             name: "Yukong",
