@@ -152,6 +152,17 @@ export class ChatComponent implements OnInit {
                 "assets/img/icons/Silver_Wolf.png",
                 "assets/img/icons/Silver_Wolf_LV.999.png",
             ]
+        },
+        {
+            name: "Himeko",
+            versions: [
+                "Default",
+                "Nova"
+            ],
+            icons: [
+                "assets/img/icons/Himeko.png",
+                "assets/img/icons/Himeko_Nova.png",
+            ]
         }
     ]
 
