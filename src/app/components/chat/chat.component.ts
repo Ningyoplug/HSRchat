@@ -11,8 +11,8 @@ import * as htmlToImage from 'html-to-image';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "14/02/2026"
-    stickersNumber: number = 428;
+    newUpdateDate = "24/06/2026"
+    stickersNumber: number = 444;
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -79,13 +79,15 @@ export class ChatComponent implements OnInit {
                 "Destruction",
                 "Preservation",
                 "Harmony",
-                "Remembrance"
+                "Remembrance",
+                "Elation"
             ],
             icons: [
                 "assets/img/icons/Stelle_Destruction.png",
                 "assets/img/icons/Stelle_Preservation.png",
                 "assets/img/icons/Stelle_Harmony.png",
-                "assets/img/icons/Stelle_Remembrance.png"
+                "assets/img/icons/Stelle_Remembrance.png",
+                "assets/img/icons/Stelle_Elation.png"
             ]
         },
         {
@@ -94,13 +96,15 @@ export class ChatComponent implements OnInit {
                 "Destruction",
                 "Preservation",
                 "Harmony",
-                "Remembrance"
+                "Remembrance",
+                "Elation"
             ],
             icons: [
                 "assets/img/icons/Caelus_Destruction.png",
                 "assets/img/icons/Caelus_Preservation.png",
                 "assets/img/icons/Caelus_Harmony.png",
-                "assets/img/icons/Caelus_Remembrance.png"
+                "assets/img/icons/Caelus_Remembrance.png",
+                "assets/img/icons/Caelus_Elation.png"
             ]
         },
         {
@@ -125,6 +129,28 @@ export class ChatComponent implements OnInit {
             icons: [
                 "assets/img/icons/March_7th.png",
                 "assets/img/icons/March_7th_Hunt.png"
+            ]
+        },
+        {
+            name: "Blade",
+            versions: [
+                "Default",
+                "Mortenax"
+            ],
+            icons: [
+                "assets/img/icons/Blade.png",
+                "assets/img/icons/Blade_Mortenax.png",
+            ]
+        },
+        {
+            name: "Silver Wolf",
+            versions: [
+                "Default",
+                "LV.999"
+            ],
+            icons: [
+                "assets/img/icons/Silver_Wolf.png",
+                "assets/img/icons/Silver_Wolf_LV.999.png",
             ]
         }
     ]
@@ -156,7 +182,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Archer",
             icon: "assets/img/icons/Archer.png",
-            sub: ""
+            sub: "AAA-rank Professional Housekeeper"
         },
         {
             name: "Argenti",
@@ -171,7 +197,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Ashveil",
             icon: "assets/img/icons/Ashveil.png",
-            sub: null
+            sub: "Answer"
         },
         {
             name: "Asta",
@@ -236,7 +262,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Cyrene",
             icon: "assets/img/icons/Cyrene.png",
-            sub: null
+            sub: "Believe that romance is like the first time we met ♪"
         },
         {
             name: "Dan Heng",
@@ -249,9 +275,14 @@ export class ChatComponent implements OnInit {
             sub: "\"There's no rush.\""
         },
         {
+            name: "Evanescia",
+            icon: "assets/img/icons/Evanescia.png",
+            sub: "March Bunny taking assignments long-term! Also taking other requests!"
+        },
+        {
             name: "Evernight",
             icon: "assets/img/icons/Evernight.png",
-            sub: null
+            sub: "██████, don't sleep too soundly tonight"
         },
         {
             name: "Feixiao",
@@ -282,6 +313,11 @@ export class ChatComponent implements OnInit {
             name: "Gepard",
             icon: "assets/img/icons/Gepard.png",
             sub: "Working, apologies for the slow response"
+        },
+        {
+            name: "Gilgamesh",
+            icon: "assets/img/icons/Gilgamesh.png",
+            sub: null
         },
         {
             name: "Guinaifen",
@@ -419,6 +455,11 @@ export class ChatComponent implements OnInit {
             sub: "Heart unmoved, evil pursued"
         },
         {
+            name: "Rin Tohsaka",
+            icon: "assets/img/icons/Rin_Tohsaka.png",
+            sub: null
+        },
+        {
             name: "Robin",
             icon: "assets/img/icons/Robin.png",
             sub: "Let's share our wings with one another."
@@ -431,7 +472,7 @@ export class ChatComponent implements OnInit {
         {
             name: "Saber",
             icon: "assets/img/icons/Saber.png",
-            sub: ""
+            sub: "It is what it is, let's have a meal"
         },
         {
             name: "Sampo",
