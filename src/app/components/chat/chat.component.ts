@@ -11,8 +11,8 @@ import * as htmlToImage from 'html-to-image';
 })
 export class ChatComponent implements OnInit {
 
-    newUpdateDate = "24/06/2026"
-    stickersNumber: number = 444;
+    newUpdateDate = "06/10/2026"
+    stickersNumber: number = 482;
     switchCheck: boolean = false;
     actionCheck: boolean = false;
     photoCheck: boolean = false;
@@ -163,7 +163,29 @@ export class ChatComponent implements OnInit {
                 "assets/img/icons/Himeko.png",
                 "assets/img/icons/Himeko_Nova.png",
             ]
-        }
+        },
+        {
+            name: "Aventurine",
+            versions: [
+                "Default",
+                "Waveflair"
+            ],
+            icons: [
+                "assets/img/icons/Aventurine.png",
+                "assets/img/icons/Aventurine_Waveflair.png",
+            ],
+        },
+        {
+            name: "Robin",
+            versions: [
+                "Default",
+                "Summeretto"
+            ],
+            icons: [
+                "assets/img/icons/Robin.png",
+                "assets/img/icons/Robin_Summeretto.png",
+            ],
+        },
     ]
 
 
@@ -174,6 +196,11 @@ export class ChatComponent implements OnInit {
             name: "Acheron",
             icon: "assets/img/icons/Acheron.png",
             sub: "Time for Departure"
+        },
+        {
+            name: "Aeon ★ Aha",
+            icon: "assets/img/icons/Aeon_Aha.png",
+            sub: null
         },
         {
             name: "Aglaea",
@@ -439,6 +466,11 @@ export class ChatComponent implements OnInit {
             name: "Natasha",
             icon: "assets/img/icons/Natasha.png",
             sub: "Doing outpatient runs at the Robot Settlement. Check my availability before you visit"
+        },
+        {
+            name: "Pearl",
+            icon: "assets/img/icons/Pearl.png",
+            sub: "Signature: Can do art"
         },
         {
             name: "Pela",
